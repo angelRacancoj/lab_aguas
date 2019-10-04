@@ -4,9 +4,9 @@
 	$nameSupply=POST['name_supply'];
 	if (isset($idSupply) && isset($nameSupply)) {
 		getByNameAndCode($nameSupply,$idSupply)
-	}else if (isset($idSupply)) {
+	}elseif (isset($idSupply)) {
 		getById($idSupply);
-	}else if (isset($nameSupply)) {
+	}elseif (isset($nameSupply)) {
 		getByName($nameSupply);
 	}else{
 		getAllSuppies();
