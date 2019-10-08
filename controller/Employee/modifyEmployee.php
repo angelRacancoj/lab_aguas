@@ -1,20 +1,20 @@
 <?php
 require 'employee.php';
-$nomEmpleado=$_POST['nomEmpleado'];
-$dpiEmpleado=$_POST['dpiEmpleado'];
-$telEmpleado=$_POST['telEmpleado'];
-$cargoEmpleado=$_POST['$cargoEmpleado'];
-if(isset($nomEmpleado)){
-      modificarNombre($nomEmpleado);
+$employeeDpi=$_POST['employeeDpi'];
+$employeeName=$_POST['employeeName'];
+$employeePhone=$_POST['employeePhone'];
+$employeePosition=$_POST['employeePosition'];
+if(isset($employeeName)){
+      modifyName($employeeName);
 }
-if(isset($dpiEmpleado)){
-      modificarDpi($dpiEmpleado);
+if(isset($employeeName)){
+      modifyDpi($employeeName);
 }
-if(isset($telEmpleado)){
-      modificarTelefono($telEmpleado);
+if(isset($employeePhone)){
+      modifyPhone($employeePhone);
 }
-if(isset($cargoEmpleado)){
-      modificarCargo($cargoEmpleado);
+if(isset($employeePosition)){
+      modifyPosition($employeePosition);
 }
 
 

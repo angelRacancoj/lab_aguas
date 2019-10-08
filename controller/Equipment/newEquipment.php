@@ -1,8 +1,8 @@
 <?php
     require 'equipment.php';
-    $nomEquipo=$_POST['$nomEquipo'];
-    $modEquipo=$_POST['modEquipo'];
-    $vidaEquipo=$_POST['vidaEquipo'];
-    $mantenEquipo=$_POST['$mantenEquipo'];
-    nuevoEquipo($nomEquipo,$modEquipo,$vidaEquipo,$mantenEquipo);
+    $equipmentName=$_POST['equipmentName'];
+    $equipmentModel=$_POST['equipmentModel'];
+    $equipmentWork=$_POST['equipmentWork'];
+    $EquipmentMan=$_POST['EquipmentMan'];
+    newEquipment($equipmentName,$equipmentModel,$equipmentWork,$EquipmentMan);
  ?>
