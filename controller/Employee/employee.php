@@ -1,34 +1,34 @@
 <?php
     //requiere base de datos y otras herramientas
 
-    function nuevoEmpleado($nombre,$dpi,$telefono,$cargo){
+    function newEmployee($employeeDpi,$employeeName,$employeePhone,$employeePosition){
         //agregar a base de datos
     }
-    function modificarNombre($nombre){
+    function modifyName($employeeName){
         //agregar a base de datos
     }
-    function modificarDpi($dpi){
+    function modifyDpi($employeeDpi){
         //agregar a base de datos
     }
-    function modificarTelefono($telefono){
+    function modifyPhone($employeePhone){
           //agregar a base de datos
     }
-    function modificarCargo($cargo){
+    function modifyPosition($employeePosition){
           //agregar a base de datos
     }
-    function consultarNombreyCargo($nombre,$cargo){
+    function getByNameAndPosition($employeeName,$employeePosition){
         //buscar en base de datos
         //devolver Empleados
     }
-    function consultarNombre($nombre){
+    function getByName($employeeName){
           //buscar en base de datos
           //devolver Empleados
     }
-    function consultarCargo($cargo){
+    function getByPosition($employeePosition){
         //buscar en base de datos
         //devolver Empleados
     }
-    function consultarTodo(){
+    function getAll(){
       //buscar en base de datos
       //devolver Empleados
     }

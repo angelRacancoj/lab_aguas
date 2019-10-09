@@ -1,34 +1,34 @@
 <?php
   //requiere base de datos y otras herramientas
 
-  function nuevoEquipo($nomEquipo,$modEquipo,$vidaEquipo,$mantenEquipo){
+  function newEquipment($equipmentName,$equipmentModel,$equipmentWork,$EquipmentMan){
       //agregar a base de datos
   }
-  function modificarNombre($nombre){
+  function modifyName($equipmentName){
       //agregar a base de datos
   }
-  function modificarModelo($modelo){
+  function modifyModel($equipmentModel){
       //agregar a base de datos
   }
-  function modificarVida($vida){
+  function modifyWork($equipmentWork){
         //agregar a base de datos
   }
-  function modificarMantenimiento($mantenimiento){
+  function modifyMaintenance($EquipmentMan){
         //agregar a base de datos
   }
-  function consultarNombreyModelo($nombre,$cargo){
+  function getByNameAndModel($equipmentName,$equipmentModel){
       //buscar en base de datos
       //devolver Equipos
   }
-  function consultarNombre($nombre){
+  function getByName($equipmentName){
         //buscar en base de datos
         //devolver Equipos
   }
-  function consultarModelo($modelo){
+  function getByModel($equipmentModel){
       //buscar en base de datos
       //devolver Equipos
   }
-  function consultarTodo(){
+  function getAll(){
     //buscar en base de datos
     //devolver Equipos
   }

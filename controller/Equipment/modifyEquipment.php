@@ -1,20 +1,20 @@
 <?php
     require 'equipment.php';
-    $nomEquipo=$_POST['$nomEquipo'];
-    $modEquipo=$_POST['modEquipo'];
-    $vidaEquipo=$_POST['vidaEquipo'];
-    $mantenEquipo=$_POST['$mantenEquipo'];
-    if(isset($nomEquipo)){
-          modificarNombre($nomEmpleado);
+    $equipmentName=$_POST['equipmentName'];
+    $equipmentModel=$_POST['equipmentModel'];
+    $equipmentWork=$_POST['equipmentWork'];
+    $EquipmentMan=$_POST['EquipmentMan'];
+    if(isset($equipmentName)){
+          modifyName($equipmentName)
     }
-    if(isset($modEquipo)){
-          modificarModelo($modEquipo);
+    if(isset($equipmentModel)){
+          modifyModel($equipmentModel);
     }
-    if(isset($vidaEquipo)){
-          modificarVida($vidaEquipo);
+    if(isset($equipmentWork)){
+          modifyWork($equipmentWork);
     }
-    if(isset($mantenEquipo)){
-          modificarMantenimiento($mantenEquipo);
+    if(isset($EquipmentMan)){
+          modifyMaintenance($EquipmentMan);
     }
 
 ?>
