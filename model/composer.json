@@ -1,0 +1,9 @@
+{
+    "require": {
+        "doctrine/orm": "^2.6",
+        "vlucas/phpdotenv": "^3.6"
+    },
+    "config":{
+    	"bin-dir": "bin"
+    }
+}
