@@ -400,6 +400,7 @@ DROP TABLE IF EXISTS `water_laboratory`.`SHOPPING` ;
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`SHOPPING` (
   `id_shopping` INT(11) NOT NULL AUTO_INCREMENT,
   `amount_purchased` DOUBLE NOT NULL,
+  `date_shopping` DATE NOT NULL,
   `note_shopping` VARCHAR(200) NULL DEFAULT NULL,
   `supply_id` INT(11) NULL DEFAULT NULL,
   `equipment_id` INT(11) NULL DEFAULT NULL,
