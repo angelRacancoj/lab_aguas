@@ -1,5 +1,5 @@
 <?php
-  require('user.php');
+  require('userController.php');
   require('UserSession.php');
   $userDpi=$_POST['userDpi'];
   $userPass=$_POST['userPass'];

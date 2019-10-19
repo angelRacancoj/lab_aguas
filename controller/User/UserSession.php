@@ -1,9 +1,8 @@
 <?php
-
 class UserSession{
 
     public function __construct(){
-        session_start();
+      session_start();
     }
 
     public function setUserName($user){
@@ -13,13 +12,10 @@ class UserSession{
     public function getUserName(){
         return $_SESSION['userName'];
     }
-    public function setUserRol($user){
-        $_SESSION['userRol'] = $user;
-    }
-    public function getUserRol($rol){
+    public function setUserRol($rol){
         $_SESSION['userRol'] = $rol;
     }
-    public function getUserRol(){
+    public function getUserRol($rol){
         return $_SESSION['userRol'];
     }
 
