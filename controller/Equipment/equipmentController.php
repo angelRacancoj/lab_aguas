@@ -1,30 +1,31 @@
 <?php
   //requiere base de datos y otras herramientas
+  require_once("../../model/src/Entity/Equipment.php");
 
-  function newEquipment($equipmentName,$equipmentModel,$equipmentWork,$EquipmentMan){
+  function newEquipment($equipment){
       //agregar a base de datos
   }
-  function modifyName($equipmentName){
+  function modifyName($equipment){
       //agregar a base de datos
   }
-  function modifyModel($equipmentModel){
+  function modifyModel($equipment){
       //agregar a base de datos
   }
-  function modifyWork($equipmentWork){
+  function modifyWork($equipment){
         //agregar a base de datos
   }
-  function modifyMaintenance($EquipmentMan){
+  function modifyMaintenance($equipment){
         //agregar a base de datos
   }
-  function getByNameAndModel($equipmentName,$equipmentModel){
+  function getByNameAndModel($equipment){
       //buscar en base de datos
       //devolver Equipos
   }
-  function getByName($equipmentName){
+  function getByName($equipment){
         //buscar en base de datos
         //devolver Equipos
   }
-  function getByModel($equipmentModel){
+  function getByModel($equipment){
       //buscar en base de datos
       //devolver Equipos
   }
