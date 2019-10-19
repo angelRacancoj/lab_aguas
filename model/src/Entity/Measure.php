@@ -36,4 +36,62 @@ class Measure
     private $description;
 
 
+
+    /**
+     * Get idMeasure.
+     *
+     * @return int
+     */
+    public function getIdMeasure()
+    {
+        return $this->idMeasure;
+    }
+
+    /**
+     * Set nameMeasure.
+     *
+     * @param string $nameMeasure
+     *
+     * @return Measure
+     */
+    public function setNameMeasure($nameMeasure)
+    {
+        $this->nameMeasure = $nameMeasure;
+
+        return $this;
+    }
+
+    /**
+     * Get nameMeasure.
+     *
+     * @return string
+     */
+    public function getNameMeasure()
+    {
+        return $this->nameMeasure;
+    }
+
+    /**
+     * Set description.
+     *
+     * @param string|null $description
+     *
+     * @return Measure
+     */
+    public function setDescription($description = null)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description.
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 }

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Client
  *
  * @ORM\Table(name="CLIENT", indexes={@ORM\Index(name="fk_CLIENT_COSTUM_CLIENT1_idx", columns={"costum_client_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\clientRepository")
  */
 class Client
 {
@@ -95,4 +95,254 @@ class Client
     private $costumClient;
 
 
+
+    /**
+     * Get idClient.
+     *
+     * @return int
+     */
+    public function getIdClient()
+    {
+        return $this->idClient;
+    }
+
+    /**
+     * Set nameClient.
+     *
+     * @param string $nameClient
+     *
+     * @return Client
+     */
+    public function setNameClient($nameClient)
+    {
+        $this->nameClient = $nameClient;
+
+        return $this;
+    }
+
+    /**
+     * Get nameClient.
+     *
+     * @return string
+     */
+    public function getNameClient()
+    {
+        return $this->nameClient;
+    }
+
+    /**
+     * Set directionClient.
+     *
+     * @param string|null $directionClient
+     *
+     * @return Client
+     */
+    public function setDirectionClient($directionClient = null)
+    {
+        $this->directionClient = $directionClient;
+
+        return $this;
+    }
+
+    /**
+     * Get directionClient.
+     *
+     * @return string|null
+     */
+    public function getDirectionClient()
+    {
+        return $this->directionClient;
+    }
+
+    /**
+     * Set cityClient.
+     *
+     * @param string|null $cityClient
+     *
+     * @return Client
+     */
+    public function setCityClient($cityClient = null)
+    {
+        $this->cityClient = $cityClient;
+
+        return $this;
+    }
+
+    /**
+     * Get cityClient.
+     *
+     * @return string|null
+     */
+    public function getCityClient()
+    {
+        return $this->cityClient;
+    }
+
+    /**
+     * Set companyClient.
+     *
+     * @param string|null $companyClient
+     *
+     * @return Client
+     */
+    public function setCompanyClient($companyClient = null)
+    {
+        $this->companyClient = $companyClient;
+
+        return $this;
+    }
+
+    /**
+     * Get companyClient.
+     *
+     * @return string|null
+     */
+    public function getCompanyClient()
+    {
+        return $this->companyClient;
+    }
+
+    /**
+     * Set phoneClient.
+     *
+     * @param string|null $phoneClient
+     *
+     * @return Client
+     */
+    public function setPhoneClient($phoneClient = null)
+    {
+        $this->phoneClient = $phoneClient;
+
+        return $this;
+    }
+
+    /**
+     * Get phoneClient.
+     *
+     * @return string|null
+     */
+    public function getPhoneClient()
+    {
+        return $this->phoneClient;
+    }
+
+    /**
+     * Set phoneClientExtra.
+     *
+     * @param string|null $phoneClientExtra
+     *
+     * @return Client
+     */
+    public function setPhoneClientExtra($phoneClientExtra = null)
+    {
+        $this->phoneClientExtra = $phoneClientExtra;
+
+        return $this;
+    }
+
+    /**
+     * Get phoneClientExtra.
+     *
+     * @return string|null
+     */
+    public function getPhoneClientExtra()
+    {
+        return $this->phoneClientExtra;
+    }
+
+    /**
+     * Set phoneExtra.
+     *
+     * @param string|null $phoneExtra
+     *
+     * @return Client
+     */
+    public function setPhoneExtra($phoneExtra = null)
+    {
+        $this->phoneExtra = $phoneExtra;
+
+        return $this;
+    }
+
+    /**
+     * Get phoneExtra.
+     *
+     * @return string|null
+     */
+    public function getPhoneExtra()
+    {
+        return $this->phoneExtra;
+    }
+
+    /**
+     * Set emailClient.
+     *
+     * @param string|null $emailClient
+     *
+     * @return Client
+     */
+    public function setEmailClient($emailClient = null)
+    {
+        $this->emailClient = $emailClient;
+
+        return $this;
+    }
+
+    /**
+     * Get emailClient.
+     *
+     * @return string|null
+     */
+    public function getEmailClient()
+    {
+        return $this->emailClient;
+    }
+
+    /**
+     * Set webSiteClient.
+     *
+     * @param string|null $webSiteClient
+     *
+     * @return Client
+     */
+    public function setWebSiteClient($webSiteClient = null)
+    {
+        $this->webSiteClient = $webSiteClient;
+
+        return $this;
+    }
+
+    /**
+     * Get webSiteClient.
+     *
+     * @return string|null
+     */
+    public function getWebSiteClient()
+    {
+        return $this->webSiteClient;
+    }
+
+    /**
+     * Set costumClient.
+     *
+     * @param \CostumClient|null $costumClient
+     *
+     * @return Client
+     */
+    public function setCostumClient(\CostumClient $costumClient = null)
+    {
+        $this->costumClient = $costumClient;
+
+        return $this;
+    }
+
+    /**
+     * Get costumClient.
+     *
+     * @return \CostumClient|null
+     */
+    public function getCostumClient()
+    {
+        return $this->costumClient;
+    }
 }

@@ -29,4 +29,38 @@ class StaffPosition
     private $nameStaffPosition;
 
 
+
+    /**
+     * Get idStaffPosition.
+     *
+     * @return int
+     */
+    public function getIdStaffPosition()
+    {
+        return $this->idStaffPosition;
+    }
+
+    /**
+     * Set nameStaffPosition.
+     *
+     * @param string $nameStaffPosition
+     *
+     * @return StaffPosition
+     */
+    public function setNameStaffPosition($nameStaffPosition)
+    {
+        $this->nameStaffPosition = $nameStaffPosition;
+
+        return $this;
+    }
+
+    /**
+     * Get nameStaffPosition.
+     *
+     * @return string
+     */
+    public function getNameStaffPosition()
+    {
+        return $this->nameStaffPosition;
+    }
 }

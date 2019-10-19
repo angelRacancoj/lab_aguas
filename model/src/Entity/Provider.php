@@ -43,4 +43,86 @@ class Provider
     private $directionProvider;
 
 
+
+    /**
+     * Get idProvider.
+     *
+     * @return int
+     */
+    public function getIdProvider()
+    {
+        return $this->idProvider;
+    }
+
+    /**
+     * Set nameProvider.
+     *
+     * @param string $nameProvider
+     *
+     * @return Provider
+     */
+    public function setNameProvider($nameProvider)
+    {
+        $this->nameProvider = $nameProvider;
+
+        return $this;
+    }
+
+    /**
+     * Get nameProvider.
+     *
+     * @return string
+     */
+    public function getNameProvider()
+    {
+        return $this->nameProvider;
+    }
+
+    /**
+     * Set phoneProvider.
+     *
+     * @param string $phoneProvider
+     *
+     * @return Provider
+     */
+    public function setPhoneProvider($phoneProvider)
+    {
+        $this->phoneProvider = $phoneProvider;
+
+        return $this;
+    }
+
+    /**
+     * Get phoneProvider.
+     *
+     * @return string
+     */
+    public function getPhoneProvider()
+    {
+        return $this->phoneProvider;
+    }
+
+    /**
+     * Set directionProvider.
+     *
+     * @param string|null $directionProvider
+     *
+     * @return Provider
+     */
+    public function setDirectionProvider($directionProvider = null)
+    {
+        $this->directionProvider = $directionProvider;
+
+        return $this;
+    }
+
+    /**
+     * Get directionProvider.
+     *
+     * @return string|null
+     */
+    public function getDirectionProvider()
+    {
+        return $this->directionProvider;
+    }
 }

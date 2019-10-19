@@ -36,4 +36,62 @@ class Package
     private $packageCost;
 
 
+
+    /**
+     * Get idPackage.
+     *
+     * @return string
+     */
+    public function getIdPackage()
+    {
+        return $this->idPackage;
+    }
+
+    /**
+     * Set namePackage.
+     *
+     * @param string $namePackage
+     *
+     * @return Package
+     */
+    public function setNamePackage($namePackage)
+    {
+        $this->namePackage = $namePackage;
+
+        return $this;
+    }
+
+    /**
+     * Get namePackage.
+     *
+     * @return string
+     */
+    public function getNamePackage()
+    {
+        return $this->namePackage;
+    }
+
+    /**
+     * Set packageCost.
+     *
+     * @param float $packageCost
+     *
+     * @return Package
+     */
+    public function setPackageCost($packageCost)
+    {
+        $this->packageCost = $packageCost;
+
+        return $this;
+    }
+
+    /**
+     * Get packageCost.
+     *
+     * @return float
+     */
+    public function getPackageCost()
+    {
+        return $this->packageCost;
+    }
 }

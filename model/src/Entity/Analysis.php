@@ -65,7 +65,11 @@ class Analysis
      */
     private $sample;
 
+
+
     /**
+     * Get idAnalysis.
+     *
      * @return int
      */
     public function getIdAnalysis()
@@ -74,15 +78,23 @@ class Analysis
     }
 
     /**
-     * @param int $idAnalysis
+     * Set dateAnalysis.
+     *
+     * @param \DateTime $dateAnalysis
+     *
+     * @return Analysis
      */
-    public function setIdAnalysis($idAnalysis)
+    public function setDateAnalysis($dateAnalysis)
     {
-        $this->idAnalysis = $idAnalysis;
+        $this->dateAnalysis = $dateAnalysis;
+
+        return $this;
     }
 
     /**
-     * @return DateTime
+     * Get dateAnalysis.
+     *
+     * @return \DateTime
      */
     public function getDateAnalysis()
     {
@@ -90,14 +102,22 @@ class Analysis
     }
 
     /**
-     * @param DateTime $dateAnalysis
+     * Set costAnalysis.
+     *
+     * @param float $costAnalysis
+     *
+     * @return Analysis
      */
-    public function setDateAnalysis($dateAnalysis)
+    public function setCostAnalysis($costAnalysis)
     {
-        $this->dateAnalysis = $dateAnalysis;
+        $this->costAnalysis = $costAnalysis;
+
+        return $this;
     }
 
     /**
+     * Get costAnalysis.
+     *
      * @return float
      */
     public function getCostAnalysis()
@@ -106,15 +126,23 @@ class Analysis
     }
 
     /**
-     * @param float $costAnalysis
+     * Set employeeDpi.
+     *
+     * @param \Employee|null $employeeDpi
+     *
+     * @return Analysis
      */
-    public function setCostAnalysis($costAnalysis)
+    public function setEmployeeDpi(\Employee $employeeDpi = null)
     {
-        $this->costAnalysis = $costAnalysis;
+        $this->employeeDpi = $employeeDpi;
+
+        return $this;
     }
 
     /**
-     * @return Employee
+     * Get employeeDpi.
+     *
+     * @return \Employee|null
      */
     public function getEmployeeDpi()
     {
@@ -122,15 +150,23 @@ class Analysis
     }
 
     /**
-     * @param Employee $employeeDpi
+     * Set package.
+     *
+     * @param \Package|null $package
+     *
+     * @return Analysis
      */
-    public function setEmployeeDpi($employeeDpi)
+    public function setPackage(\Package $package = null)
     {
-        $this->employeeDpi = $employeeDpi;
+        $this->package = $package;
+
+        return $this;
     }
 
     /**
-     * @return Package
+     * Get package.
+     *
+     * @return \Package|null
      */
     public function getPackage()
     {
@@ -138,26 +174,26 @@ class Analysis
     }
 
     /**
-     * @param Package $package
+     * Set sample.
+     *
+     * @param \Sample|null $sample
+     *
+     * @return Analysis
      */
-    public function setPackage($package)
+    public function setSample(\Sample $sample = null)
     {
-        $this->package = $package;
+        $this->sample = $sample;
+
+        return $this;
     }
 
     /**
-     * @return Sample
+     * Get sample.
+     *
+     * @return \Sample|null
      */
     public function getSample()
     {
         return $this->sample;
-    }
-
-    /**
-     * @param Sample $sample
-     */
-    public function setSample($sample)
-    {
-        $this->sample = $sample;
     }
 }

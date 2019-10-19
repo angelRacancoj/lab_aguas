@@ -49,4 +49,86 @@ class ParameterResult
     private $parameterPackage;
 
 
+
+    /**
+     * Get idParameterResult.
+     *
+     * @return int
+     */
+    public function getIdParameterResult()
+    {
+        return $this->idParameterResult;
+    }
+
+    /**
+     * Set result.
+     *
+     * @param float $result
+     *
+     * @return ParameterResult
+     */
+    public function setResult($result)
+    {
+        $this->result = $result;
+
+        return $this;
+    }
+
+    /**
+     * Get result.
+     *
+     * @return float
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
+
+    /**
+     * Set analysis.
+     *
+     * @param \Analysis|null $analysis
+     *
+     * @return ParameterResult
+     */
+    public function setAnalysis(\Analysis $analysis = null)
+    {
+        $this->analysis = $analysis;
+
+        return $this;
+    }
+
+    /**
+     * Get analysis.
+     *
+     * @return \Analysis|null
+     */
+    public function getAnalysis()
+    {
+        return $this->analysis;
+    }
+
+    /**
+     * Set parameterPackage.
+     *
+     * @param \ParameterPackage|null $parameterPackage
+     *
+     * @return ParameterResult
+     */
+    public function setParameterPackage(\ParameterPackage $parameterPackage = null)
+    {
+        $this->parameterPackage = $parameterPackage;
+
+        return $this;
+    }
+
+    /**
+     * Get parameterPackage.
+     *
+     * @return \ParameterPackage|null
+     */
+    public function getParameterPackage()
+    {
+        return $this->parameterPackage;
+    }
 }

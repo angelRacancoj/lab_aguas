@@ -36,4 +36,62 @@ class CostumClient
     private $description;
 
 
+
+    /**
+     * Get idCostumCategory.
+     *
+     * @return int
+     */
+    public function getIdCostumCategory()
+    {
+        return $this->idCostumCategory;
+    }
+
+    /**
+     * Set nameCostumCategory.
+     *
+     * @param string $nameCostumCategory
+     *
+     * @return CostumClient
+     */
+    public function setNameCostumCategory($nameCostumCategory)
+    {
+        $this->nameCostumCategory = $nameCostumCategory;
+
+        return $this;
+    }
+
+    /**
+     * Get nameCostumCategory.
+     *
+     * @return string
+     */
+    public function getNameCostumCategory()
+    {
+        return $this->nameCostumCategory;
+    }
+
+    /**
+     * Set description.
+     *
+     * @param string|null $description
+     *
+     * @return CostumClient
+     */
+    public function setDescription($description = null)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description.
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 }

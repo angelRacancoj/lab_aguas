@@ -49,4 +49,86 @@ class ParameterEquipment
     private $parameter;
 
 
+
+    /**
+     * Get idParameterEquipment.
+     *
+     * @return int
+     */
+    public function getIdParameterEquipment()
+    {
+        return $this->idParameterEquipment;
+    }
+
+    /**
+     * Set workingHours.
+     *
+     * @param string $workingHours
+     *
+     * @return ParameterEquipment
+     */
+    public function setWorkingHours($workingHours)
+    {
+        $this->workingHours = $workingHours;
+
+        return $this;
+    }
+
+    /**
+     * Get workingHours.
+     *
+     * @return string
+     */
+    public function getWorkingHours()
+    {
+        return $this->workingHours;
+    }
+
+    /**
+     * Set equipment.
+     *
+     * @param \Equipment|null $equipment
+     *
+     * @return ParameterEquipment
+     */
+    public function setEquipment(\Equipment $equipment = null)
+    {
+        $this->equipment = $equipment;
+
+        return $this;
+    }
+
+    /**
+     * Get equipment.
+     *
+     * @return \Equipment|null
+     */
+    public function getEquipment()
+    {
+        return $this->equipment;
+    }
+
+    /**
+     * Set parameter.
+     *
+     * @param \Parameter|null $parameter
+     *
+     * @return ParameterEquipment
+     */
+    public function setParameter(\Parameter $parameter = null)
+    {
+        $this->parameter = $parameter;
+
+        return $this;
+    }
+
+    /**
+     * Get parameter.
+     *
+     * @return \Parameter|null
+     */
+    public function getParameter()
+    {
+        return $this->parameter;
+    }
 }

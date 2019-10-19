@@ -51,6 +51,112 @@ class Employee
      * })
      */
     private $staffPosition;
-    
 
+
+
+    /**
+     * Get dpiEmployee.
+     *
+     * @return string
+     */
+    public function getDpiEmployee()
+    {
+        return $this->dpiEmployee;
+    }
+
+    /**
+     * Set password.
+     *
+     * @param string $password
+     *
+     * @return Employee
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password.
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set nameEmployee.
+     *
+     * @param string $nameEmployee
+     *
+     * @return Employee
+     */
+    public function setNameEmployee($nameEmployee)
+    {
+        $this->nameEmployee = $nameEmployee;
+
+        return $this;
+    }
+
+    /**
+     * Get nameEmployee.
+     *
+     * @return string
+     */
+    public function getNameEmployee()
+    {
+        return $this->nameEmployee;
+    }
+
+    /**
+     * Set phoneEmployee.
+     *
+     * @param string|null $phoneEmployee
+     *
+     * @return Employee
+     */
+    public function setPhoneEmployee($phoneEmployee = null)
+    {
+        $this->phoneEmployee = $phoneEmployee;
+
+        return $this;
+    }
+
+    /**
+     * Get phoneEmployee.
+     *
+     * @return string|null
+     */
+    public function getPhoneEmployee()
+    {
+        return $this->phoneEmployee;
+    }
+
+    /**
+     * Set staffPosition.
+     *
+     * @param \StaffPosition|null $staffPosition
+     *
+     * @return Employee
+     */
+    public function setStaffPosition(\StaffPosition $staffPosition = null)
+    {
+        $this->staffPosition = $staffPosition;
+
+        return $this;
+    }
+
+    /**
+     * Get staffPosition.
+     *
+     * @return \StaffPosition|null
+     */
+    public function getStaffPosition()
+    {
+        return $this->staffPosition;
+    }
 }

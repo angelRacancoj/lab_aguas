@@ -29,4 +29,38 @@ class Department
     private $nameDepartment;
 
 
+
+    /**
+     * Get idDepartment.
+     *
+     * @return int
+     */
+    public function getIdDepartment()
+    {
+        return $this->idDepartment;
+    }
+
+    /**
+     * Set nameDepartment.
+     *
+     * @param string $nameDepartment
+     *
+     * @return Department
+     */
+    public function setNameDepartment($nameDepartment)
+    {
+        $this->nameDepartment = $nameDepartment;
+
+        return $this;
+    }
+
+    /**
+     * Get nameDepartment.
+     *
+     * @return string
+     */
+    public function getNameDepartment()
+    {
+        return $this->nameDepartment;
+    }
 }

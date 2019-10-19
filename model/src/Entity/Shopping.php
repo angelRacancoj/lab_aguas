@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Shopping
  *
- * @ORM\Table(name="SHOPPING", indexes={@ORM\Index(name="fk_SHOPPING_EQUIPMENT1_idx", columns={"equipment_id"}), @ORM\Index(name="fk_SHOPPING_PROVIDER1_idx", columns={"provider_id"}), @ORM\Index(name="fk_SHOPPING_SUPPLY1_idx", columns={"supply_id"})})
+ * @ORM\Table(name="SHOPPING", indexes={@ORM\Index(name="fk_SHOPPING_SUPPLY1_idx", columns={"supply_id"}), @ORM\Index(name="fk_SHOPPING_EQUIPMENT1_idx", columns={"equipment_id"}), @ORM\Index(name="fk_SHOPPING_PROVIDER1_idx", columns={"provider_id"})})
  * @ORM\Entity
  */
 class Shopping
@@ -66,4 +66,134 @@ class Shopping
     private $supply;
 
 
+
+    /**
+     * Get idShopping.
+     *
+     * @return int
+     */
+    public function getIdShopping()
+    {
+        return $this->idShopping;
+    }
+
+    /**
+     * Set amountPurchased.
+     *
+     * @param float $amountPurchased
+     *
+     * @return Shopping
+     */
+    public function setAmountPurchased($amountPurchased)
+    {
+        $this->amountPurchased = $amountPurchased;
+
+        return $this;
+    }
+
+    /**
+     * Get amountPurchased.
+     *
+     * @return float
+     */
+    public function getAmountPurchased()
+    {
+        return $this->amountPurchased;
+    }
+
+    /**
+     * Set noteShopping.
+     *
+     * @param string|null $noteShopping
+     *
+     * @return Shopping
+     */
+    public function setNoteShopping($noteShopping = null)
+    {
+        $this->noteShopping = $noteShopping;
+
+        return $this;
+    }
+
+    /**
+     * Get noteShopping.
+     *
+     * @return string|null
+     */
+    public function getNoteShopping()
+    {
+        return $this->noteShopping;
+    }
+
+    /**
+     * Set equipment.
+     *
+     * @param \Equipment|null $equipment
+     *
+     * @return Shopping
+     */
+    public function setEquipment(\Equipment $equipment = null)
+    {
+        $this->equipment = $equipment;
+
+        return $this;
+    }
+
+    /**
+     * Get equipment.
+     *
+     * @return \Equipment|null
+     */
+    public function getEquipment()
+    {
+        return $this->equipment;
+    }
+
+    /**
+     * Set provider.
+     *
+     * @param \Provider|null $provider
+     *
+     * @return Shopping
+     */
+    public function setProvider(\Provider $provider = null)
+    {
+        $this->provider = $provider;
+
+        return $this;
+    }
+
+    /**
+     * Get provider.
+     *
+     * @return \Provider|null
+     */
+    public function getProvider()
+    {
+        return $this->provider;
+    }
+
+    /**
+     * Set supply.
+     *
+     * @param \Supply|null $supply
+     *
+     * @return Shopping
+     */
+    public function setSupply(\Supply $supply = null)
+    {
+        $this->supply = $supply;
+
+        return $this;
+    }
+
+    /**
+     * Get supply.
+     *
+     * @return \Supply|null
+     */
+    public function getSupply()
+    {
+        return $this->supply;
+    }
 }

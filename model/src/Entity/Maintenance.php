@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Maintenance
  *
- * @ORM\Table(name="MAINTENANCE", indexes={@ORM\Index(name="fk_MAINTENANCE_EQUIPMENT1_idx", columns={"equipment_id"}), @ORM\Index(name="fk_MAINTENANCE_PROVIDER1_idx", columns={"provider_id"})})
+ * @ORM\Table(name="MAINTENANCE", indexes={@ORM\Index(name="fk_MAINTENANCE_PROVIDER1_idx", columns={"provider_id"}), @ORM\Index(name="fk_MAINTENANCE_EQUIPMENT1_idx", columns={"equipment_id"})})
  * @ORM\Entity
  */
 class Maintenance
@@ -56,4 +56,110 @@ class Maintenance
     private $provider;
 
 
+
+    /**
+     * Get idMaintenance.
+     *
+     * @return int
+     */
+    public function getIdMaintenance()
+    {
+        return $this->idMaintenance;
+    }
+
+    /**
+     * Set maintenanceDate.
+     *
+     * @param \DateTime $maintenanceDate
+     *
+     * @return Maintenance
+     */
+    public function setMaintenanceDate($maintenanceDate)
+    {
+        $this->maintenanceDate = $maintenanceDate;
+
+        return $this;
+    }
+
+    /**
+     * Get maintenanceDate.
+     *
+     * @return \DateTime
+     */
+    public function getMaintenanceDate()
+    {
+        return $this->maintenanceDate;
+    }
+
+    /**
+     * Set maintenanceCost.
+     *
+     * @param float $maintenanceCost
+     *
+     * @return Maintenance
+     */
+    public function setMaintenanceCost($maintenanceCost)
+    {
+        $this->maintenanceCost = $maintenanceCost;
+
+        return $this;
+    }
+
+    /**
+     * Get maintenanceCost.
+     *
+     * @return float
+     */
+    public function getMaintenanceCost()
+    {
+        return $this->maintenanceCost;
+    }
+
+    /**
+     * Set equipment.
+     *
+     * @param \Equipment|null $equipment
+     *
+     * @return Maintenance
+     */
+    public function setEquipment(\Equipment $equipment = null)
+    {
+        $this->equipment = $equipment;
+
+        return $this;
+    }
+
+    /**
+     * Get equipment.
+     *
+     * @return \Equipment|null
+     */
+    public function getEquipment()
+    {
+        return $this->equipment;
+    }
+
+    /**
+     * Set provider.
+     *
+     * @param \Provider|null $provider
+     *
+     * @return Maintenance
+     */
+    public function setProvider(\Provider $provider = null)
+    {
+        $this->provider = $provider;
+
+        return $this;
+    }
+
+    /**
+     * Get provider.
+     *
+     * @return \Provider|null
+     */
+    public function getProvider()
+    {
+        return $this->provider;
+    }
 }

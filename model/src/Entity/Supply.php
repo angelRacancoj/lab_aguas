@@ -60,4 +60,134 @@ class Supply
     private $measure;
 
 
+
+    /**
+     * Get idSupply.
+     *
+     * @return int
+     */
+    public function getIdSupply()
+    {
+        return $this->idSupply;
+    }
+
+    /**
+     * Set nameSupply.
+     *
+     * @param string $nameSupply
+     *
+     * @return Supply
+     */
+    public function setNameSupply($nameSupply)
+    {
+        $this->nameSupply = $nameSupply;
+
+        return $this;
+    }
+
+    /**
+     * Get nameSupply.
+     *
+     * @return string
+     */
+    public function getNameSupply()
+    {
+        return $this->nameSupply;
+    }
+
+    /**
+     * Set dateExpiry.
+     *
+     * @param \DateTime $dateExpiry
+     *
+     * @return Supply
+     */
+    public function setDateExpiry($dateExpiry)
+    {
+        $this->dateExpiry = $dateExpiry;
+
+        return $this;
+    }
+
+    /**
+     * Get dateExpiry.
+     *
+     * @return \DateTime
+     */
+    public function getDateExpiry()
+    {
+        return $this->dateExpiry;
+    }
+
+    /**
+     * Set quantityAvailable.
+     *
+     * @param float $quantityAvailable
+     *
+     * @return Supply
+     */
+    public function setQuantityAvailable($quantityAvailable)
+    {
+        $this->quantityAvailable = $quantityAvailable;
+
+        return $this;
+    }
+
+    /**
+     * Get quantityAvailable.
+     *
+     * @return float
+     */
+    public function getQuantityAvailable()
+    {
+        return $this->quantityAvailable;
+    }
+
+    /**
+     * Set securitySheet.
+     *
+     * @param string|null $securitySheet
+     *
+     * @return Supply
+     */
+    public function setSecuritySheet($securitySheet = null)
+    {
+        $this->securitySheet = $securitySheet;
+
+        return $this;
+    }
+
+    /**
+     * Get securitySheet.
+     *
+     * @return string|null
+     */
+    public function getSecuritySheet()
+    {
+        return $this->securitySheet;
+    }
+
+    /**
+     * Set measure.
+     *
+     * @param \Measure|null $measure
+     *
+     * @return Supply
+     */
+    public function setMeasure(\Measure $measure = null)
+    {
+        $this->measure = $measure;
+
+        return $this;
+    }
+
+    /**
+     * Get measure.
+     *
+     * @return \Measure|null
+     */
+    public function getMeasure()
+    {
+        return $this->measure;
+    }
 }
