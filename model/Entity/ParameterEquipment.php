@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ParameterEquipment
  *
- * @ORM\Table(name="PARAMETER_EQUIPMENT", indexes={@ORM\Index(name="fk_PARAMETER_EQUIPMENT_EQUIPMENT1_idx", columns={"equipment_id"}), @ORM\Index(name="fk_PARAMETER_EQUIPMENT_PARAMETER1_idx", columns={"parameter_id"})})
+ * @ORM\Table(name="PARAMETER_EQUIPMENT", indexes={@ORM\Index(name="fk_PARAMETER_EQUIPMENT_PARAMETER1_idx", columns={"parameter_id"}), @ORM\Index(name="fk_PARAMETER_EQUIPMENT_EQUIPMENT1_idx", columns={"equipment_id"})})
  * @ORM\Entity
  */
 class ParameterEquipment
@@ -22,9 +22,9 @@ class ParameterEquipment
     private $idParameterEquipment;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="working_hours", type="decimal", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="working_hours", type="float", precision=10, scale=0, nullable=false)
      */
     private $workingHours;
 
@@ -63,7 +63,7 @@ class ParameterEquipment
     /**
      * Set workingHours.
      *
-     * @param string $workingHours
+     * @param float $workingHours
      *
      * @return ParameterEquipment
      */
@@ -77,7 +77,7 @@ class ParameterEquipment
     /**
      * Get workingHours.
      *
-     * @return string
+     * @return float
      */
     public function getWorkingHours()
     {

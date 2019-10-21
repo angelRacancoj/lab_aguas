@@ -40,7 +40,7 @@ class Analysis
      *
      * @ORM\ManyToOne(targetEntity="Employee")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="employee_dpi", referencedColumnName="DPI_employee")
+     *   @ORM\JoinColumn(name="employee_dpi", referencedColumnName="dpi_employee")
      * })
      */
     private $employeeDpi;

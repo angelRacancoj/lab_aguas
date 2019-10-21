@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Sample
  *
- * @ORM\Table(name="SAMPLE", indexes={@ORM\Index(name="fk_MUESTRA_CLIENTE1_idx", columns={"client_id"}), @ORM\Index(name="fk_SAMPLE_MUNICIPALITY1_idx", columns={"municipality_id"})})
+ * @ORM\Table(name="SAMPLE", indexes={@ORM\Index(name="fk_SAMPLE_CLIENT1_idx", columns={"client_dpi"}), @ORM\Index(name="fk_SAMPLE_MUNICIPALITY1_idx", columns={"municipality_id"})})
  * @ORM\Entity
  */
 class Sample
@@ -132,10 +132,10 @@ class Sample
      *
      * @ORM\ManyToOne(targetEntity="Client")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="client_id", referencedColumnName="id_client")
+     *   @ORM\JoinColumn(name="client_dpi", referencedColumnName="dpi_client")
      * })
      */
-    private $client;
+    private $clientDpi;
 
     /**
      * @var \Municipality
@@ -520,27 +520,27 @@ class Sample
     }
 
     /**
-     * Set client.
+     * Set clientDpi.
      *
-     * @param \Client|null $client
+     * @param \Client|null $clientDpi
      *
      * @return Sample
      */
-    public function setClient(\Client $client = null)
+    public function setClientDpi(\Client $clientDpi = null)
     {
-        $this->client = $client;
+        $this->clientDpi = $clientDpi;
 
         return $this;
     }
 
     /**
-     * Get client.
+     * Get clientDpi.
      *
      * @return \Client|null
      */
-    public function getClient()
+    public function getClientDpi()
     {
-        return $this->client;
+        return $this->clientDpi;
     }
 
     /**
