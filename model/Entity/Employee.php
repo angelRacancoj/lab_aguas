@@ -13,9 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Employee
 {
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="DPI_employee", type="string", length=13, nullable=false)
+     * @ORM\Column(name="dpi_employee", type="bigint", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -34,6 +34,13 @@ class Employee
      * @ORM\Column(name="name_employee", type="string", length=60, nullable=false)
      */
     private $nameEmployee;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_active", type="boolean", nullable=false)
+     */
+    private $isActive;
 
     /**
      * @var string|null
@@ -57,7 +64,7 @@ class Employee
     /**
      * Get dpiEmployee.
      *
-     * @return string
+     * @return int
      */
     public function getDpiEmployee()
     {
@@ -110,6 +117,30 @@ class Employee
     public function getNameEmployee()
     {
         return $this->nameEmployee;
+    }
+
+    /**
+     * Set isActive.
+     *
+     * @param bool $isActive
+     *
+     * @return Employee
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive.
+     *
+     * @return bool
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
     }
 
     /**

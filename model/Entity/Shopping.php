@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Shopping
  *
- * @ORM\Table(name="SHOPPING", indexes={@ORM\Index(name="fk_SHOPPING_SUPPLY1_idx", columns={"supply_id"}), @ORM\Index(name="fk_SHOPPING_EQUIPMENT1_idx", columns={"equipment_id"}), @ORM\Index(name="fk_SHOPPING_PROVIDER1_idx", columns={"provider_id"})})
+ * @ORM\Table(name="SHOPPING", indexes={@ORM\Index(name="fk_SHOPPING_EQUIPMENT1_idx", columns={"equipment_id"}), @ORM\Index(name="fk_SHOPPING_PROVIDER1_idx", columns={"provider_id"}), @ORM\Index(name="fk_SHOPPING_SUPPLY1_idx", columns={"supply_id"})})
  * @ORM\Entity
  */
 class Shopping
@@ -27,6 +27,13 @@ class Shopping
      * @ORM\Column(name="amount_purchased", type="float", precision=10, scale=0, nullable=false)
      */
     private $amountPurchased;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_shopping", type="date", nullable=false)
+     */
+    private $dateShopping;
 
     /**
      * @var string|null
@@ -99,6 +106,30 @@ class Shopping
     public function getAmountPurchased()
     {
         return $this->amountPurchased;
+    }
+
+    /**
+     * Set dateShopping.
+     *
+     * @param \DateTime $dateShopping
+     *
+     * @return Shopping
+     */
+    public function setDateShopping($dateShopping)
+    {
+        $this->dateShopping = $dateShopping;
+
+        return $this;
+    }
+
+    /**
+     * Get dateShopping.
+     *
+     * @return \DateTime
+     */
+    public function getDateShopping()
+    {
+        return $this->dateShopping;
     }
 
     /**

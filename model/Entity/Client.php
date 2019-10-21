@@ -8,18 +8,18 @@ use Doctrine\ORM\Mapping as ORM;
  * Client
  *
  * @ORM\Table(name="CLIENT", indexes={@ORM\Index(name="fk_CLIENT_COSTUM_CLIENT1_idx", columns={"costum_client_id"})})
- * @ORM\Entity(repositoryClass="\clientRepository")
+ * @ORM\Entity
  */
 class Client
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id_client", type="integer", nullable=false)
+     * @ORM\Column(name="dpi_client", type="bigint", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idClient;
+    private $dpiClient;
 
     /**
      * @var string
@@ -50,9 +50,9 @@ class Client
     private $companyClient;
 
     /**
-     * @var string|null
+     * @var string
      *
-     * @ORM\Column(name="phone_client", type="string", length=15, nullable=true)
+     * @ORM\Column(name="phone_client", type="string", length=15, nullable=false)
      */
     private $phoneClient;
 
@@ -97,13 +97,13 @@ class Client
 
 
     /**
-     * Get idClient.
+     * Get dpiClient.
      *
      * @return int
      */
-    public function getIdClient()
+    public function getDpiClient()
     {
-        return $this->idClient;
+        return $this->dpiClient;
     }
 
     /**
@@ -205,11 +205,11 @@ class Client
     /**
      * Set phoneClient.
      *
-     * @param string|null $phoneClient
+     * @param string $phoneClient
      *
      * @return Client
      */
-    public function setPhoneClient($phoneClient = null)
+    public function setPhoneClient($phoneClient)
     {
         $this->phoneClient = $phoneClient;
 
@@ -219,7 +219,7 @@ class Client
     /**
      * Get phoneClient.
      *
-     * @return string|null
+     * @return string
      */
     public function getPhoneClient()
     {
