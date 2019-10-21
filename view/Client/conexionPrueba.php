@@ -1,32 +1,51 @@
-<?php
-$q = intval($_GET['q']);
+ <?php
+$servername = "localhost";
+$username = "root";
+$password = "ex=d/dx=ex";
+$dbname = "water_laboratory";
 
-$con = mysqli_connect('localhost','peter','abc123','my_db');
-if (!$con) {
-    die('Could not connect: ' . mysqli_error($con));
+function createClient($dpi,$name,$phone,$costum_id){
+	// Create connection
+	$conn = new mysqli($servername, $username, $password, $dbname);
+	// Check connection
+	if ($conn->connect_error) {
+	    die("Connection failed: " . $conn->connect_error);
+	}
+
+	$sql = "INSERT INTO `water_laboratory`.`CLIENT` (`dpi_client`, `name_client`, `phone_client`, `costum_client_id`) VALUES (5556667770901,'Jeanneth Baten', '48692179', 3);";
+
+	if ($conn->query($sql) === TRUE) {
+	    echo "New record created successfully";
+	} else {
+	    echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+
+	$conn->close();
 }
 
-mysqli_select_db($con,"ajax_demo");
-$sql="SELECT * FROM user WHERE id = '".$q."'";
-$result = mysqli_query($con,$sql);
-
-echo "<table>
-<tr>
-<th>Firstname</th>
-<th>Lastname</th>
-<th>Age</th>
-<th>Hometown</th>
-<th>Job</th>
-</tr>";
-while($row = mysqli_fetch_array($result)) {
-    echo "<tr>";
-    echo "<td>" . $row['FirstName'] . "</td>";
-    echo "<td>" . $row['LastName'] . "</td>";
-    echo "<td>" . $row['Age'] . "</td>";
-    echo "<td>" . $row['Hometown'] . "</td>";
-    echo "<td>" . $row['Job'] . "</td>";
-    echo "</tr>";
+function printClient($dpi,$name,$direction,$department,$company,$phone,$extra_phone,$fax,$email,$web,$costum){
+	echo "Cliente: ".$dpi." , ".$name." , ".$direction." , ".$department." , ".$company." , ".$phone." , ".$extra_phone." , ".$fax." , ".$email." , ".$web." , ".$costum;
 }
-echo "</table>";
-mysqli_close($con);
-?>
+
+if (isset($_POST['dpi'],$name=$_POST['client_name'],$phone=$_POST['phone'],$costum=$_POST['costum'])) {
+	$dpi=$_POST['dpi'];
+	$name=$_POST['client_name'];
+	$direction=$_POST['direction'];
+	$department=$_POST['department'];
+	$company=$_POST['company'];
+	$phone=$_POST['phone'];
+	$extra_phone=$_POST['extra_phone'];
+	$fax=$_POST['fax'];
+	$email=$_POST['email'];
+	$web=$_POST['web'];
+	$costum=$_POST['costum'];
+}else{
+
+}
+
+
+if(isset($_POST['addClient']))
+{
+   printClient($dpi,$name,$direction,$department,$company,$phone,$extra_phone,$fax,$email,$web,$costum);
+} 
+?> 
