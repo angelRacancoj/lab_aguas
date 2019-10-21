@@ -1,5 +1,3 @@
-/model/vendor/
-/model/bin/
-/model/composer.lock
-/model/.env
-/model/.idea/
+/vendor/
+/bin/
+/composer.lock
