@@ -48,7 +48,12 @@ class ParameterEquipment
      */
     private $parameter;
 
-
+    /**
+     * ParameterEquipment constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idParameterEquipment.

@@ -42,7 +42,12 @@ class Provider
      */
     private $directionProvider;
 
-
+    /**
+     * Provider constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idProvider.

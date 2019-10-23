@@ -59,7 +59,12 @@ class Employee
      */
     private $staffPosition;
 
-
+    /**
+     * Employee constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get dpiEmployee.

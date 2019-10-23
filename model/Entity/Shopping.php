@@ -72,7 +72,12 @@ class Shopping
      */
     private $supply;
 
-
+    /**
+     * Shopping constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idShopping.

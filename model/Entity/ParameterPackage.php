@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ParameterPackage
  *
- * @ORM\Table(name="PARAMETER_PACKAGE", indexes={@ORM\Index(name="fk_PARAMETER_PACKAGE_PACKAGE1_idx", columns={"package_id"}), @ORM\Index(name="fk_PARAMENTER_PACKAGE_PARAMETER1_idx", columns={"parameter_id"})})
+ * @ORM\Table(name="PARAMETER_PACKAGE", indexes={@ORM\Index(name="fk_PARAMENTER_PACKAGE_PARAMETER1_idx", columns={"parameter_id"}), @ORM\Index(name="fk_PARAMETER_PACKAGE_PACKAGE1_idx", columns={"package_id"})})
  * @ORM\Entity
  */
 class ParameterPackage
@@ -55,7 +55,12 @@ class ParameterPackage
      */
     private $package;
 
-
+    /**
+     * ParameterPackage constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idPp.

@@ -38,7 +38,12 @@ class Municipality
      */
     private $department;
 
-
+    /**
+     * Municipality constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idMunicipality.
