@@ -28,7 +28,12 @@ class Department
      */
     private $nameDepartment;
 
-
+    /**
+     * Department constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idDepartment.

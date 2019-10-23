@@ -35,7 +35,12 @@ class Package
      */
     private $packageCost;
 
-
+    /**
+     * Package constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idPackage.

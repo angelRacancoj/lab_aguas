@@ -65,7 +65,12 @@ class Analysis
      */
     private $sample;
 
-
+    /**
+     * Analysis constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idAnalysis.

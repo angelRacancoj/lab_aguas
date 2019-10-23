@@ -52,7 +52,12 @@ class Parameter
      */
     private $measure;
 
-
+    /**
+     * Parameter constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idParameter.
