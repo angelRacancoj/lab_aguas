@@ -17,7 +17,6 @@ class Parameter
      *
      * @ORM\Column(name="id_parameter", type="string", length=10, nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idParameter;
 
@@ -57,6 +56,20 @@ class Parameter
      */
     public function __construct()
     {
+    }
+
+    /**
+     * Set idParameter.
+     *
+     * @param string $idParameter
+     *
+     * @return Parameter
+     */
+    public function setIdParameter($idParameter)
+    {
+        $this->idParameter = $idParameter;
+
+        return $this;
     }
 
     /**

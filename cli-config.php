@@ -15,6 +15,4 @@ $dotenv->required([
 
 require_once __DIR__ . '/bootstrap.php';
 
-$entityManager = getEntityManager();
-
 return ConsoleRunner::createHelperSet($entityManager);

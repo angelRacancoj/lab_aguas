@@ -1,4 +1,5 @@
-<?php 		// bootstrap.php
+<?php
+// bootstrap.php
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
@@ -24,18 +25,13 @@ function getEntityManager()
 	);
 
 	$config = Setup::createAnnotationMetadataConfiguration(
-		array($_ENV['ENTITY_DIR']),		//paths to mapped entities
-		$_ENV['DEBUG'],					//developer mode
-		ini_get('sys_temp_dir'),		//Proxy dir
-		null,							//Cache implementation
-		false 							//Use Simple Annotation Reader
+		array($_ENV['ENTITY_DIR']),		    //paths to mapped entities
+		$_ENV['DEBUG'],					    //developer mode
+        null,                       //Proxy dir
+		null,						    //Cache implementation
+		false 		    //Use Simple Annotation Reader
 	);
-
-	$config->setAutoGenerateProxyClasses(true);
-
-	if ($_ENV['DEBUG']){
-		$config->setSQLLogger(new \Doctrine\DBAL\Logging\EchoSQLLogger());
-	}
 
 	return EntityManager::create($dbParams, $config);
 }
+$entityManager = getEntityManager();
