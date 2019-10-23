@@ -67,14 +67,21 @@ class Employee
     }
 
     /**
-     * Get dpiEmployee.
-     *
      * @return int
      */
     public function getDpiEmployee()
     {
         return $this->dpiEmployee;
     }
+
+    /**
+     * @param int $dpiEmployee
+     */
+    public function setDpiEmployee($dpiEmployee)
+    {
+        $this->dpiEmployee = $dpiEmployee;
+    }
+    
 
     /**
      * Set password.
