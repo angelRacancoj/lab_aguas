@@ -115,8 +115,7 @@ class Sample
     /**
      * @var bool
      *
-     * @ORM\Column(name="acceptance", type="boolean", nullable=false, options={"comment"="aceptacion: 1->Aceptado, 2->Rechazado,3->Bajo Condicion
-"})
+     * @ORM\Column(name="acceptance", type="boolean", nullable=false, options={"comment"="aceptacion: 1->Aceptado, 2->Rechazado,3->Bajo Condicion"})
      */
     private $acceptance;
 
@@ -147,7 +146,12 @@ class Sample
      */
     private $municipality;
 
-
+    /**
+     * Sample constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idSample.

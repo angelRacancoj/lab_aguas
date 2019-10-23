@@ -35,7 +35,12 @@ class CostumClient
      */
     private $description;
 
-
+    /**
+     * CostumClient constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idCostumCategory.

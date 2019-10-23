@@ -59,7 +59,12 @@ class Supply
      */
     private $measure;
 
-
+    /**
+     * Supply constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idSupply.

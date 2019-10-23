@@ -94,7 +94,12 @@ class Client
      */
     private $costumClient;
 
-
+    /**
+     * Client constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get dpiClient.

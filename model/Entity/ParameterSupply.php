@@ -48,7 +48,12 @@ class ParameterSupply
      */
     private $supply;
 
-
+    /**
+     * ParameterSupply constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idParameterSupply.
