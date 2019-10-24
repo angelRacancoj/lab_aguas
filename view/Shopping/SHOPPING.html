@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>COMPRAS | Laboratorio de aguas</title>
+    <!-- Esto es un comentario -->
+    <!-- LINK REL=StyleSheet HREF="../../CSS/Forms/forms.css" TYPE="text/css" MEDIA=screen -->
+    <link rel="stylesheet" type="text/css" href="../CSS/Forms/forms.css">
+
+    <!-- Bootstrap CSS -->
+  <link href="../Principal/css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="../Principal/css/bootstrap-theme.css" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="../Principal/css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="../Principal/css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Custom styles -->
+  <link href="../Principal/css/style.css" rel="stylesheet">
+  <link href="../Principal/css/style-responsive.css" rel="stylesheet" />
+
+  </head>
+  <body>
+    <form class="form">
+      <h2>Compras</h2>
+
+
+      <p type="PROVEEDOR:"><input type="text" name="proveedor" placeholder="Seleccione el proveedor de la compra" disabled></input></p>
+      <button>SELECCIONAR PROVEEDOR</button><br><br><br>
+
+
+      <p type="ITEM:"><input type="text" name="item" placeholder="Seleccione el item a comprar"  disabled></input></p>
+      <button>SELECCIONAR ITEM</button><br><br><br>
+
+      <p type="CANTIDAD A COMPRAR:"><input type="number" min="0" max="50" step="1" value="0" size="6" name="cantidad"></input></p><br><br>
+      
+      <button>AGREGAR COMPRA AL CARRITO</button><br><br><br>
+
+
+
+      <button>REALIZAR COMPRA</button>
+    </form>
+  </body>
+</html>
