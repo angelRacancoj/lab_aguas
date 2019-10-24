@@ -1,11 +1,19 @@
 <?php
     //requiere base de datos y otras herramientas
-    require_once("../../model/Entity/Employee.php");
-    require_once("../../model/Entity/StaffPosition.php");
+require "../../vendor/autoload.php";
+require_once "../../model/Entity/Employee.php";
+require_once "../../bootstrap.php";
 
-    function newEmployee($employee){
-        //agregar a base de datos
+function newEmployee($employee){
+    try {
+        global $entityManager;
+        $entityManager->persist($employee);
+        $entityManager->flush();
+        return true;
+    } catch (Exception $exception){
+        return false;
     }
+}
     function modifyName($employee){
         //agregar a base de datos
     }
