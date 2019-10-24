@@ -4,6 +4,8 @@
 	require_once("../../model/src/Entity/Shopping.php");
 	require "../../vendor/autoload.php";
 	require_once "../../model/Entity/Shopping.php";
+	require_once "../../model/Entity/Provider.php";
+	require_once "../../model/Entity/Equipment.php";
 	require_once "../../bootstrap.php";
 
 
@@ -93,5 +95,32 @@
         return true;
     } catch (Exception $exception){
         return false;
+    }
+
+    function createProviderTest(){
+      //buscar en base de datos
+      //devolver cargos de empleado
+      $position1=new Provider();
+      $position1->setIdProvider(1);
+      $position1->setNameStaffPosition("PROVEEDOR 1");
+      $position1->setPhoneProvider("NUMERO 1");
+      global $entityManager;
+      $entityManager->persist($position1);
+      $entityManager->flush();
+      return $position1;
+    }
+
+    function createEquipmentTest(){
+      //buscar en base de datos
+      //devolver cargos de empleado
+      $position1=new Equipment();
+      $position1->setNameEquipment("EQUIPO 4");
+      $position1->setModelEquipment("MODELO 4");
+      $position1->setWorkingHours(400);
+      $position1->setMaintenanceTime(450);
+      global $entityManager;
+      $entityManager->persist($position1);
+      $entityManager->flush();
+      return $position1;
     }
 }
