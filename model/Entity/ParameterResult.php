@@ -48,7 +48,12 @@ class ParameterResult
      */
     private $parameterPackage;
 
-
+    /**
+     * ParameterResult constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idParameterResult.

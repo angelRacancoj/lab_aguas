@@ -29,24 +29,4 @@ function printClient(){
 function hola_mundo(){
 	echo "<h1>Hola Mundo</h1>";
 }
-
-function createClient($dpi,$name,$phone,$costum_id){
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	// Check connection
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
-
-	$sql = "INSERT INTO water_laboratory.CLIENT (dpi_client,name_client,direction_client,city_client,company_client,phone_client,phone_client_extra,phone_extra,email_client,web_site_client,costum_client_id) VALUES ($dpi,$name,$direction,$department,$company,$phone,$extra_phone,$fax,$email,$web,$costum)";
-
-	if ($conn->query($sql) === TRUE) {
-	    echo "New record created successfully";
-	} else {
-	    echo "Error: " . $sql . "<br>" . $conn->error;
-	}
-
-	$conn->close();
-	//printClient($dpi,$name,$direction,$department,$company,$phone,$extra_phone,$fax,$email,$web,$costum);
-}
 ?> 

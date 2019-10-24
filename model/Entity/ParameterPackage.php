@@ -55,7 +55,12 @@ class ParameterPackage
      */
     private $package;
 
-
+    /**
+     * ParameterPackage constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idPp.

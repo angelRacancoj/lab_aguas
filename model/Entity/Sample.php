@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Sample
  *
- * @ORM\Table(name="SAMPLE", indexes={@ORM\Index(name="fk_SAMPLE_CLIENT1_idx", columns={"client_dpi"}), @ORM\Index(name="fk_SAMPLE_MUNICIPALITY1_idx", columns={"municipality_id"})})
+ * @ORM\Table(name="SAMPLE", indexes={@ORM\Index(name="fk_SAMPLE_MUNICIPALITY1_idx", columns={"municipality_id"}), @ORM\Index(name="fk_SAMPLE_CLIENT1_idx", columns={"client_dpi"})})
  * @ORM\Entity
  */
 class Sample
@@ -115,8 +115,7 @@ class Sample
     /**
      * @var bool
      *
-     * @ORM\Column(name="acceptance", type="boolean", nullable=false, options={"comment"="aceptacion: 1->Aceptado, 2->Rechazado,3->Bajo Condicion
-"})
+     * @ORM\Column(name="acceptance", type="boolean", nullable=false, options={"comment"="aceptacion: 1->Aceptado, 2->Rechazado,3->Bajo Condicion"})
      */
     private $acceptance;
 

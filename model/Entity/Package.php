@@ -17,7 +17,6 @@ class Package
      *
      * @ORM\Column(name="id_package", type="string", length=10, nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idPackage;
 
@@ -35,7 +34,26 @@ class Package
      */
     private $packageCost;
 
+    /**
+     * Package constructor.
+     */
+    public function __construct()
+    {
+    }
 
+    /**
+     * Set idPackage.
+     *
+     * @param string $idPackage
+     *
+     * @return Package
+     */
+    public function setIdPackage($idPackage)
+    {
+        $this->idPackage = $idPackage;
+
+        return $this;
+    }
 
     /**
      * Get idPackage.

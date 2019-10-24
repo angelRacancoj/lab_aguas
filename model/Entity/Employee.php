@@ -17,7 +17,6 @@ class Employee
      *
      * @ORM\Column(name="dpi_employee", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $dpiEmployee;
 
@@ -59,7 +58,26 @@ class Employee
      */
     private $staffPosition;
 
+    /**
+     * Employee constructor.
+     */
+    public function __construct()
+    {
+    }
 
+    /**
+     * Set dpiEmployee.
+     *
+     * @param int $dpiEmployee
+     *
+     * @return Employee
+     */
+    public function setDpiEmployee($dpiEmployee)
+    {
+        $this->dpiEmployee = $dpiEmployee;
+
+        return $this;
+    }
 
     /**
      * Get dpiEmployee.

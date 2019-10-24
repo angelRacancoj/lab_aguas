@@ -49,7 +49,12 @@ class Equipment
      */
     private $maintenanceTime;
 
-
+    /**
+     * Equipment constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idEquipment.

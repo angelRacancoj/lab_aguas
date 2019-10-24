@@ -28,7 +28,12 @@ class StaffPosition
      */
     private $nameStaffPosition;
 
-
+    /**
+     * StaffPosition constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idStaffPosition.

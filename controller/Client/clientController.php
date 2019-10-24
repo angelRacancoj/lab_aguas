@@ -1,9 +1,19 @@
 <?php
-	required_once("../../model/src/Entity.Client.php");
 
-	function newClient($id,$name,$direction,$city,$company,$phone,$extra_phone,$fax,$email,$web_site,$costum_category){
-		//agregar a base de datos
-	}
+require "../../vendor/autoload.php";
+require_once "../../model/Entity/Client.php";
+require_once "../../bootstrap.php";
+
+function newClient($newClient){
+    try {
+        global $entityManager;
+        $entityManager->persist($newClient);
+        $entityManager->flush();
+        return true;
+    } catch (Exception $exception){
+        return false;
+    }
+}
 
 	function modifyId($id){
 		//actualizar en base de datos

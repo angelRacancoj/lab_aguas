@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Provider
  *
  * @ORM\Table(name="PROVIDER")
- * @ORM\Entity(repositoryClass="providerController")
+ * @ORM\Entity
  */
 class Provider
 {
@@ -17,7 +17,6 @@ class Provider
      *
      * @ORM\Column(name="id_provider", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idProvider;
 
@@ -42,7 +41,26 @@ class Provider
      */
     private $directionProvider;
 
+    /**
+     * Provider constructor.
+     */
+    public function __construct()
+    {
+    }
 
+    /**
+     * Set idProvider.
+     *
+     * @param int $idProvider
+     *
+     * @return Provider
+     */
+    public function setIdProvider($idProvider)
+    {
+        $this->idProvider = $idProvider;
+
+        return $this;
+    }
 
     /**
      * Get idProvider.

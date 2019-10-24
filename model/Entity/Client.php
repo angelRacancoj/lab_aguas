@@ -17,7 +17,6 @@ class Client
      *
      * @ORM\Column(name="dpi_client", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $dpiClient;
 
@@ -94,7 +93,26 @@ class Client
      */
     private $costumClient;
 
+    /**
+     * Client constructor.
+     */
+    public function __construct()
+    {
+    }
 
+    /**
+     * Set dpiClient.
+     *
+     * @param int $dpiClient
+     *
+     * @return Client
+     */
+    public function setDpiClient($dpiClient)
+    {
+        $this->dpiClient = $dpiClient;
+
+        return $this;
+    }
 
     /**
      * Get dpiClient.

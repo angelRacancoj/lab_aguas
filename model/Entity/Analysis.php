@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Analysis
  *
- * @ORM\Table(name="ANALYSIS", indexes={@ORM\Index(name="fk_ANALYSIS_SAMPLE1_idx", columns={"sample_id"}), @ORM\Index(name="fk_ANALYSIS_EMPLOYEE1_idx", columns={"employee_dpi"}), @ORM\Index(name="fk_ANALYSIS_PACKAGE1_idx", columns={"package_id"})})
+ * @ORM\Table(name="ANALYSIS", indexes={@ORM\Index(name="fk_ANALYSIS_EMPLOYEE1_idx", columns={"employee_dpi"}), @ORM\Index(name="fk_ANALYSIS_PACKAGE1_idx", columns={"package_id"}), @ORM\Index(name="fk_ANALYSIS_SAMPLE1_idx", columns={"sample_id"})})
  * @ORM\Entity
  */
 class Analysis
@@ -65,7 +65,12 @@ class Analysis
      */
     private $sample;
 
-
+    /**
+     * Analysis constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idAnalysis.

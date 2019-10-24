@@ -1,10 +1,19 @@
 <?php
   //requiere base de datos y otras herramientas
-  require_once("../../model/src/Entity/Equipment.php");
+require "../../vendor/autoload.php";
+require_once "../../model/Entity/Equipment.php";
+require_once "../../bootstrap.php";
 
-  function newEquipment($equipment){
-      //agregar a base de datos
+function newEquipment($newEquipment){
+  try {
+      global $entityManager;
+      $entityManager->persist($newEquipment);
+      $entityManager->flush();
+      return true;
+  } catch (Exception $exception){
+      return false;
   }
+}
   function modifyName($equipment){
       //agregar a base de datos
   }

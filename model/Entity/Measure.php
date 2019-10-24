@@ -35,7 +35,12 @@ class Measure
      */
     private $description;
 
-
+    /**
+     * Measure constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get idMeasure.
