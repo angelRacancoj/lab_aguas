@@ -15,57 +15,61 @@ function newClient($newClient){
     }
 }
 
-	function modifyId($id){
+	function modifyClientId($id){
 		//actualizar en base de datos
 	}
 
-	function modifyName($name){
+	function modifyClientName($name){
 		//actualizar en base de datos
 	}
 
-	function modifyDirection($direction){
+	function modifyClientDirection($direction){
 		//actualizar en base de datos
 	}
 
-	function modifyCity($city){
+	function modifyClientCity($city){
 		//actualizar en base de datos
 	}
 
-	function modifyCompany($company){
+	function modifyClientCompany($company){
 		//actualizar en base de datos
 	}
 
-	function modifyPhone($phone){
+	function modifyClientPhone($phone){
 		//actualizar en base de datos
 	}
 
-	function modifyExtraPhone($phone){
+	function modifyClientExtra($phone){
 		//actualizar en base de datos
 	}
 
-	function modifyFax($fax){
+	function modifyClientExtraPhone($phone){
 		//actualizar en base de datos
 	}
 
-	function modifyEmail($email){
+	function modifyClientFax($fax){
 		//actualizar en base de datos
 	}
 
-	function modifyWevSite($web){
+	function modifyClientEmail($email){
 		//actualizar en base de datos
 	}
 
-	function getByNameAndId($name,$id){
+	function modifyClientWevSite($web){
+		//actualizar en base de datos
+	}
+
+	function getClientByNameAndId($name,$id){
 		//buscar en base de datos 
 		//devuelve listado de clientes
 	}
 
-	function getByName($name){
+	function getClientByName($name){
 		//buscar en base de datos 
 		//devuelve listado de clientes
 	}
 
-	function getById($id){
+	function getClientById($id){
 		//buscar en base de datos 
 		//devuelve listado de clientes
 	}
