@@ -2,6 +2,7 @@
     //requiere base de datos y otras herramientas
 require "../../vendor/autoload.php";
 require_once "../../model/Entity/Employee.php";
+require_once "../../model/Entity/StaffPosition.php";
 require_once "../../bootstrap.php";
 
 function newEmployee($employee){
@@ -63,11 +64,13 @@ function newEmployee($employee){
     function getAllEmployeePosition(){
       //buscar en base de datos
       //devolver cargos de empleado
+        global $entityManager;
+        return $entityManager->getRepository('StaffPosition')->findAll();
     }
     function getEmployeePositionbyName($nameStaffPosition){
-      //buscar en base de datos
-      //devolver cargos de empleado
+        //buscar en base de datos
+        //devolver cargos de empleado
+        global $entityManager;
+        return $entityManager->getRepository('StaffPosition')->findOneBy(['nameStaffPosition' => $nameStaffPosition]);
     }
-
-
 ?>

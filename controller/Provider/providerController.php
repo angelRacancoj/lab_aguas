@@ -14,3 +14,8 @@ function newProvider($newProvider){
         return false;
     }
 }
+
+function getAllProviders(){
+    global $entityManager;
+    return $entityManager->getRepository('Provider')->findAll();
+}
