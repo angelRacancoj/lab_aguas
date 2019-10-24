@@ -14,3 +14,8 @@ function newAnalysis($newAnalysis){
         return false;
     }
 }
+
+function getAllAnalysis(){
+    global $entityManager;
+    return $entityManager->getRepository('Analysis')->findAll();
+}

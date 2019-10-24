@@ -14,3 +14,8 @@ function newPurchase($newPurchase){
         return false;
     }
 }
+
+function getAllPurchases(){
+    global $entityManager;
+    return $entityManager->getRepository('Shopping')->findAll();
+}
