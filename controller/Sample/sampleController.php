@@ -2,6 +2,7 @@
 
 require "../../vendor/autoload.php";
 require_once "../../model/Entity/Sample.php";
+require_once "../../model/Entity/Department.php";
 require_once "../../bootstrap.php";
 
 function newSample($newSample){
@@ -13,4 +14,9 @@ function newSample($newSample){
     } catch (Exception $exception){
         return false;
     }
+}
+
+function getAllDepartament(){
+    global $entityManager;
+    return $entityManager->getRepository('Department')->findAll();
 }
