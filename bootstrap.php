@@ -7,10 +7,11 @@ use Doctrine\ORM\EntityManager;
 require_once __DIR__ . '/vendor/autoload.php';
 
 /**
-*Genera el gestor de entidades
-*
-*@return Doctrine\ORM\EntityManager
-*/
+ *Genera el gestor de entidades
+ *
+ * @return Doctrine\ORM\EntityManager
+ * @throws \Doctrine\ORM\ORMException
+ */
 function getEntityManager()
 {
 	//Cargar configuración de la conexión
@@ -34,4 +35,15 @@ function getEntityManager()
 
 	return EntityManager::create($dbParams, $config);
 }
+
+$dotenv = Dotenv\Dotenv::create(__DIR__);
+$dotenv->load();
+$dotenv->required([
+    'DATABASE_HOST',
+    'DATABASE_NAME',
+    'DATABASE_USER',
+    'DATABASE_PASSWD',
+    'DATABASE_DRIVER'
+]);
+
 $entityManager = getEntityManager();

@@ -1,12 +1,19 @@
 <?php
-	require_once("../../model/src/Entity/Supply.php");
-	function newSupply($name,$date_expire,$quantity_available,$measure){
-		//Agregar en la base de datos
-	}
 
-	function newSupply($name,$date_expire,$quantity_available,$measure,$secure_sheet){
-		//Agregar en la base de datos
-	}	
+require "../../vendor/autoload.php";
+require_once "../../model/Entity/Supply.php";
+require_once "../../bootstrap.php";
+
+function newSupply($newSupply){
+    try {
+        global $entityManager;
+        $entityManager->persist($newSupply);
+        $entityManager->flush();
+        return true;
+    } catch (Exception $exception){
+        return false;
+    }
+}
 
 	function modifyName($name){
 		//actualizar en base de datos
