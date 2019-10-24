@@ -1,4 +1,5 @@
-<?php 		// bootstrap.php
+<?php
+// bootstrap.php
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
@@ -6,10 +7,11 @@ use Doctrine\ORM\EntityManager;
 require_once __DIR__ . '/vendor/autoload.php';
 
 /**
-*Genera el gestor de entidades
-*
-*@return Doctrine\ORM\EntityManager
-*/
+ *Genera el gestor de entidades
+ *
+ * @return Doctrine\ORM\EntityManager
+ * @throws \Doctrine\ORM\ORMException
+ */
 function getEntityManager()
 {
 	//Cargar configuración de la conexión
@@ -24,18 +26,24 @@ function getEntityManager()
 	);
 
 	$config = Setup::createAnnotationMetadataConfiguration(
-		array($_ENV['ENTITY_DIR']),		//paths to mapped entities
-		$_ENV['DEBUG'],					//developer mode
-		ini_get('sys_temp_dir'),		//Proxy dir
-		null,							//Cache implementation
-		false 							//Use Simple Annotation Reader
+		array($_ENV['ENTITY_DIR']),		    //paths to mapped entities
+		$_ENV['DEBUG'],					    //developer mode
+        null,                       //Proxy dir
+		null,						    //Cache implementation
+		false 		    //Use Simple Annotation Reader
 	);
-
-	$config->setAutoGenerateProxyClasses(true);
-
-	if ($_ENV['DEBUG']){
-		$config->setSQLLogger(new \Doctrine\DBAL\Logging\EchoSQLLogger());
-	}
 
 	return EntityManager::create($dbParams, $config);
 }
+
+$dotenv = Dotenv\Dotenv::create(__DIR__);
+$dotenv->load();
+$dotenv->required([
+    'DATABASE_HOST',
+    'DATABASE_NAME',
+    'DATABASE_USER',
+    'DATABASE_PASSWD',
+    'DATABASE_DRIVER'
+]);
+
+$entityManager = getEntityManager();
