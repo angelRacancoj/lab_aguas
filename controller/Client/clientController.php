@@ -71,6 +71,7 @@ function newClient($newClient){
 	}
 
 	function getAllClient(){
-		//Devuelve todos los clientes
+        global $entityManager;
+        return $entityManager->getRepository('Client')->findAll();
 	}
 ?>

@@ -14,3 +14,8 @@ function newPackage($newPackage){
         return false;
     }
 }
+
+function getAllPackages(){
+    global $entityManager;
+    return $entityManager->getRepository('Package')->findAll();
+}

@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="COSTUM_CLIENT")
  * @ORM\Entity
  */
+
 class CostumClient
 {
     /**
@@ -42,18 +43,6 @@ class CostumClient
     {
     }
 
-    /**
-     * Set idCostumCategory.
-     *
-     * @param int $idCostumCategory
-     *
-     * @return CostumClient
-     */
-    public function setIdCostumCategory($idCostumCategory)
-    {
-        $this->idCostumCategory = $idCostumCategory;
-        return $this;
-    }
 
     /**
      * Get idCostumCategory.
