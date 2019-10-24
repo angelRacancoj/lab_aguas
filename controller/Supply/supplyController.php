@@ -78,8 +78,8 @@ function newSupply($newSupply){
 		getAvailableByCode();
 	}
 
-	function getAllSuppies(){
-		//buscar en base de datos
-		//devolver Insumos
+	function getAllSupplies(){
+        global $entityManager;
+        return $entityManager->getRepository('Supply')->findAll();
 	}
 ?>

@@ -14,3 +14,10 @@ function newMaintenance($newMaintenance){
         return false;
     }
 }
+
+function getAllMaintenances(){
+    //buscar en base de datos
+    //devolver cargos de empleado
+    global $entityManager;
+    return $entityManager->getRepository('Maintenance')->findAll();
+}

@@ -14,3 +14,8 @@ function newParameter($newParameter){
         return false;
     }
 }
+
+function getAllParameters(){
+    global $entityManager;
+    return $entityManager->getRepository('Parameters')->findAll();
+}
