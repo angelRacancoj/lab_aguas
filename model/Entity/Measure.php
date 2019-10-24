@@ -43,6 +43,20 @@ class Measure
     }
 
     /**
+     * Set idMeasure.
+     *
+     * @param int $idMeasure
+     *
+     * @return Measure
+     */
+    public function setIdMeasure($idMeasure)
+    {
+        $this->idMeasure = $idMeasure;
+
+        return $this;
+    }
+
+    /**
      * Get idMeasure.
      *
      * @return int
