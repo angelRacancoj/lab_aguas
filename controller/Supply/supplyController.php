@@ -15,33 +15,33 @@ function newSupply($newSupply){
     }
 }
 
-	function modifyName($name){
+	function modifySupplyName($name){
 		//actualizar en base de datos
 	}
 
-	function modifyDateExpired($date_expired){
+	function modifySupplyDateExpired($date_expired){
 		//actualizar en base de datos
 	}
 
-	function modifyQuantityAvailable($quantity_available){
+	function modifySupplyQuantityAvailable($quantity_available){
 		//actualizar en base de datos
 	}
 
-	function getByName($name){
+	function getSupplyByName($name){
 		//buscar en base de datos
         //devolver Insumos
 	}
 
-	function modifyMeasure($measure){
+	function modifySupplyMeasure($measure){
 		//actualizar en base de datos
 	}
 
-	function getByCode($code){
+	function getSupplyByCode($code){
 		//buscar en base de datos
 		//devolver Insumos
 	}
 
-	function getAvailableByCode($available,$code){
+	function getSupplyAvailableByCode($available,$code){
 		//Esta es la estructura del funcionamiento, si lo consideras necesario la podes eliminar
 		if (isset($available)) {
 			if ($available == true) {
@@ -54,7 +54,7 @@ function newSupply($newSupply){
 		}
 	}
 
-	function getAvailableByName($available,$name){
+	function getSupplyAvailableByName($available,$name){
 		//Esta es la estructura del funcionamiento, si lo consideras necesario la podes eliminar
 		if (isset($available)) {
 			if ($available == true) {
@@ -67,12 +67,12 @@ function newSupply($newSupply){
 		}
 	}
 
-	function getByNameAndCode($name,$code){
+	function getSupplyByNameAndCode($name,$code){
 		//buscar en base de datos
 		//devolver Insumos
 	}
 
-	function getByAvailableNameCode($available,$code,$name){
+	function getSupplyByAvailableNameCode($available,$code,$name){
 		//la logica implementada en:
 		getAvailableByName();
 		getAvailableByCode();

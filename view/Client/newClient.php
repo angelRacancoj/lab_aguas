@@ -1,20 +1,28 @@
 <?php
   require "../../model/Entity/Client.php";
-  require "../../model/controller/Cient/clientController.php";
+  require "../../controller/Client/clientController.php";
+  require "../../controller/CostumClient/costumClientController.php";
 
   if (isset($_POST['add'])) {
     $newClient = new Client();
-    $newClient->setDpiClient($_POST['dpi']);
+    $newClient->setDpiClient($_POST['client_dpi']);
     $newClient->setNameClient($_POST['client_name']);
     $newClient->setDirectionClient($_POST['direction']);
-    $newClient->setCityClient($_POST['department'];);
+    $newClient->setCityClient($_POST['department']);
     $newClient->setCompanyClient($_POST['company']);
     $newClient->setPhoneClient($_POST['phone']);
     $newClient->setPhoneClientExtra($_POST['extra_phone']);
     $newClient->setPhoneExtra($_POST['extra_phone2']);
     $newClient->setEmailClient($_POST['email']);
     $newClient->setWebsiteClient($_POST['web']);
-    $newClient->set
+    //revisar metodo
+    $newClient->setCostumClient(getCostumClientById($_POST['costum']));
+
+    if (newClient($newClient)) {
+      echo "Agregado exitosamente";
+    } else {
+      echo "Error al crear el cliente";
+    }
   }
 ?>
 
@@ -58,82 +66,82 @@
               <header class="panel-heading">Crear Cliente</header>
               <div class="panel-body">
                 <div class="form">
-                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="conect.php">
+                  <form class="form-validate form-horizontal" id="feedback_form" action="#" method="post">
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">DPI<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: 1234567890901" id="cdpi" name="pdi" minlength="12" type="number" required />
+                        <input class="form-control" placeholder="Ej: 1234567890901" name="client_dpi" minlength="12" type="number" required />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Nombre Completo<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej:Jose Morales" id="cname" name="client_name" minlength="5" type="text" required />
+                        <input class="form-control" placeholder="Ej:Jose Morales" name="client_name" minlength="5" type="text" required />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Direccion de la Empresa:</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: 10ma avenida 60-10 Zona 11" id="cdirection" name="direction" type="text" />
+                        <input class="form-control" placeholder="Ej: 10ma avenida 60-10 Zona 11" name="direction" type="text" />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Departamento</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: Quetzaltenango" id="cdepartment" name="department" type="text" />
+                        <input class="form-control" placeholder="Ej: Quetzaltenango" name="department" type="text" />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Nombre de la Compañia</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: Purificadora la Gotita" id="ccompany" name="company" type="text" />
+                        <input class="form-control" placeholder="Ej: Purificadora la Gotita" name="company" type="text" />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Numero de Telefono<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: 77315820" id="cphone" name="phone" minlength="4" type="number" required />
+                        <input class="form-control" placeholder="Ej: 77315820" name="phone" minlength="4" type="number" required />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Numero de Telefono Secundarion</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: 55481200" id="cextra_phone" name="extra_phone" type="number" />
+                        <input class="form-control" placeholder="Ej: 55481200" name="extra_phone" type="number" />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Numero de Telefono Extra</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: 55481200" id="cextra_phone2" name="extra_phone2" type="number" />
+                        <input class="form-control" placeholder="Ej: 55481200" name="extra_phone2" type="number" />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Numero FAX</label>
                       <div class="col-lg-10">
-                        <input class="form-control" id="cfax" name="fax" type="number" />
+                        <input class="form-control" name="fax" type="number" />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cemail" class="control-label col-lg-2">Correo Electronico</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: juanjose@lagotita.com" id="cemail" type="email" name="email" />
+                        <input class="form-control" placeholder="Ej: juanjose@lagotita.com" type="email" name="email" />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="curl" class="control-label col-lg-2">Sitio Web</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: http://www.lagotita.com" id="cweb" type="url" name="web" />
+                        <input class="form-control" placeholder="Ej: http://www.lagotita.com" type="url" name="web" />
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="inputSuccess">Selects</label>
                       <div class="col-lg-10">
                         <select class="form-control m-bot15" name="costum">
-                          <option value="1">Empresa Privada</option>
-                          <option value="2">Empresa Mixta</option>
-                          <option value="3">Gobierno</option>
-                          <option value="4">Estudiante</option>
-                          <option value="5">ONG</option>
+                          <?php
+                          foreach (getAllCostumClient() as $cc) {
+                            echo '<option value="'.$cc->getIdCostumCategory().'">'.$cc->getNameCostumCategory().'</option>';
+                          }
+                          ?>
                       </select>
                       </div>
                     </div>
