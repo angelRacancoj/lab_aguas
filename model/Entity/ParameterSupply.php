@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ParameterSupply
  *
- * @ORM\Table(name="PARAMETER_SUPPLY", indexes={@ORM\Index(name="fk_PARAMETER_SUPPLY_PARAMETER1_idx", columns={"parameter_id"}), @ORM\Index(name="fk_PARAMETER_SUPPLY_SUPPLY1_idx", columns={"supply_id"})})
+ * @ORM\Table(name="PARAMETER_SUPPLY", indexes={@ORM\Index(name="fk_PARAMETER_SUPPLY_SUPPLY1_idx", columns={"supply_id"}), @ORM\Index(name="fk_PARAMETER_SUPPLY_PARAMETER1_idx", columns={"parameter_id"})})
  * @ORM\Entity
  */
 class ParameterSupply

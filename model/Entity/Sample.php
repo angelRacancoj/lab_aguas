@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Sample
  *
- * @ORM\Table(name="SAMPLE", indexes={@ORM\Index(name="fk_SAMPLE_CLIENT1_idx", columns={"client_dpi"}), @ORM\Index(name="fk_SAMPLE_MUNICIPALITY1_idx", columns={"municipality_id"})})
+ * @ORM\Table(name="SAMPLE", indexes={@ORM\Index(name="fk_SAMPLE_MUNICIPALITY1_idx", columns={"municipality_id"}), @ORM\Index(name="fk_SAMPLE_CLIENT1_idx", columns={"client_dpi"})})
  * @ORM\Entity
  */
 class Sample
@@ -146,12 +146,7 @@ class Sample
      */
     private $municipality;
 
-    /**
-     * Sample constructor.
-     */
-    public function __construct()
-    {
-    }
+
 
     /**
      * Get idSample.

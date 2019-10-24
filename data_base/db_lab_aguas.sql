@@ -24,7 +24,7 @@ USE `water_laboratory` ;
 DROP TABLE IF EXISTS `water_laboratory`.`DEPARTMENT` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`DEPARTMENT` (
-  `id_department` INT NOT NULL,
+  `id_department` INT AUTO_INCREMENT NOT NULL,
   `name_department` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_department`))
 ENGINE = InnoDB;
@@ -36,9 +36,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `water_laboratory`.`MUNICIPALITY` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`MUNICIPALITY` (
-  `id_municipality` INT NOT NULL,
+  `id_municipality` INT AUTO_INCREMENT NOT NULL,
   `name_municipality` VARCHAR(45) NOT NULL,
-  `department_id` INT NOT NULL,
+  `department_id` INT DEFAULT NULL,
   PRIMARY KEY (`id_municipality`),
   INDEX `fk_MUNICIPALITY_DEPARTMENT1_idx` (`department_id` ASC),
   CONSTRAINT `fk_MUNICIPALITY_DEPARTMENT1`
@@ -53,7 +53,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `water_laboratory`.`COSTUM_CLIENT` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`COSTUM_CLIENT` (
-  `id_costum_category` INT NOT NULL,
+  `id_costum_category` INT AUTO_INCREMENT NOT NULL,
   `name_costum_category` VARCHAR(45) NOT NULL,
   `description` VARCHAR(200) NULL DEFAULT NULL,
   PRIMARY KEY (`id_costum_category`))
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `water_laboratory`.`CLIENT` (
   `phone_extra` VARCHAR(15) NULL DEFAULT NULL,
   `email_client` VARCHAR(45) NULL DEFAULT NULL,
   `web_site_client` VARCHAR(45) NULL DEFAULT NULL,
-  `costum_client_id` INT NOT NULL,
+  `costum_client_id` INT DEFAULT NULL,
   PRIMARY KEY (`dpi_client`),
   INDEX `fk_CLIENT_COSTUM_CLIENT1_idx` (`costum_client_id` ASC),
   CONSTRAINT `fk_CLIENT_COSTUM_CLIENT1`
@@ -91,7 +91,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `water_laboratory`.`SAMPLE` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`SAMPLE` (
-  `id_sample` INT NOT NULL,
+  `id_sample` INT AUTO_INCREMENT NOT NULL,
   `admission_date` DATE NOT NULL,
   `sampling_date` DATE NOT NULL,
   `batch` VARCHAR(45) NOT NULL,
@@ -105,10 +105,10 @@ CREATE TABLE IF NOT EXISTS `water_laboratory`.`SAMPLE` (
   `observations` TINYTEXT NULL DEFAULT NULL,
   `village` VARCHAR(45) NULL DEFAULT NULL,
   `note_sample` TINYTEXT NULL DEFAULT NULL,
-  `acceptance` TINYINT(1) NOT NULL COMMENT 'aceptacion: 1->Aceptado, 2->Rechazado,3->Bajo Condicion\n',
+  `acceptance` TINYINT(1) NOT NULL COMMENT 'aceptacion: 1->Aceptado, 2->Rechazado,3->Bajo Condicion',
   `Boleta_de_pago` VARCHAR(45) NULL DEFAULT NULL,
-  `municipality_id` INT NOT NULL,
-  `client_dpi` BIGINT(14) NOT NULL,
+  `municipality_id` INT DEFAULT NULL,
+  `client_dpi` BIGINT(14) DEFAULT NULL,
   PRIMARY KEY (`id_sample`),
   INDEX `fk_SAMPLE_MUNICIPALITY1_idx` (`municipality_id` ASC),
   INDEX `fk_SAMPLE_CLIENT1_idx` (`client_dpi` ASC),
@@ -142,7 +142,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `water_laboratory`.`STAFF_POSITION` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`STAFF_POSITION` (
-  `id_staff_position` INT NOT NULL,
+  `id_staff_position` INT AUTO_INCREMENT NOT NULL,
   `name_staff_position` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_staff_position`))
 ENGINE = InnoDB;
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `water_laboratory`.`EMPLOYEE` (
   `name_employee` VARCHAR(60) BINARY NOT NULL,
   `is_active` TINYINT(1) NOT NULL,
   `phone_employee` VARCHAR(10) NULL DEFAULT NULL,
-  `staff_position_id` INT NOT NULL,
+  `staff_position_id` INT DEFAULT NULL,
   PRIMARY KEY (`dpi_employee`),
   INDEX `fk_EMPLOYEE_PERSONAL_CHARGE1_idx` (`staff_position_id` ASC),
   CONSTRAINT `fk_EMPLOYEE_PERSONAL_CHARGE1`
@@ -174,12 +174,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `water_laboratory`.`ANALYSIS` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`ANALYSIS` (
-  `id_analysis` INT NOT NULL,
+  `id_analysis` INT AUTO_INCREMENT NOT NULL,
   `date_analysis` DATE NOT NULL,
   `cost_analysis` DOUBLE NOT NULL,
-  `sample_id` INT NOT NULL,
-  `package_id` VARCHAR(10) NOT NULL,
-  `employee_dpi` BIGINT(14) NOT NULL,
+  `sample_id` INT DEFAULT NULL,
+  `package_id` VARCHAR(10) DEFAULT NULL,
+  `employee_dpi` BIGINT(14) DEFAULT NULL,
   PRIMARY KEY (`id_analysis`),
   INDEX `fk_ANALYSIS_SAMPLE1_idx` (`sample_id` ASC),
   INDEX `fk_ANALYSIS_PACKAGE1_idx` (`package_id` ASC),
@@ -206,7 +206,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `water_laboratory`.`EQUIPMENT` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`EQUIPMENT` (
-  `id_equipment` INT NOT NULL,
+  `id_equipment` INT AUTO_INCREMENT NOT NULL,
   `name_equipment` VARCHAR(45) NOT NULL,
   `model_equipment` VARCHAR(45) NOT NULL,
   `working_hours` INT NOT NULL,
@@ -235,11 +235,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `water_laboratory`.`MAINTENANCE` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`MAINTENANCE` (
-  `id_maintenance` INT NOT NULL,
+  `id_maintenance` INT AUTO_INCREMENT NOT NULL,
   `maintenance_date` DATE NOT NULL,
   `maintenance_cost` DOUBLE NOT NULL,
-  `equipment_id` INT NOT NULL,
-  `provider_id` INT NOT NULL,
+  `equipment_id` INT DEFAULT NULL,
+  `provider_id` INT DEFAULT NULL,
   PRIMARY KEY (`id_maintenance`),
   INDEX `fk_MAINTENANCE_EQUIPMENT1_idx` (`equipment_id` ASC),
   INDEX `fk_MAINTENANCE_PROVIDER1_idx` (`provider_id` ASC),
@@ -258,7 +258,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `water_laboratory`.`MEASURE` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`MEASURE` (
-  `id_measure` INT NOT NULL,
+  `id_measure` INT AUTO_INCREMENT NOT NULL,
   `name_measure` VARCHAR(45) NOT NULL,
   `description` TINYTEXT NULL DEFAULT NULL,
   PRIMARY KEY (`id_measure`))
@@ -275,7 +275,7 @@ CREATE TABLE IF NOT EXISTS `water_laboratory`.`PARAMETER` (
   `name_parameter` VARCHAR(45) NOT NULL,
   `MR_code` VARCHAR(20) NOT NULL,
   `below_limit` TINYINT(1) NULL DEFAULT NULL,
-  `measure_id` INT NOT NULL,
+  `measure_id` INT DEFAULT NULL,
   PRIMARY KEY (`id_parameter`),
   INDEX `fk_PARAMETER_MEASURE1_idx` (`measure_id` ASC),
   CONSTRAINT `fk_PARAMETER_MEASURE1`
@@ -290,11 +290,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `water_laboratory`.`PARAMETER_PACKAGE` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`PARAMETER_PACKAGE` (
-  `id_PP` INT NOT NULL,
+  `id_PP` INT AUTO_INCREMENT NOT NULL,
   `LMA` DOUBLE NOT NULL,
   `LMP` DOUBLE NOT NULL,
-  `parameter_id` VARCHAR(10) NOT NULL,
-  `package_id` VARCHAR(10) NOT NULL,
+  `parameter_id` VARCHAR(10) DEFAULT NULL,
+  `package_id` VARCHAR(10) DEFAULT NULL,
   PRIMARY KEY (`id_PP`),
   INDEX `fk_PARAMENTER_PACKAGE_PARAMETER1_idx` (`parameter_id` ASC),
   INDEX `fk_PARAMETER_PACKAGE_PACKAGE1_idx` (`package_id` ASC),
@@ -315,10 +315,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `water_laboratory`.`PARAMETER_EQUIPMENT` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`PARAMETER_EQUIPMENT` (
-  `id_parameter_equipment` INT NOT NULL,
+  `id_parameter_equipment` INT AUTO_INCREMENT NOT NULL,
   `working_hours` DOUBLE NOT NULL,
-  `equipment_id` INT NOT NULL,
-  `parameter_id` VARCHAR(10) NOT NULL,
+  `equipment_id` INT DEFAULT NULL,
+  `parameter_id` VARCHAR(10) DEFAULT NULL,
   PRIMARY KEY (`id_parameter_equipment`),
   INDEX `fk_PARAMETER_EQUIPMENT_EQUIPMENT1_idx` (`equipment_id` ASC),
   INDEX `fk_PARAMETER_EQUIPMENT_PARAMETER1_idx` (`parameter_id` ASC),
@@ -337,10 +337,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `water_laboratory`.`PARAMETER_RESULT` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`PARAMETER_RESULT` (
-  `id_parameter_result` INT NOT NULL,
+  `id_parameter_result` INT AUTO_INCREMENT NOT NULL,
   `result` DOUBLE NOT NULL,
-  `analysis_id` INT NOT NULL,
-  `parameter_package_id` INT NOT NULL,
+  `analysis_id` INT DEFAULT NULL,
+  `parameter_package_id` INT DEFAULT NULL,
   PRIMARY KEY (`id_parameter_result`),
   INDEX `fk_PARAMETER_RESULT_ANALYSIS1_idx` (`analysis_id` ASC),
   INDEX `fk_PARAMETER_RESULT_PARAMENTER_PACKAGE1_idx` (`parameter_package_id` ASC),
@@ -359,12 +359,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `water_laboratory`.`SUPPLY` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`SUPPLY` (
-  `id_supply` INT NOT NULL,
+  `id_supply` INT AUTO_INCREMENT NOT NULL,
   `name_supply` VARCHAR(45) NOT NULL,
   `date_expiry` DATE NOT NULL,
   `quantity_available` DOUBLE NOT NULL,
   `security_sheet` TINYBLOB NULL DEFAULT NULL,
-  `measure_id` INT NOT NULL,
+  `measure_id` INT DEFAULT NULL,
   PRIMARY KEY (`id_supply`),
   INDEX `fk_SUPPLY_MEASURE1_idx` (`measure_id` ASC),
   CONSTRAINT `fk_SUPPLY_MEASURE1`
@@ -379,10 +379,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `water_laboratory`.`PARAMETER_SUPPLY` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`PARAMETER_SUPPLY` (
-  `id_parameter_supply` INT NOT NULL,
+  `id_parameter_supply` INT AUTO_INCREMENT NOT NULL,
   `amount_used` DOUBLE NOT NULL,
-  `parameter_id` VARCHAR(10) NOT NULL,
-  `supply_id` INT NOT NULL,
+  `parameter_id` VARCHAR(10) DEFAULT NULL,
+  `supply_id` INT DEFAULT NULL,
   PRIMARY KEY (`id_parameter_supply`),
   INDEX `fk_PARAMETER_SUPPLY_PARAMETER1_idx` (`parameter_id` ASC),
   INDEX `fk_PARAMETER_SUPPLY_SUPPLY1_idx` (`supply_id` ASC),
@@ -401,13 +401,13 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `water_laboratory`.`SHOPPING` ;
 
 CREATE TABLE IF NOT EXISTS `water_laboratory`.`SHOPPING` (
-  `id_shopping` INT NOT NULL,
+  `id_shopping` INT AUTO_INCREMENT NOT NULL,
   `amount_purchased` DOUBLE NOT NULL,
   `date_shopping` DATE NOT NULL,
   `note_shopping` VARCHAR(200) NULL DEFAULT NULL,
   `supply_id` INT NULL DEFAULT NULL,
   `equipment_id` INT NULL DEFAULT NULL,
-  `provider_id` INT NOT NULL,
+  `provider_id` INT DEFAULT NULL,
   PRIMARY KEY (`id_shopping`),
   INDEX `fk_SHOPPING_SUPPLY1_idx` (`supply_id` ASC),
   INDEX `fk_SHOPPING_PROVIDER1_idx` (`provider_id` ASC),
