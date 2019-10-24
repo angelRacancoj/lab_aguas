@@ -43,6 +43,19 @@ class CostumClient
     }
 
     /**
+     * Set idCostumCategory.
+     *
+     * @param int $idCostumCategory
+     *
+     * @return CostumClient
+     */
+    public function setIdCostumCategory($idCostumCategory)
+    {
+        $this->idCostumCategory = $idCostumCategory;
+        return $this;
+    }
+
+    /**
      * Get idCostumCategory.
      *
      * @return int
