@@ -15,6 +15,10 @@ function newProvider($newProvider){
     }
 }
 
+function getProviderById($id){
+    //Return privider by ID
+}
+
 function getAllProviders(){
     global $entityManager;
     return $entityManager->getRepository('Provider')->findAll();

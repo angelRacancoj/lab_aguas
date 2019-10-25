@@ -134,7 +134,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-lg-2" for="inputSuccess">Selects</label>
+                      <label class="control-label col-lg-2" for="inputSuccess">Tipo de Cliente</label>
                       <div class="col-lg-10">
                         <select class="form-control m-bot15" name="costum">
                           <?php
