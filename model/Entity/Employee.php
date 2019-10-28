@@ -4,6 +4,7 @@
 
 use Doctrine\ORM\Mapping as ORM;
 
+//require_once "StaffPosition.php";
 /**
  * Employee
  *
@@ -65,19 +66,6 @@ class Employee
     {
     }
 
-    /**
-     * Set dpiEmployee.
-     *
-     * @param int $dpiEmployee
-     *
-     * @return Employee
-     */
-    public function setDpiEmployee($dpiEmployee)
-    {
-        $this->dpiEmployee = $dpiEmployee;
-
-        return $this;
-    }
 
     /**
      * Get dpiEmployee.

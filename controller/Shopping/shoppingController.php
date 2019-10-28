@@ -15,6 +15,11 @@ function newPurchase($newPurchase){
     }
 }
 
+function getPurchaseById($purchaseId){
+    global $entityManager;
+    return $entityManager->getRepository('Shopping')->find($purchaseId);
+}
+
 function getAllPurchases(){
     global $entityManager;
     return $entityManager->getRepository('Shopping')->findAll();

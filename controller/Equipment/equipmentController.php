@@ -43,6 +43,12 @@ function newEquipment($newEquipment){
       //buscar en base de datos
       //devolver Equipos
   }
+
+  function getById($equipmentId){
+    global $entityManager;
+    return $entityManager->getRepository('Equipment')->find($equipmentId);
+  }
+
   function getAllEquipment(){
       global $entityManager;
       return $entityManager->getRepository('Equipment')->findAll();

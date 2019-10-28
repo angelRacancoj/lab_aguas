@@ -37,8 +37,8 @@ function newSupply($newSupply){
 	}
 
 	function getSupplyByCode($code){
-		//buscar en base de datos
-		//devolver Insumos
+		global $entityManager;
+		return $entityManager->getRepository('Supply')->find($code);
 	}
 
 	function getSupplyAvailableByCode($available,$code){

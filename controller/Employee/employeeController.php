@@ -30,8 +30,9 @@ function newEmployee($employee){
     function modifyState($employee){
           //agregar a base de datos
     }
-    function getByDpi($employee){
-
+    function getByDpi($employeeDPI){
+        global $entityManager;
+        return $entityManager->getRepository('Employee')->find($employeeDPI);
     }
     function getByNameAndPosition($employee){
         //buscar en base de datos
@@ -58,18 +59,14 @@ function newEmployee($employee){
         //devolver Empleados
     }
     function getAllEmployee(){
-      //buscar en base de datos
-      //devolver Empleados
+      global $entityManager;
+      return $entityManager->getRepository('Employee')->findAll();
     }
     function getAllEmployeePosition(){
-      //buscar en base de datos
-      //devolver cargos de empleado
         global $entityManager;
         return $entityManager->getRepository('StaffPosition')->findAll();
     }
     function getEmployeePositionbyName($nameStaffPosition){
-        //buscar en base de datos
-        //devolver cargos de empleado
         global $entityManager;
         return $entityManager->getRepository('StaffPosition')->findOneBy(['nameStaffPosition' => $nameStaffPosition]);
     }
