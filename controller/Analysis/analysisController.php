@@ -19,3 +19,8 @@ function getAllAnalysis(){
     global $entityManager;
     return $entityManager->getRepository('Analysis')->findAll();
 }
+
+function getBySampleId($id){
+    global $entityManager;
+    return $entityManager->getRepository('Analysis')->find($id);
+}

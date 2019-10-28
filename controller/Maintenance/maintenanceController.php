@@ -15,6 +15,10 @@ function newMaintenance($newMaintenance){
     }
 }
 
+function getMaintenanceById($maintenanceId){
+    global $entityManager;
+    return $entityManager->getRepository('Maintenance')->find($maintenanceId);
+}
 function getAllMaintenances(){
     //buscar en base de datos
     //devolver cargos de empleado
