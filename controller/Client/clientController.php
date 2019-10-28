@@ -70,8 +70,8 @@ function newClient($newClient){
 	}
 
 	function getClientById($id){
-		//buscar en base de datos 
-		//devuelve listado de clientes
+		global $entityManager;
+		return $entityManager->getRepository('Client')->find($id);
 	}
 
 	function getAllClient(){

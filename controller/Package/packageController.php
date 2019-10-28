@@ -15,6 +15,11 @@ function newPackage($newPackage){
     }
 }
 
+function getPackageById($packageId){
+    global $entityManager;
+    $entityManager->getRepository('Package')->find($packageId);
+}
+
 function getAllPackages(){
     global $entityManager;
     return $entityManager->getRepository('Package')->findAll();

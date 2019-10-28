@@ -16,6 +16,11 @@ function newSample($newSample){
     }
 }
 
+function getByIdSample($idSample){
+    global $entityManager;
+    return $entityManager->getRepository('Sample')->find($idSample);
+}
+
 function getAllDepartament(){
     global $entityManager;
     return $entityManager->getRepository('Department')->findAll();

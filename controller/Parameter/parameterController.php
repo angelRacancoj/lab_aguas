@@ -15,7 +15,12 @@ function newParameter($newParameter){
     }
 }
 
+function getParameterById($parameterId){
+    global $entityManager;
+    $entityManager->getRepository('Parameter')->find($parameterId);
+}
+
 function getAllParameters(){
     global $entityManager;
-    return $entityManager->getRepository('Parameters')->findAll();
+    return $entityManager->getRepository('Parameter')->findAll();
 }
