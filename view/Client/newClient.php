@@ -5,7 +5,7 @@
 
   if (isset($_POST['add'])) {
     $newClient = new Client();
-    $newClient->setDpiClient($_POST['client_dpi']);
+    $newClient->setDpiClient(trim($_POST['client_dpi'],' '));
     $newClient->setNameClient($_POST['client_name']);
     $newClient->setDirectionClient($_POST['direction']);
     $newClient->setCityClient($_POST['department']);
@@ -13,8 +13,8 @@
     $newClient->setPhoneClient($_POST['phone']);
     $newClient->setPhoneClientExtra($_POST['extra_phone']);
     $newClient->setPhoneExtra($_POST['extra_phone2']);
-    $newClient->setEmailClient($_POST['email']);
-    $newClient->setWebsiteClient($_POST['web']);
+    $newClient->setEmailClient(trim($_POST['email'],' '));
+    $newClient->setWebsiteClient(trim($_POST['web'],' '));
     //revisar metodo
     $newClient->setCostumClient(getCostumClientById($_POST['costum']));
 

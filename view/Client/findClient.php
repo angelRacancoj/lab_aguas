@@ -103,10 +103,12 @@
                                 echo '<td>'.$clienti->getWebSiteClient().'</td>';
                                 echo '<td>'.$clienti->getCostumClient()->getNameCostumCategory().'</td>';
                                 echo '<td>
-                                  <div class="btn-group">
-                                    <a class="btn btn-primary" href="#" title="Modificar" ><i class="icon_plus_alt2"></i></a>
-                                  </div>
-                                </td>';
+                                        <div class="btn-group">
+                                          <aclass="btn btn-primary" href="editClient.php?dpi='.$clienti->getDpiClient().'" title="Actualizar Datos" >
+                                            <i class="icon_plus_alt2"></i>
+                                          </a>
+                                        </div>
+                                      </td>';
                                 echo "</tr>";
                               }
                               ?>
