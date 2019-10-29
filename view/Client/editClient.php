@@ -3,24 +3,13 @@
   require "../../controller/Client/clientController.php";
   require "../../controller/CostumClient/costumClientController.php";
 
-  $dpi_c,$name_c,$direction_c,$department_c,$company_c,$phone_c,$extra_phone_c,$extra_phone2_c,$email_c,$web_c = "";
+  $dpi_c=$name_c=$direction_c=$department_c=$company_c=$phone_c="";
+  $extra_phone_c=$extra_phone2_c=$email_c=$web_c=$custom_category="";
 
-  if (isset($_POST['dpi']) && !empty($_POST["dpi"])) {
-    $newClient = getClientById('dpi');
-    modifyClientName($_POST['client_name']);
-    modifyClientDirection($_POST['direction']);
-    modifyClientCity($_POST['department']);
-    modifyClientCompany($_POST['company']);
-    modifyClientPhone($_POST['phone']);
-    modifyClientExtra($_POST['extra_phone']);
-    modifyClientFax($_POST['fax']);
-    modifyClientEmail($_POST['email']);
-    modifyClientWevSite($_POST['web']);
-    //revisar metodo
-    //$newClient->setCostumClient(getCostumClientById($_POST['costum']));
-  } else {
-    if (isset($_POST['dpi']) && !empty(trim($_POST['dpi'],' '))) {
-      $dpi_c = trim($_POST['dpi'],' ');
+  echo "DPI: ". $_GET['dpi'];
+  $dpi_c = $_GET['dpi'];
+
+  if (isset($dpi_c)) {
       $clienti = getClientById($dpi_c);
 
       $name_c = $clienti->getNameClient();
@@ -32,8 +21,23 @@
       $extra_phone2_c = $clienti->getPhoneExtra();
       $email_c = $clienti->getEmailClient();
       $web_c = $clienti->getWebSiteClient();
-      $custom_category = $clienti->getCostumClient();
+      $custom_category = $clienti->getCostumClient()->getIdCostumCategory();
     }
+
+  if ($_POST['update'] && isset($dpi_c)) {
+    /*
+    $newClient = getClientById($dpi_c);
+    modifyClientName($_POST['client_name']);
+    modifyClientDirection($_POST['direction']);
+    modifyClientCity($_POST['department']);
+    modifyClientCompany($_POST['company']);
+    modifyClientPhone($_POST['phone']);
+    modifyClientExtra($_POST['extra_phone']);
+    modifyClientFax($_POST['fax']);
+    modifyClientEmail($_POST['email']);
+    modifyClientWevSite($_POST['web']);
+    modifyClientCustomCategory(getCostumClientById($_POST['costum']));
+    */
   }
 ?>
 
@@ -168,7 +172,7 @@
                             foreach (getAllCostumClient() as $cc) {
                               echo '<option value="'.$cc->getIdCostumCategory().'"';
                               if ($custom_category == $cc->getIdCostumCategory()) {
-                                echo 'selected';
+                                echo ' selected';
                               }
                               echo ' >'.$cc->getNameCostumCategory().'</option>';
                             }
@@ -178,8 +182,10 @@
                     </div>
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <button herf="" class="btn btn-primary" type="submit" name="add">Actualizar</button>
-                        <button class="btn btn-default" type="button" name="back">Regresar</button>
+                        <button herf="" class="btn btn-primary" type="submit" name="update">Actualizar</button>
+                        <button class="btn btn-default" type="button">
+                          <a href="findClient.php" title="Regresar al Menu Principal" >Regresar</a>
+                        </button>
                       </div>
                     </div>
                   </form>

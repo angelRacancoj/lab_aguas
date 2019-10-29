@@ -91,10 +91,12 @@
                                 echo '<td>'.$supplyi->getMeasure()->getNameMeasure().'</td>';
                                 echo '<td>File</td>';
                                 echo '<td>
-                                  <div class="btn-group">
-                                    <a class="btn btn-primary" href="#" title="Modificar" ><i class="icon_plus_alt2"></i></a>
-                                  </div>
-                                </td>';
+                                        <div class="btn-group">
+                                          <a class="btn btn-primary" href="modifySupply.php?code='.$supplyi->getIdSupply().'" title="Actualizar Datos" >
+                                            <i class="icon_plus_alt2"></i>
+                                          </a>
+                                        </div>
+                                      </td>';
                                 echo "</tr>";
                               }
                               ?>
@@ -108,7 +110,9 @@
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit">Crear</button>
-                        <button class="btn btn-default" type="button">Regresar</button>
+                        <button class="btn btn-default" type="button">
+                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                        </button>
                       </div>
                     </div>
                   </form>

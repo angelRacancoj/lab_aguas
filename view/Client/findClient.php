@@ -104,7 +104,7 @@
                                 echo '<td>'.$clienti->getCostumClient()->getNameCostumCategory().'</td>';
                                 echo '<td>
                                         <div class="btn-group">
-                                          <aclass="btn btn-primary" href="editClient.php?dpi='.$clienti->getDpiClient().'" title="Actualizar Datos" >
+                                          <a class="btn btn-primary" href="editClient.php?dpi='.$clienti->getDpiClient().'" title="Actualizar Datos" >
                                             <i class="icon_plus_alt2"></i>
                                           </a>
                                         </div>
@@ -122,7 +122,9 @@
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit">Crear</button>
-                        <button class="btn btn-default" type="button">Regresar</button>
+                        <button class="btn btn-default" type="button">
+                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                        </button>
                       </div>
                     </div>
                   </form>

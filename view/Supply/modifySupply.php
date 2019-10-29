@@ -3,32 +3,27 @@
   require "../../controller/Measure/measureController.php";
   require "../../controller/Supply/supplyController.php";
 
-  if (isset($_POST['add'])) {
-    $newSupply = new Supply();
-    $newSupply->setNameSupply($_POST['supply_name']);
-    $newSupply->setDateExpiry(new DateTime($_POST['expired_date']));
-    $newSupply->setQuantityAvailable($_POST['quantity']);
-    $newSupply->setMeasure(getMeasureById($_POST['costum']));
+  $code_s = $name_s = $date_exp = $quantity_s = $measure_s = "";
 
-    if (newSupply($newSupply)) {
+  $code_s = $_GET['code'];
+
+  if (isset($code_s)) {
+    $supply_found = getSupplyByCode($code_i);
+
+    $name_s = $supply_found->getNameSupply();
+    $date_exp = $supply_found->getDateExpiry();
+    $quantity_s = $supply_found->getQuantityAvailable();
+    $measure_s = $supply_found->getMeasure()->getIdMeasure();
+  }
+
+  if (isset($_POST['update'])) {
+
+    if (newSupply($Supply)) {
       echo "Agregado exitosamente";
     } else {
       echo "Error al crear el insumo";
     }
   }
-/*
-$newSupply = new Supply();
-$newSupply->setNameSupply('Alcohol');
-$dateStr=new DateTime('2020-08-13');
-//$dateG= getDate($dateStr);
-$newSupply->setDateExpiry($dateStr);
-$newSupply->setQuantityAvailable(1000);
-//revisar metodo
-$measureF = getMeasureById(4);
-echo "Measure ID: ".$measureF->getIdMeasure();
-$newSupply->setMeasure($measureF);
-newSupply($newSupply);
-*/
 ?>
 
 <!DOCTYPE html>
@@ -73,21 +68,25 @@ newSupply($newSupply);
                 <div class="form">
                   <form class="form-validate form-horizontal" id="feedback_form" action="#" method="post">
                     <div class="form-group ">
+                      <label for="cname" class="control-label col-lg-2">Codigo<span class="required">*</span></label>
+                      <label for="cname" class="control-label col-lg-2"><b> <?php echo $code_s; ?> </b></label>
+                    </div>
+                    <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Nombre Insumo<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej:Alcohol" name="supply_name" minlength="5" type="text" required />
+                        <input class="form-control" placeholder="Ej:Alcohol" name="supply_name" minlength="5" type="text" required value= <?php echo '"'.$name_s.'"'; ?> />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Fecha de caducidad<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" name="expired_date" type="date" required />
+                        <input class="form-control" name="expired_date" type="date" required value= <?php echo '"'.$date_exp.'"'; ?> />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Cantidad Disponible<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: 12.5" name="quantity" type="number" required />
+                        <input class="form-control" placeholder="Ej: 12.5" name="quantity" type="number" required value= <?php echo '"'.$quantity_s.'"'; ?> />
                       </div>
                     </div>
                     <div class="form-group">
@@ -96,7 +95,11 @@ newSupply($newSupply);
                         <select class="form-control m-bot15" name="costum">
                           <?php
                           foreach (getAllMeasure() as $measureIn) {
-                            echo '<option value="'.$measureIn->getIdMeasure().'">'.$measureIn->getNameMeasure().'</option>';
+                            echo '<option value="'.$measureIn->getIdMeasure().'"'
+                            if ($measure_s == $measureIn->getIdMeasure()) {
+                              echo ' selected ';
+                            }
+                            echo '>'.$measureIn->getNameMeasure().'</option>';
                           }
                           ?>
                       </select>
@@ -104,9 +107,9 @@ newSupply($newSupply);
                     </div>
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <button herf="" class="btn btn-primary" type="submit" name="add">Agregar</button>
+                        <button herf="" class="btn btn-primary" type="submit" name="update">Actualizar</button>
                         <button class="btn btn-default" type="button" name="back">
-                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="findSupply.php" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>
