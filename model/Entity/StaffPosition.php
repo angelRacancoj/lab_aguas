@@ -58,6 +58,12 @@ class StaffPosition
 
         return $this;
     }
+    public function setIdStaffPosition($idStaffPosition)
+    {
+        $this->idStaffPosition = $idStaffPosition;
+
+        return $this;
+    }
 
     /**
      * Get nameStaffPosition.
