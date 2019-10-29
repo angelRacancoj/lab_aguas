@@ -70,4 +70,10 @@ function newEmployee($employee){
         global $entityManager;
         return $entityManager->getRepository('StaffPosition')->findOneBy(['nameStaffPosition' => $nameStaffPosition]);
     }
+    function getEmployeePositionbyId($idStaffPosition){
+        //buscar en base de datos
+        //devolver cargos de empleado
+        global $entityManager;
+        return $entityManager->getRepository('StaffPosition')->findOneBy(['idStaffPosition' => $idStaffPosition]);
+    }
 ?>
