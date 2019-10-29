@@ -30,6 +30,11 @@ function newEquipment($newEquipment){
       //buscar en base de datos
       //devolver Equipos
   }
+
+  function getEquipmetById($id){
+    //Return privider by ID
+  }
+
   function getByName($equipment){
         //buscar en base de datos
         //devolver Equipos

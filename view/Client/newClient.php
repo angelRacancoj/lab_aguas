@@ -5,7 +5,7 @@
 
   if (isset($_POST['add'])) {
     $newClient = new Client();
-    $newClient->setDpiClient($_POST['client_dpi']);
+    $newClient->setDpiClient(trim($_POST['client_dpi'],' '));
     $newClient->setNameClient($_POST['client_name']);
     $newClient->setDirectionClient($_POST['direction']);
     $newClient->setCityClient($_POST['department']);
@@ -13,8 +13,8 @@
     $newClient->setPhoneClient($_POST['phone']);
     $newClient->setPhoneClientExtra($_POST['extra_phone']);
     $newClient->setPhoneExtra($_POST['extra_phone2']);
-    $newClient->setEmailClient($_POST['email']);
-    $newClient->setWebsiteClient($_POST['web']);
+    $newClient->setEmailClient(trim($_POST['email'],' '));
+    $newClient->setWebsiteClient(trim($_POST['web'],' '));
     //revisar metodo
     $newClient->setCostumClient(getCostumClientById($_POST['costum']));
 
@@ -134,7 +134,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-lg-2" for="inputSuccess">Selects</label>
+                      <label class="control-label col-lg-2" for="inputSuccess">Tipo de Cliente</label>
                       <div class="col-lg-10">
                         <select class="form-control m-bot15" name="costum">
                           <?php
@@ -148,7 +148,9 @@
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit" name="add">Agregar</button>
-                        <button class="btn btn-default" type="button" name="back">Regresar</button>
+                        <button class="btn btn-default" type="button" href="../Principal/index.html" >
+                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                        </button>
                       </div>
                     </div>
                   </form>

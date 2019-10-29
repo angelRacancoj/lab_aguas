@@ -1,3 +1,46 @@
+<?php
+  require "../../model/Entity/Client.php";
+  require "../../controller/Client/clientController.php";
+  require "../../controller/CostumClient/costumClientController.php";
+
+  $dpi_c=$name_c=$direction_c=$department_c=$company_c=$phone_c="";
+  $extra_phone_c=$extra_phone2_c=$email_c=$web_c=$custom_category="";
+
+  echo "DPI: ". $_GET['dpi'];
+  $dpi_c = $_GET['dpi'];
+
+  if (isset($dpi_c)) {
+      $clienti = getClientById($dpi_c);
+
+      $name_c = $clienti->getNameClient();
+      $direction_c = $clienti->getDirectionClient();
+      $department_c = $clienti->getCityClient();
+      $company_c = $clienti->getCompanyClient();
+      $phone_c = $clienti->getPhoneClient();
+      $extra_phone_c = $clienti->getPhoneClientExtra();
+      $extra_phone2_c = $clienti->getPhoneExtra();
+      $email_c = $clienti->getEmailClient();
+      $web_c = $clienti->getWebSiteClient();
+      $custom_category = $clienti->getCostumClient()->getIdCostumCategory();
+    }
+
+  if ($_POST['update'] && isset($dpi_c)) {
+    /*
+    $newClient = getClientById($dpi_c);
+    modifyClientName($_POST['client_name']);
+    modifyClientDirection($_POST['direction']);
+    modifyClientCity($_POST['department']);
+    modifyClientCompany($_POST['company']);
+    modifyClientPhone($_POST['phone']);
+    modifyClientExtra($_POST['extra_phone']);
+    modifyClientFax($_POST['fax']);
+    modifyClientEmail($_POST['email']);
+    modifyClientWevSite($_POST['web']);
+    modifyClientCustomCategory(getCostumClientById($_POST['costum']));
+    */
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -8,7 +51,7 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Modificar Cliente | Laboratorio de aguas</title>
+    <title>Actualizar Cliente | Laboratorio de aguas</title>
 
     <!-- Bootstrap CSS -->
     <link href="../Principal/css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +70,7 @@
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-files-o"></i>Modificar Cliente</h3>
+            <h3 class="page-header"><i class="fa fa-files-o"></i>Actualizar Cliente</h3>
 
           </div>
         </div>
@@ -35,86 +78,114 @@
         <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <header class="panel-heading">Modificar Cliente</header>
+              <header class="panel-heading">Actualizar Cliente</header>
               <div class="panel-body">
                 <div class="form">
-                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="conect.php">
+                  <form class="form-validate form-horizontal" id="feedback_form" action="#" method="post">
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">DPI<span class="required">*</span></label>
-                      <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: 1234567890901" id="cdpi" name="pdi" minlength="12" type="number" required />
-                      </div>
+                      <label for="cname" class="control-label col-lg-2"><b>
+                        <?php echo $dpi_c; ?>
+                      </b></label>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Nombre Completo<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: Juan Jose Morales" id="cname" name="client_name" minlength="5" type="text" required />
+                        <input class="form-control" placeholder="Ej:Jose Morales" name="client_name" minlength="5" type="text" required value= 
+                          <?php echo '"'.$name_c.'"'; ?>
+                        />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Direccion de la Empresa:</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: 10ma avenida 60-10 Zona 11" id="cdirection" name="direction" type="text" />
+                        <input class="form-control" placeholder="Ej: 10ma avenida 60-10 Zona 11" name="direction" type="text" value= 
+                          <?php echo '"'.$direction_c.'"'; ?>
+                        />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Departamento</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: Quetzaltenango" id="cdepartment" name="department" type="text" />
+                        <input class="form-control" placeholder="Ej: Quetzaltenango" name="department" type="text" value= 
+                          <?php echo '"'.$department_c.'"'; ?>
+                        />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Nombre de la Compañia</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: Purificadora la Gotita" id="ccompany" name="company" type="text" />
+                        <input class="form-control" placeholder="Ej: Purificadora la Gotita" name="company" type="text" value= 
+                          <?php echo '"'.$company_c.'"'; ?>
+                        />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Numero de Telefono<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: 77315820" id="cphone" name="phone" minlength="4" type="number" required />
+                        <input class="form-control" placeholder="Ej: 77315820" name="phone" minlength="4" type="number" required value= 
+                          <?php echo '"'.$phone_c.'"'; ?>
+                        />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Numero de Telefono Secundarion</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: 55481200" id="cextra_phone" name="extra_phone" type="number" />
+                        <input class="form-control" placeholder="Ej: 55481200" name="extra_phone" type="number" value= 
+                          <?php echo '"'.$extra_phone_c.'"'; ?>/>
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label for="cname" class="control-label col-lg-2">Numero de Telefono Extra</label>
+                      <div class="col-lg-10">
+                        <input class="form-control" placeholder="Ej: 55481200" name="extra_phone2" type="number" value= 
+                          <?php echo '"'.$extra_phone2_c.'"'; ?>/>
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Numero FAX</label>
                       <div class="col-lg-10">
-                        <input class="form-control" id="cfax" name="fax" type="number" />
+                        <input class="form-control" name="fax" type="number" />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cemail" class="control-label col-lg-2">Correo Electronico</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: juanjose@lagotita.com" id="cemail" type="email" name="email" />
+                        <input class="form-control" placeholder="Ej: juanjose@lagotita.com" type="email" name="email" value= 
+                          <?php echo '"'.$email_c.'"'; ?>
+                        />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="curl" class="control-label col-lg-2">Sitio Web</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: http://www.lagotita.com" id="cweb" type="url" name="web" />
+                        <input class="form-control" placeholder="Ej: http://www.lagotita.com" type="url" name="web" value= 
+                          <?php echo '"'.$web_c.'"'; ?>
+                        />
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-lg-2" for="inputSuccess">Selects</label>
+                      <label class="control-label col-lg-2" for="inputSuccess">Tipo de Cliente</label>
                       <div class="col-lg-10">
                         <select class="form-control m-bot15" name="costum">
-                          <option value="1">Empresa Privada</option>
-                          <option value="2">Empresa Mixta</option>
-                          <option value="3">Gobierno</option>
-                          <option value="4">Estudiante</option>
-                          <option value="5">ONG</option>
+                          <?php
+                            foreach (getAllCostumClient() as $cc) {
+                              echo '<option value="'.$cc->getIdCostumCategory().'"';
+                              if ($custom_category == $cc->getIdCostumCategory()) {
+                                echo ' selected';
+                              }
+                              echo ' >'.$cc->getNameCostumCategory().'</option>';
+                            }
+                          ?>
                       </select>
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <button herf="" class="btn btn-primary" type="submit" name="add">Agregar</button>
-                        <button class="btn btn-default" type="button" name="back">Regresar</button>
+                        <button herf="" class="btn btn-primary" type="submit" name="update">Actualizar</button>
+                        <button class="btn btn-default" type="button">
+                          <a href="findClient.php" title="Regresar al Menu Principal" >Regresar</a>
+                        </button>
                       </div>
                     </div>
                   </form>

@@ -57,7 +57,7 @@
                       <div class="col-lg-10">
                         <div class="row">
                           <div class="col-lg-2">
-                            <input type="text" class="form-control" placeholder="DPI" name="find_dpi">
+                            <input type="number" class="form-control" placeholder="DPI" name="find_dpi">
                           </div>
                           <div class="col-lg-3">
                             <input type="text" class="form-control" placeholder="Nombre" name ="find_name">
@@ -103,10 +103,12 @@
                                 echo '<td>'.$clienti->getWebSiteClient().'</td>';
                                 echo '<td>'.$clienti->getCostumClient()->getNameCostumCategory().'</td>';
                                 echo '<td>
-                                  <div class="btn-group">
-                                    <a class="btn btn-primary" href="#" title="Modificar" ><i class="icon_plus_alt2"></i></a>
-                                  </div>
-                                </td>';
+                                        <div class="btn-group">
+                                          <a class="btn btn-primary" href="editClient.php?dpi='.$clienti->getDpiClient().'" title="Actualizar Datos" >
+                                            <i class="icon_plus_alt2"></i>
+                                          </a>
+                                        </div>
+                                      </td>';
                                 echo "</tr>";
                               }
                               ?>
@@ -120,7 +122,9 @@
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit">Crear</button>
-                        <button class="btn btn-default" type="button">Regresar</button>
+                        <button class="btn btn-default" type="button">
+                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                        </button>
                       </div>
                     </div>
                   </form>

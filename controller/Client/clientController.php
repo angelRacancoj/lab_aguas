@@ -59,6 +59,10 @@ function newClient($newClient){
 		//actualizar en base de datos
 	}
 
+	function modifyClientCustomCategory($customCategory){
+		//actualizar en base de datos
+	}
+
 	function getClientByNameAndId($name,$id){
 		//buscar en base de datos 
 		//devuelve listado de clientes
