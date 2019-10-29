@@ -2,9 +2,7 @@
   require "../../model/Entity/Supply.php";
   require "../../controller/Measure/measureController.php";
   require "../../controller/Supply/supplyController.php";
-  require "../../controller/User/user_session.php";
 
-  $session = new UserSession();
   $code_s = $name_s = $date_exp = $quantity_s = $measure_s = "";
 
   $code_s = $_GET['code'];
