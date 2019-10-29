@@ -8,7 +8,7 @@
   $code_s = $_GET['code'];
 
   if (isset($code_s)) {
-    $supply_found = getSupplyByCode($code_i);
+    $supply_found = getSupplyByCode($code_s);
 
     $name_s = $supply_found->getNameSupply();
     $date_exp = $supply_found->getDateExpiry();
@@ -36,7 +36,7 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Crear Insumo | Laboratorio de aguas</title>
+    <title>Actualizar Insumo | Laboratorio de aguas</title>
 
     <!-- Bootstrap CSS -->
     <link href="../Principal/css/bootstrap.min.css" rel="stylesheet">
@@ -55,7 +55,7 @@
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-files-o"></i>Crear Insumo</h3>
+            <h3 class="page-header"><i class="fa fa-files-o"></i>Actualizar Insumo</h3>
 
           </div>
         </div>
@@ -63,7 +63,7 @@
         <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <header class="panel-heading">Crear Insumo</header>
+              <header class="panel-heading">Actualizar Insumo</header>
               <div class="panel-body">
                 <div class="form">
                   <form class="form-validate form-horizontal" id="feedback_form" action="#" method="post">
@@ -80,13 +80,13 @@
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Fecha de caducidad<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" name="expired_date" type="date" required value= <?php echo '"'.$date_exp.'"'; ?> />
+                        <label for="cname" class="control-label col-lg-2"><b> <?php echo $date_exp->format('d/m/yy'); ?> </b></label>
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Cantidad Disponible<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: 12.5" name="quantity" type="number" required value= <?php echo '"'.$quantity_s.'"'; ?> />
+                        <label for="cname" class="control-label col-lg-2"><b> <?php echo $quantity_s; ?> </b></label>
                       </div>
                     </div>
                     <div class="form-group">
@@ -95,7 +95,7 @@
                         <select class="form-control m-bot15" name="costum">
                           <?php
                           foreach (getAllMeasure() as $measureIn) {
-                            echo '<option value="'.$measureIn->getIdMeasure().'"'
+                            echo '<option value="'.$measureIn->getIdMeasure().'"';
                             if ($measure_s == $measureIn->getIdMeasure()) {
                               echo ' selected ';
                             }
@@ -109,7 +109,7 @@
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit" name="update">Actualizar</button>
                         <button class="btn btn-default" type="button" name="back">
-                          <a href="findSupply.php" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="findSupply.php" title="Regresar a la busqueda" >Regresar</a>
                         </button>
                       </div>
                     </div>

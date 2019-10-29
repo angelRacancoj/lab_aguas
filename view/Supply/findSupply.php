@@ -86,7 +86,7 @@
                                 echo "<tr>";
                                 echo '<td>'.$supplyi->getIdSupply().'</td>';
                                 echo '<td>'.$supplyi->getNameSupply().'</td>';
-                                echo '<td>'.$supplyi->getDateExpiry().'</td>';
+                                echo '<td>'.$supplyi->getDateExpiry()->format('d/m/yy').'</td>';
                                 echo '<td>'.$supplyi->getQuantityAvailable().'</td>';
                                 echo '<td>'.$supplyi->getMeasure()->getNameMeasure().'</td>';
                                 echo '<td>File</td>';
