@@ -1,8 +1,8 @@
 <?php
-  require_once("/var/www/html/lab_aguas/model/Entity/Employee.php");
-  require_once("/var/www/html/lab_aguas/controller/User/userController.php");
-  require_once("/var/www/html/lab_aguas/controller/User/UserSession.php");
-  require_once("/var/www/html/lab_aguas/controller/User/encription.php");
+  require_once("model/Entity/Employee.php");
+  require_once("controller/User/userController.php");
+  require_once("controller/User/UserSession.php");
+  require_once("controller/User/encription.php");
   $message;
   if(isset($_POST['send'])){
       $employee=new Employee();

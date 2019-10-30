@@ -1,7 +1,7 @@
 <?php
-require_once "/var/www/html/lab_aguas/model/Entity/Employee.php";
-require "/var/www/html/lab_aguas/vendor/autoload.php";
-require_once "/var/www/html/lab_aguas/bootstrap.php";
+require_once "model/Entity/Employee.php";
+require "vendor/autoload.php";
+require_once "bootstrap.php";
 
 
 function getEmployeeByDpiAndPass($employee){
