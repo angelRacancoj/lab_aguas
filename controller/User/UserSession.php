@@ -5,6 +5,13 @@ class UserSession{
       session_start();
     }
 
+    public function setUserDpi($user){//dpi
+        $_SESSION['userDpi'] = $user;
+    }
+
+    public function getUserDpi(){
+        return $_SESSION['userDpi'];
+    }
     public function setUserName($user){//dpi
         $_SESSION['userName'] = $user;
     }

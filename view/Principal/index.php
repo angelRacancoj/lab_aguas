@@ -150,7 +150,7 @@
                             <span class="profile-ava">
                                 <img alt="" src="img/student.png">
                             </span>
-                            <span class="username">Daniel Gonzalez</span>
+                            <span class="username"><?php ?></span>
                             <b class="caret"></b>
                         </a>
             <ul class="dropdown-menu extended logout">
