@@ -2,37 +2,48 @@
   require "../../model/Entity/Supply.php";
   require "../../controller/Measure/measureController.php";
   require "../../controller/Supply/supplyController.php";
+  require "../../controller/User/UserSession.php";
+
+  $session = new UserSession();
+  $session_role = 0;
+  if (isset($session)) {
+    if ($session->getUserRol() !== null) {
+      $session_role = $session->getUserRol();
+    }
+  }
 
   $code_s = $name_s = $date_exp = $quantity_s = $measure_s = "";
 
   $code_s = $_GET['code'];
 
-  if (isset($code_s)) {
-    $supply_found = getSupplyByCode($code_s);
+  if ($session_role == 1) {
+    if (isset($code_s)) {
+      $supply_found = getSupplyByCode($code_s);
 
-    $name_s = $supply_found->getNameSupply();
-    $date_exp = $supply_found->getDateExpiry();
-    $quantity_s = $supply_found->getQuantityAvailable();
-    $measure_s = $supply_found->getMeasure()->getIdMeasure();
-  }
-
-  if (isset($_POST['update']) && isset($code_s)) {
-    $supply_mod = getSupplyByCode($code_s);
-
-    if (strcmp($supply_mod->getNameSupply(),$_POST['supply_name'])) {
-      $supply_mod->setNameSupply($_POST['supply_name']);
-    }
-    if ($supply_mod->getQuantityAvailable() != $_POST['quantity_s']) {
-      $supply_mod->setQuantityAvailable($_POST['quantity_s']);
-    }
-    if ($supply_mod->getMeasure()->getIdMeasure() != $_POST['measure']) {
-      $supply_mod->setMeasure(getMeasureById($_POST['measure']));
+      $name_s = $supply_found->getNameSupply();
+      $date_exp = $supply_found->getDateExpiry();
+      $quantity_s = $supply_found->getQuantityAvailable();
+      $measure_s = $supply_found->getMeasure()->getIdMeasure();
     }
 
-    if (updateSupply($supply_mod)) {
-      echo "Agregado exitosamente";
-    } else {
-      echo "Error al crear el insumo";
+    if (isset($_POST['update']) && isset($code_s)) {
+      $supply_mod = getSupplyByCode($code_s);
+
+      if (strcmp($supply_mod->getNameSupply(),$_POST['supply_name'])) {
+        $supply_mod->setNameSupply($_POST['supply_name']);
+      }
+      if ($supply_mod->getQuantityAvailable() != $_POST['quantity_s']) {
+        $supply_mod->setQuantityAvailable($_POST['quantity_s']);
+      }
+      if ($supply_mod->getMeasure()->getIdMeasure() != $_POST['measure']) {
+        $supply_mod->setMeasure(getMeasureById($_POST['measure']));
+      }
+
+      if (updateSupply($supply_mod)) {
+        echo "Agregado exitosamente";
+      } else {
+        echo "Error al crear el insumo";
+      }
     }
   }
 ?>

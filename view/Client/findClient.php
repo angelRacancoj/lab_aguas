@@ -6,13 +6,13 @@
 
    $session = new UserSession();
    $session_role = 0;
-   /*
+   
    if (isset($session)) {
     if ($session->getUserRol() !== null) {
       $session_role = $session->getUserRol();
     }
    }
-   */
+   
 ?>
 
 <!DOCTYPE html>
