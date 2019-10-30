@@ -1,8 +1,8 @@
 <?php
-  require_once("../../model/Entity/Employee.php");
-  require_once("../../controller/User/userController.php");
-  require_once("../../controller/User/UserSession.php");
-    require_once("../../controller/User/encription.php");
+  require_once("model/Entity/Employee.php");
+  require_once("controller/User/userController.php");
+  require_once("controller/User/UserSession.php");
+  require_once("controller/User/encription.php");
   $message;
   if(isset($_POST['send'])){
       $employee=new Employee();
@@ -30,7 +30,7 @@
 <html lang="es" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../CSS/Forms/forms.css">
+    <link rel="stylesheet" type="text/css" href="/lab_aguas/view/CSS/Forms/forms.css">
   </head>
   <body>
         <form class="form" action="#" method="post">

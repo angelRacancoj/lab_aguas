@@ -1,7 +1,7 @@
 <?php
-require_once "../../model/Entity/Employee.php";
-require "../../vendor/autoload.php";
-require_once "../../bootstrap.php";
+require_once "model/Entity/Employee.php";
+require "vendor/autoload.php";
+require_once "bootstrap.php";
 
 
 function getEmployeeByDpiAndPass($employee){

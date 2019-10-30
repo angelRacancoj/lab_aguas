@@ -7,6 +7,7 @@
         $nameEmployee=$_POST['employeeName'];
         $dpiEmployee=$_POST['employeeDpi'];
         if(!empty($nameEmployee)&&!empty($dpiEmployee)){
+            getEmployeePositionbyName($nameEmployee);
             $employee->setNameEmployee($nameEmployee);
             $employee->setDpiEmployee($dpiEmployee);
         }else if(!empty($nameEmployee)){
