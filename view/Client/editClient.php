@@ -1,7 +1,7 @@
 <?php
-  require "../../model/Entity/Client.php";
-  require "../../controller/Client/clientController.php";
-  require "../../controller/CostumClient/costumClientController.php";
+  require "/var/www/html/lab_aguas/model/Entity/Client.php";
+  require "/var/www/html/lab_aguas/controller/Client/clientController.php";
+  require "/var/www/html/lab_aguas/controller/CostumClient/costumClientController.php";
 
   $dpi_c=$name_c=$direction_c=$department_c=$company_c=$phone_c="";
   $extra_phone_c=$extra_phone2_c=$email_c=$web_c=$custom_category="";

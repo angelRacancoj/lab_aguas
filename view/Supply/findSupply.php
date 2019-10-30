@@ -2,6 +2,16 @@
   require "../../model/Entity/Supply.php";
   require "../../model/Entity/Measure.php";
   require "../../controller/Supply/supplyController.php";
+
+  $session = new UserSession();
+  $session_role = 0;
+  /*
+  if (isset($session)) {
+    if ($session->getUserRol() !== null) {
+      $session_role = $session->getUserRol();
+    }
+  }
+  */
 ?>
 
 <!DOCTYPE html>
