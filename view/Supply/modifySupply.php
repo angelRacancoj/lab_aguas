@@ -16,9 +16,20 @@
     $measure_s = $supply_found->getMeasure()->getIdMeasure();
   }
 
-  if (isset($_POST['update'])) {
+  if (isset($_POST['update']) && isset($code_s)) {
+    $supply_mod = getSupplyByCode($code_s);
 
-    if (newSupply($Supply)) {
+    if (strcmp($supply_mod->getNameSupply(),$_POST['supply_name'])) {
+      $supply_mod->setNameSupply($_POST['supply_name']);
+    }
+    if ($supply_mod->getQuantityAvailable() != $_POST['quantity_s']) {
+      $supply_mod->setQuantityAvailable($_POST['quantity_s']);
+    }
+    if ($supply_mod->getMeasure()->getIdMeasure() != $_POST['measure']) {
+      $supply_mod->setMeasure(getMeasureById($_POST['measure']));
+    }
+
+    if (updateSupply($supply_mod)) {
       echo "Agregado exitosamente";
     } else {
       echo "Error al crear el insumo";
@@ -86,13 +97,13 @@
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Cantidad Disponible<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <label for="cname" class="control-label col-lg-2"><b> <?php echo $quantity_s; ?> </b></label>
+                        <input class="form-control" placeholder="Ej:1250.5" name="quantity_supply" type="number" required value= <?php echo '"'.$quantity_s.'"'; ?> />
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="inputSuccess">Sistema de Medicion<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" name="costum">
+                        <select class="form-control m-bot15" name="measure">
                           <?php
                           foreach (getAllMeasure() as $measureIn) {
                             echo '<option value="'.$measureIn->getIdMeasure().'"';
