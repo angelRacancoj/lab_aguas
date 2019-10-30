@@ -24,17 +24,18 @@ require_once "../../bootstrap.php";
     function getByDpiAndPosition($employee){
         //buscar en base de datos
         //devolver Empleado
+
     }
-    function getByName($employee){
-          //buscar en base de datos
-          //devolver Empleados
+    function getByName($employeeName){
+          global $entityManager;
+          return $entityManager->getRepository('Employee')->findBy(['nameEmployee' => $employeeName]);
     }
     function getByNameAndPassword($employee){
 
     }
     function getByPosition($employee){
-        //buscar en base de datos
-        //devolver Empleados
+      global $entityManager;
+      return $entityManager->getRepository('Employee')->findBy(['nameEmployee' => $employeeName]);
     }
 
     function getByState($employee){

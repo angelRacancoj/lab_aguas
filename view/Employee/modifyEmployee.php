@@ -3,6 +3,16 @@
   require_once("../../model/Entity/Employee.php");
   $dpi=$_GET['dpi'];
   $employeeCon=getByDpi($dpi);
+  if(isset($_POST['back'])){
+      header('Location: /lab_aguas/view/Employee/consultEmployee.php');
+  }else if(isset($_POST['send'])){
+      $staffPosition= getEmployeePositionbyId($_POST['position']);
+      $employeeCon->setNameEmployee($_POST['employeeName']);
+      $employeeCon->setIsActive($_POST['state']);
+      $employeeCon->setPhoneEmployee($_POST['employeePhone']);
+      $employeeCon->setStaffPosition($staffPosition);
+      //updateEmployee($employeeCon);
+  }
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">

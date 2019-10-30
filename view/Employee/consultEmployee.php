@@ -2,16 +2,18 @@
   require_once("../../controller/Employee/employeeController.php");
   require_once("../../model/Entity/Employee.php");
   $employeeCon;
-  if(isset($_POST['send'])){
+  if(isset($_POST['back'])){
+      header('Location: /lab_aguas');
+  }else if(isset($_POST['send'])){
         $employee=new Employee();
         $nameEmployee=$_POST['employeeName'];
         $dpiEmployee=$_POST['employeeDpi'];
         if(!empty($nameEmployee)&&!empty($dpiEmployee)){
-            getEmployeePositionbyName($nameEmployee);
             $employee->setNameEmployee($nameEmployee);
             $employee->setDpiEmployee($dpiEmployee);
         }else if(!empty($nameEmployee)){
             $employee->setNameEmployee($nameEmployee);
+            $employeeCon=getByName($nameEmployee);
         }else if(!empty($dpiEmployee)){
             $employee->setDpiEmployee($dpiEmployee);
         }else{
@@ -76,6 +78,7 @@
                           </div>
                           <div class="col-lg-3">
                             <button class="btn btn-primary" name="send">Buscar</button>
+                            <button class="btn btn-primary" name="back">Volver</button>
                           </div>
                         </div>
 
