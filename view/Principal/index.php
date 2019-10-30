@@ -160,7 +160,7 @@
               </li>
 
               <li>
-                <a href="login.html"><i class="icon_key_alt"></i> Salir</a>
+                <a href="controller/User/logOut.php"><i class="icon_key_alt"></i> Salir</a>
               </li>
             </ul>
           </li>
@@ -293,7 +293,11 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="/lab_aguas/view/Employee/newEmployeForm.php">Crear</a></li>
+              <?php
+                if($rolUser==1){//rol uno administrador
+                    echo '<li><a class="" href="/lab_aguas/view/Employee/newEmployeForm.php">Crear</a></li>';
+                }
+             ?>
               <li><a class="" href="/lab_aguas/view/Employee/consultEmployee.php">Consultar</a></li>
             </ul>
           </li>
