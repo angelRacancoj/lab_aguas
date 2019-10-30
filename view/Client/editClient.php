@@ -25,7 +25,6 @@
     }
 
   if ($_POST['update'] && isset($dpi_c)) {
-    /*
     $newClient = getClientById($dpi_c);
     modifyClientName($_POST['client_name']);
     modifyClientDirection($_POST['direction']);
@@ -37,7 +36,6 @@
     modifyClientEmail($_POST['email']);
     modifyClientWevSite($_POST['web']);
     modifyClientCustomCategory(getCostumClientById($_POST['costum']));
-    */
   }
 ?>
 
