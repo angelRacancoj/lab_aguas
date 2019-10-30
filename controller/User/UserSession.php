@@ -5,14 +5,14 @@ class UserSession{
       session_start();
     }
 
-    public function setUserName($user){
+    public function setUserName($user){//dpi
         $_SESSION['userName'] = $user;
     }
 
     public function getUserName(){
         return $_SESSION['userName'];
     }
-    public function setUserRol($rol){
+    public function setUserRol($rol){//1->admin
         $_SESSION['userRol'] = $rol;
     }
     public function getUserRol($rol){
