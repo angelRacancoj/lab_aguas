@@ -1,34 +1,23 @@
 <?php
-  require "../../model/Entity/Supply.php";
-  require "../../controller/Measure/measureController.php";
-  require "../../controller/Supply/supplyController.php";
+  require "../../model/Entity/Maintenance.php";
+  require "../../controller/Maintenance/maintenanceController.php";
+  require "../../controller/Equipment/equipmentController.php";
+  require "../../controller/Provider/providerController.php";
 
   if (isset($_POST['add'])) {
-    $newSupply = new Supply();
-    $newSupply->setNameSupply($_POST['supply_name']);
-    $newSupply->setDateExpiry(new DateTime($_POST['expired_date']));
-    $newSupply->setQuantityAvailable($_POST['quantity']);
-    $newSupply->setMeasure(getMeasureById($_POST['costum']));
+    $newMaintenance = new Maintenance();
+    $newMaintenance->setMaintenanceDate($_POST['supply_name']);
+    $newMaintenance->setMaintenanceCost($_POST['expired_date']);
+    //revisar metodo
+    $newMaintenance->setEquipment(getEquipmetById($_POST['costumEquipment']));
+    $newMaintenance->setProvider(getProviderById($_POST['costumProvider']));
 
-    if (newSupply($newSupply)) {
+    if (newSupply($newMaintenance)) {
       echo "Agregado exitosamente";
     } else {
       echo "Error al crear el insumo";
     }
   }
-/*
-$newSupply = new Supply();
-$newSupply->setNameSupply('Alcohol');
-$dateStr=new DateTime('2020-08-13');
-//$dateG= getDate($dateStr);
-$newSupply->setDateExpiry($dateStr);
-$newSupply->setQuantityAvailable(1000);
-//revisar metodo
-$measureF = getMeasureById(4);
-echo "Measure ID: ".$measureF->getIdMeasure();
-$newSupply->setMeasure($measureF);
-newSupply($newSupply);
-*/
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +30,7 @@ newSupply($newSupply);
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Crear Insumo | Laboratorio de aguas</title>
+    <title>Agregar Mantenimiento | Laboratorio de aguas</title>
 
     <!-- Bootstrap CSS -->
     <link href="../Principal/css/bootstrap.min.css" rel="stylesheet">
@@ -60,7 +49,7 @@ newSupply($newSupply);
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-files-o"></i>Crear Insumo</h3>
+            <h3 class="page-header"><i class="fa fa-files-o"></i>Agregar Mantenimiento</h3>
 
           </div>
         </div>
@@ -68,35 +57,41 @@ newSupply($newSupply);
         <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <header class="panel-heading">Crear Insumo</header>
+              <header class="panel-heading">Agregar Mantenimiento</header>
               <div class="panel-body">
                 <div class="form">
                   <form class="form-validate form-horizontal" id="feedback_form" action="#" method="post">
                     <div class="form-group ">
-                      <label for="cname" class="control-label col-lg-2">Nombre Insumo<span class="required">*</span></label>
-                      <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej:Alcohol" name="supply_name" minlength="5" type="text" required />
-                      </div>
-                    </div>
-                    <div class="form-group ">
-                      <label for="cname" class="control-label col-lg-2">Fecha de caducidad<span class="required">*</span></label>
+                      <label for="cname" class="control-label col-lg-2">Fecha de mantenimiento<span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class="form-control" name="expired_date" type="date" required />
                       </div>
                     </div>
                     <div class="form-group ">
-                      <label for="cname" class="control-label col-lg-2">Cantidad Disponible<span class="required">*</span></label>
+                      <label for="cname" class="control-label col-lg-2">Costo de Mantenimiento (Q)<span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class="form-control" placeholder="Ej: 12.5" name="quantity" type="number" required />
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-lg-2" for="inputSuccess">Sistema de Medicion<span class="required">*</span></label>
+                      <label class="control-label col-lg-2" for="inputSuccess">Equipo<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" name="costum">
+                        <select class="form-control m-bot15" name="costumEquipment">
                           <?php
-                          foreach (getAllMeasure() as $measureIn) {
-                            echo '<option value="'.$measureIn->getIdMeasure().'">'.$measureIn->getNameMeasure().'</option>';
+                          foreach (getAllEquipment() as $equipmentIn) {
+                            echo '<option value="'.$equipmentIn->getIdEquipment().'">'.$equipmentIn->getIdEquipment().' - '.$equipmentIn->getNameEquipment().'</option>';
+                          }
+                          ?>
+                      </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-lg-2" for="inputSuccess">Proveedor<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <select class="form-control m-bot15" name="costumProvider">
+                          <?php
+                          foreach (getAllProviders() as $providerIn) {
+                            echo '<option value="'.$providerIn->getIdProvider().'">'.$providerIn>getIdProvider().' - '.$providerIn->getNameProvider().'</option>';
                           }
                           ?>
                       </select>
@@ -105,7 +100,7 @@ newSupply($newSupply);
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit" name="add">Agregar</button>
-                        <button class="btn btn-default" type="button" name="back">
+                        <button class="btn btn-default" type="button">
                           <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>

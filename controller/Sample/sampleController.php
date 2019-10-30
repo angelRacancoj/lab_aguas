@@ -16,6 +16,17 @@ function newSample($newSample){
     }
 }
 
+function updateSample($modifiedSample){
+    try{
+        global $entityManager;
+        $entityManager->persist($modifiedSample);
+        $entityManager->flush();
+        return true;
+    } catch (Exception $exception){
+        return false;
+    }
+}
+
 function getByIdSample($idSample){
     global $entityManager;
     return $entityManager->getRepository('Sample')->find($idSample);

@@ -15,17 +15,16 @@ function newSupply($newSupply){
     }
 }
 
-	function modifySupplyName($name){
-		//actualizar en base de datos
-	}
-
-	function modifySupplyDateExpired($date_expired){
-		//actualizar en base de datos
-	}
-
-	function modifySupplyQuantityAvailable($quantity_available){
-		//actualizar en base de datos
-	}
+function updateSupply($modifiedSupply){
+    try{
+        global $entityManager;
+        $entityManager->persist($modifiedSupply);
+        $entityManager->flush();
+        return true;
+    } catch (Exception $exception){
+        return false;
+    }
+}
 
 	function getSupplyByName($name){
 		//buscar en base de datos
