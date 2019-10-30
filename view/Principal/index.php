@@ -214,8 +214,9 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="form_component.html">Crear</a></li>
-              <li><a class="" href="form_validation.html">Editar</a></li>
+              <li><a class="" href="../Shopping/newShoppingEquipment.php">Insumos</a></li>
+              <li><a class="" href="../Shopping/newShoppingSupply.php">Equipo</a></li>
+              <li><a class="" href="../Shopping/findShopping.php">Consulta</a></li>
             </ul>
           </li>
 
@@ -227,8 +228,21 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="form_component.html">Crear</a></li>
-              <li><a class="" href="form_validation.html">Editar</a></li>
+              <li><a class="" href="../Sample/newSample.php">Crear</a></li>
+              <li><a class="" href="../Sample/findSample.php">Consulta</a></li>
+            </ul>
+          </li>
+
+
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+              <i class="icon_document_alt"></i>
+              <span>Analisis</span>
+              <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+              <li><a class="" href="../Analysis/newAnalysis.php">Crear</a></li>
+              <li><a class="" href="../Analysis/findAnalysis.php">Consulta</a></li>
             </ul>
           </li>
 

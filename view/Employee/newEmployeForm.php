@@ -74,9 +74,7 @@
               <div class="panel-body">
                 <div class="form">
                   <form class="form-validate form-horizontal" id="feedback_form" method="post">
-                    <?php if(isset($message)){
-                        echo '<h3>'.$message.'</h3><br>';
-                    } ?>
+                    
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="inputSuccess">Estado Empleado<span class="required">*</span></label>
                       <div class="col-lg-10">
@@ -84,7 +82,7 @@
                           <?php
                             foreach (getAllEmployeePosition() as $position) {
                                   echo '<option value="'.$position->getIdStaffPosition().'">'.$position->getNameStaffPosition().'</option>';
-                            }
+                            } 
                            ?>
                         </select>
                       </div>
