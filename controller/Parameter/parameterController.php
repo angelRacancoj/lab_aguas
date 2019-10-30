@@ -15,6 +15,17 @@ function newParameter($newParameter){
     }
 }
 
+function updateParameter($modifiedParameter){
+    try{
+        global $entityManager;
+        $entityManager->persist($modifiedParameter);
+        $entityManager->flush();
+        return true;
+    } catch (Exception $exception){
+        return false;
+    }
+}
+
 function getParameterById($parameterId){
     global $entityManager;
     $entityManager->getRepository('Parameter')->find($parameterId);

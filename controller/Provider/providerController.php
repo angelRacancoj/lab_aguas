@@ -15,6 +15,17 @@ function newProvider($newProvider){
     }
 }
 
+function updateProvider($modifiedProvider){
+    try{
+        global $entityManager;
+        $entityManager->persist($modifiedProvider);
+        $entityManager->flush();
+        return true;
+    } catch (Exception $exception){
+        return false;
+    }
+}
+
 function getProviderById($providerId){
     global $entityManager;
     $entityManager->getRepository('Provider')->find($providerId);

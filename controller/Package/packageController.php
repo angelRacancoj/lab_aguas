@@ -15,6 +15,17 @@ function newPackage($newPackage){
     }
 }
 
+function updatePackage($modifiedPackage){
+    try {
+        global $entityManager;
+        $entityManager->persist($modifiedPackage);
+        $entityManager->flush();
+        return true;
+    } catch (Exception $exception){
+        return false;
+    }
+}
+
 function getPackageById($packageId){
     global $entityManager;
     $entityManager->getRepository('Package')->find($packageId);
