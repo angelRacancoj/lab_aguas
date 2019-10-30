@@ -271,8 +271,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="../Supply/newSupply.php">Crear</a></li>
-              <li><a class="" href="../Supply/findSupply.php">Consulta</a></li>
+              <li><a class="" href="/lab_aguas/view/Supply/newSupply.php">Crear</a></li>
+              <li><a class="" href="/lab_aguas/view/Supply/findSupply.php">Consulta</a></li>
             </ul>
           </li>
 
@@ -283,8 +283,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="../Client/newClient.php">Crear</a></li>
-              <li><a class="" href="../Client/findClient.php">Consulta</a></li>
+              <li><a class="" href="/lab_aguas/view/Client/newClient.php">Crear</a></li>
+              <li><a class="" href="/lab_aguas/view/Client/findClient.php">Consulta</a></li>
             </ul>
           </li>
 
@@ -323,8 +323,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="../Maintenance/newMaintenance.php">Agregar</a></li>
-              <li><a class="" href="../Maintenance/findMaintenance.php">Consultar</a></li>
+              <li><a class="" href="/lab_aguas/view/Maintenance/newMaintenance.php">Agregar</a></li>
+              <li><a class="" href="/lab_aguas/view/Maintenance/findMaintenance.php">Consultar</a></li>
             </ul>
           </li>
 

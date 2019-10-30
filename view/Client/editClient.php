@@ -25,19 +25,44 @@
     }
 
   if ($_POST['update'] && isset($dpi_c)) {
-    /*
     $newClient = getClientById($dpi_c);
-    modifyClientName($_POST['client_name']);
-    modifyClientDirection($_POST['direction']);
-    modifyClientCity($_POST['department']);
-    modifyClientCompany($_POST['company']);
-    modifyClientPhone($_POST['phone']);
-    modifyClientExtra($_POST['extra_phone']);
-    modifyClientFax($_POST['fax']);
-    modifyClientEmail($_POST['email']);
-    modifyClientWevSite($_POST['web']);
-    modifyClientCustomCategory(getCostumClientById($_POST['costum']));
-    */
+    
+    if (strcmp($newClient->getNameClient(),$_POST['client_name']) != 0) {
+      $newClient->setNameClient($_POST['client_name']);
+    }
+    if (strcmp($newClient->getDirectionClient(),$_POST['direction']) != 0) {
+      $newClient->setDirectionClient()($_POST['direction']);
+    }
+    if (strcmp($newClient->getCityClient(),$_POST['department']) != 0) {
+      $newClient->setCityClient($_POST['department']);
+    }
+    if (strcmp($newClient->getCompanyClient(),$_POST['company']) != 0) {
+      $newClient->setCompanyClient($_POST['company']);
+    }
+    if ($newClient->getPhoneClient() != $_POST['phone']) {
+      $newClient->setPhoneClient($_POST['phone']);
+    }
+    if ($newClient->getPhoneClientExtra() != $_POST['extra_phone']) {
+      $newClient->setPhoneClientExtra($_POST['extra_phone']);
+    }
+    if ($newClient->getPhoneExtra() != $_POST['extra_phone2']) {
+      $newClient->setPhoneExtra($_POST['extra_phone2']);
+    }
+    if (strcmp($newClient->getWebSiteClient(),$_POST['web']) != 0) {
+      $newClient->setWebSiteClient($_POST['web']);
+    }
+    if (strcmp($newClient->getEmailClient(),$_POST['email']) != 0) {
+      $newClient->setEmailClient($_POST['email']);
+    }
+    if ($newClient->getCostumClient()->getIdCostumCategory() != $_POST['costum']) {
+      $newClient->setCostumClient(getCostumClientById($_POST['costum']));
+    }
+
+    if (updateClient($newClient)) {
+      echo "Modificacion exitosa";
+    } else {
+      echo "Modificacion fallida";
+    }
   }
 ?>
 

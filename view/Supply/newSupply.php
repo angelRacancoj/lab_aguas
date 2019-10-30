@@ -106,7 +106,7 @@ newSupply($newSupply);
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit" name="add">Agregar</button>
                         <button class="btn btn-default" type="button" name="back">
-                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="/lab_aguas/" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>
