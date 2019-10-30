@@ -16,9 +16,10 @@
             //se inicio sesion correctamente
             $message='Sesion iniciada';
             $session=new UserSession();
-            $session->setUserName($employeeCon->getDpiEmployee());
+            $session->setUserDpi($employeeCon->getDpiEmployee());
+            $session->setUserName($employeeCon->getNameEmployee());
             $session->setUserRol($employeeCon->getStaffPosition()->getIdStaffPosition());
-            header('Location: ../../index.php');
+            header('Location: /lab_aguas');
       }else{
           //no se pudo iniciar session
           $message='No se pudo encontrar datos ingresados';
