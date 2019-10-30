@@ -104,8 +104,8 @@
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit">Buscar</button>
-                        <button class="btn btn-default" type="button" href="../Principal/index.html">
-                            <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                        <button class="btn btn-default" type="button" href="/lab_aguas/index.php">
+                            <a href="/lab_aguas/index.php" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>

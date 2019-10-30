@@ -5,29 +5,15 @@ require_once "../../model/Entity/Equipment.php";
 require_once "../../bootstrap.php";
 
     function newEquipment($newEquipment){
-        try {
-            global $entityManager;
-            $entityManager->persist($newEquipment);
-            $entityManager->flush();
-            return true;
-        } catch (Exception $exception){
-            return false;
-        }
+        return entityPersist($newEquipment);
     }
 
     function updateEquipment($modifiedEquipment){
-        try{
-            global $entityManager;
-            $entityManager->persist($modifiedEquipment);
-            $entityManager->flush();
-            return true;
-        } catch (Exception $exception){
-            return false;
-        }
+        return entityPersist($modifiedEquipment);
     }
 
     function getByNameAndModel($equipment){
-            //buscar en base de datos
+        //buscar en base de datos
         //devolver Equipos
     }
 
@@ -51,4 +37,14 @@ require_once "../../bootstrap.php";
         return $entityManager->getRepository('Equipment')->findAll();
     }
 
+    function entityPersist($newObject){
+        try{
+            global $entityManager;
+            $entityManager->persist($newObject);
+            $entityManager->flush();
+            return true;
+        } catch (Exception $exception){
+            return false;
+        }
+    }
 ?>

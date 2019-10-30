@@ -281,8 +281,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="../Provider/newProvider.php">Crear</a></li>
-              <li><a class="" href="../Provider/findProvider.php">Consultar</a></li>
+              <li><a class="" href="/lab_aguas/view/Provider/newProvider.php">Crear</a></li>
+              <li><a class="" href="/lab_aguas/view/Provider/findProvider.php">Consultar</a></li>
             </ul>
           </li>
 

@@ -72,7 +72,7 @@
                       <div class="form-group ">
                           <label for="cname" class="control-label col-lg-2">Número de Telefono<span class="required">*</span></label>
                           <div class="col-lg-10">
-                              <input class="form-control" placeholder="Ej: 77315820" name="phone" minlength="4" type="number" required />
+                              <input class="form-control" placeholder="Ej: 77315820" name="phone" minlength="8" type="number" required />
                           </div>
                       </div>
                     <div class="form-group ">
@@ -84,8 +84,8 @@
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit" name="add">Crear</button>
-                        <button class="btn btn-default" type="button" href="../Principal/index.html">
-                            <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                        <button class="btn btn-default" type="button" href="/lab_aguas/index.php">
+                            <a href="/lab_aguas/index.php" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>

@@ -5,25 +5,11 @@ require_once "../../model/Entity/Package.php";
 require_once "../../bootstrap.php";
 
 function newPackage($newPackage){
-    try {
-        global $entityManager;
-        $entityManager->persist($newPackage);
-        $entityManager->flush();
-        return true;
-    } catch (Exception $exception){
-        return false;
-    }
+    return entityPersist($newPackage);
 }
 
 function updatePackage($modifiedPackage){
-    try {
-        global $entityManager;
-        $entityManager->persist($modifiedPackage);
-        $entityManager->flush();
-        return true;
-    } catch (Exception $exception){
-        return false;
-    }
+    return entityPersist($modifiedPackage);
 }
 
 function getPackageById($packageId){
@@ -34,4 +20,15 @@ function getPackageById($packageId){
 function getAllPackages(){
     global $entityManager;
     return $entityManager->getRepository('Package')->findAll();
+}
+
+function entityPersist($newObject){
+    try{
+        global $entityManager;
+        $entityManager->persist($newObject);
+        $entityManager->flush();
+        return true;
+    } catch (Exception $exception){
+        return false;
+    }
 }

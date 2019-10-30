@@ -12,15 +12,4 @@ function getEmployeeByDpiAndPass($employee){
             'password' => $employee->getPassword()
         ));
 }
-
-function modifyUser($modifiedUser){
-    try {
-        global $entityManager;
-        $entityManager->persist($modifiedUser);
-        $entityManager->flush();
-        return true;
-    } catch (Exception $exception){
-        return false;
-    }
-}
 ?>
