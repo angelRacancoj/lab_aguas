@@ -2,6 +2,17 @@
   require "../../model/Entity/Client.php";
   require "../../model/Entity/CostumClient.php";
   require "../../controller/Client/clientController.php";
+  require "../../controller/User/UserSession.php";
+
+   $session = new UserSession();
+   $session_role = 0;
+   
+   if (isset($session)) {
+    if ($session->getUserRol() !== null) {
+      $session_role = $session->getUserRol();
+    }
+   }
+   
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +97,11 @@
                                 <th><i class="icon_mail_alt"></i>Correo</th>
                                 <th><i class="icon_mail_alt"></i>Web</th><th>
                                   <i class="icon_id"></i>Posicion</th>
-                                <th><i class="icon_cogs"></i>Actualizar</th>
+                                  <?php
+                                  if ($session_role == 1) {
+                                    echo '<th><i class="icon_cogs"></i>Actualizar</th>';
+                                  }
+                                  ?>
                               </tr>
                               <?php
                               foreach (getAllClient() as $clienti) {
@@ -102,14 +117,16 @@
                                 echo '<td>'.$clienti->getEmailClient().'</td>';
                                 echo '<td>'.$clienti->getWebSiteClient().'</td>';
                                 echo '<td>'.$clienti->getCostumClient()->getNameCostumCategory().'</td>';
-                                echo '<td>
-                                        <div class="btn-group">
-                                          <a class="btn btn-primary" href="editClient.php?dpi='.$clienti->getDpiClient().'" title="Actualizar Datos" >
-                                            <i class="icon_plus_alt2"></i>
-                                          </a>
-                                        </div>
-                                      </td>';
-                                echo "</tr>";
+                                if ($session_role == 1) {
+                                  echo '<td>
+                                    <div class="btn-group">
+                                      <a class="btn btn-primary" href="editClient.php?dpi='.$clienti->getDpiClient().'" title="Actualizar Datos" >
+                                        <i class="icon_plus_alt2"></i>
+                                      </a>
+                                    </div>
+                                  </td>';
+                                  echo "</tr>";
+                                }
                               }
                               ?>
                             </tbody>
@@ -121,9 +138,9 @@
 
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <button herf="" class="btn btn-primary" type="submit">Crear</button>
+                        <button herf="" class="btn btn-primary" type="submit"><a href="newClient.php" />Regresar</button>
                         <button class="btn btn-default" type="button">
-                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="/lab_aguas/" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>

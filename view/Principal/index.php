@@ -150,7 +150,7 @@
                             <span class="profile-ava">
                                 <img alt="" src="img/student.png">
                             </span>
-                            <span class="username">Daniel Gonzalez</span>
+                            <span class="username"><?php echo $name;?></span>
                             <b class="caret"></b>
                         </a>
             <ul class="dropdown-menu extended logout">
@@ -160,7 +160,7 @@
               </li>
 
               <li>
-                <a href="login.html"><i class="icon_key_alt"></i> Salir</a>
+                <a href="controller/User/logOut.php"><i class="icon_key_alt"></i> Salir</a>
               </li>
             </ul>
           </li>
@@ -214,8 +214,9 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="form_component.html">Crear</a></li>
-              <li><a class="" href="form_validation.html">Editar</a></li>
+              <li><a class="" href="../Shopping/newShoppingEquipment.php">Insumos</a></li>
+              <li><a class="" href="../Shopping/newShoppingSupply.php">Equipo</a></li>
+              <li><a class="" href="../Shopping/findShopping.php">Consulta</a></li>
             </ul>
           </li>
 
@@ -227,8 +228,21 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="form_component.html">Crear</a></li>
-              <li><a class="" href="form_validation.html">Editar</a></li>
+              <li><a class="" href="../Sample/newSample.php">Crear</a></li>
+              <li><a class="" href="../Sample/findSample.php">Consulta</a></li>
+            </ul>
+          </li>
+
+
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+              <i class="icon_document_alt"></i>
+              <span>Analisis</span>
+              <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+              <li><a class="" href="../Analysis/newAnalysis.php">Crear</a></li>
+              <li><a class="" href="../Analysis/findAnalysis.php">Consulta</a></li>
             </ul>
           </li>
 
@@ -257,8 +271,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="../Supply/newSupply.php">Crear</a></li>
-              <li><a class="" href="../Supply/findSupply.php">Consulta</a></li>
+              <li><a class="" href="/lab_aguas/view/Supply/newSupply.php">Crear</a></li>
+              <li><a class="" href="/lab_aguas/view/Supply/findSupply.php">Consulta</a></li>
             </ul>
           </li>
 
@@ -269,8 +283,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="../Client/newClient.php">Crear</a></li>
-              <li><a class="" href="../Client/findClient.php">Consulta</a></li>
+              <li><a class="" href="/lab_aguas/view/Client/newClient.php">Crear</a></li>
+              <li><a class="" href="/lab_aguas/view/Client/findClient.php">Consulta</a></li>
             </ul>
           </li>
 
@@ -281,8 +295,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="../Provider/newProvider.php">Crear</a></li>
-              <li><a class="" href="../Provider/findProvider.php">Consultar</a></li>
+              <li><a class="" href="/lab_aguas/view/Provider/newProvider.php">Crear</a></li>
+              <li><a class="" href="/lab_aguas/view/Provider/findProvider.php">Consultar</a></li>
             </ul>
           </li>
 
@@ -293,7 +307,11 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="/lab_aguas/view/Employee/newEmployeForm.php">Crear</a></li>
+              <?php
+                if($rolUser==1){//rol uno administrador
+                    echo '<li><a class="" href="/lab_aguas/view/Employee/newEmployeForm.php">Crear</a></li>';
+                }
+             ?>
               <li><a class="" href="/lab_aguas/view/Employee/consultEmployee.php">Consultar</a></li>
             </ul>
           </li>
@@ -305,8 +323,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="../Maintenance/newMaintenance.php">Agregar</a></li>
-              <li><a class="" href="../Maintenance/findMaintenance.php">Consultar</a></li>
+              <li><a class="" href="/lab_aguas/view/Maintenance/newMaintenance.php">Agregar</a></li>
+              <li><a class="" href="/lab_aguas/view/Maintenance/findMaintenance.php">Consultar</a></li>
             </ul>
           </li>
 

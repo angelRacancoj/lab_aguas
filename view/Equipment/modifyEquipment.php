@@ -3,6 +3,15 @@
   require_once("../../model/Entity/Equipment.php");
   $id=$_GET['id'];
   $equipmentCon=getById($id);
+  if(isset($_POST['back'])){
+      header('Location: /lab_aguas/view/Equipment/consultEquipment.php');
+  }else if(isset($_POST['send'])){
+          $equipmentCon->setNameEquipment($_POST['nameEquipment']);
+          $equipmentCon->setModelEquipment($_POST['equipmentModel']);
+          $equipmentCon->setWorkingHours($_POST['equipmentWork']);
+          $equipmentCon->setMaintenanceTime($_POST['equipmentMan']);
+          updateEquipment($equipmentCon);
+  }
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
@@ -47,25 +56,25 @@
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Nombre Equipo<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" type="text" name="employeeName" value="<?php echo $equipmentCon->getNameEquipment(); ?>" placeholder="Ej: Juan Lucas Garcia" maxlength="60" required></input>
+                        <input class="form-control" type="text" name="nameEquipment" value="<?php echo $equipmentCon->getNameEquipment(); ?>" placeholder="Ej: Juan Lucas Garcia" maxlength="60" required></input>
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label for="cname" class="control-label col-lg-2">Modelo<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class="form-control" type="text" name="equipmentModel" value="<?php echo $equipmentCon->getModelEquipment(); ?>" placeholder="ej: 45897854" maxlength="10" required></input>
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Tiempo Vida(hrs)<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" type="text" pattern="\d*" name="employeePhone" value="<?php echo $equipmentCon->getModelEquipment(); ?>" placeholder="ej: 45897854" maxlength="10" required></input>
-                      </div>
-                    </div>
-                    <div class="form-group ">
-                      <label for="cname" class="control-label col-lg-2">Tiempo Vida(hrs)<span class="required">*</span></label>
-                      <div class="col-lg-10">
-                        <input class="form-control" type="text" pattern="\d*" name="employeePhone" value="<?php echo $equipmentCon->getWorkingHours(); ?>" placeholder="ej: 45897854" maxlength="10" required></input>
+                        <input class="form-control" type="text" pattern="\d*" name="equipmentWork" value="<?php echo $equipmentCon->getWorkingHours(); ?>" placeholder="ej: 45897854" maxlength="10" required></input>
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Tiempo mantenimiento(hrs)<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" type="text" pattern="\d*" name="employeePhone" value="<?php echo $equipmentCon->getMaintenanceTime(); ?>" placeholder="ej: 45897854" maxlength="10" required></input>
+                        <input class="form-control" type="text" pattern="\d*" name="equipmentMan" value="<?php echo $equipmentCon->getMaintenanceTime(); ?>" placeholder="ej: 45897854" maxlength="10" required></input>
                       </div>
                     </div>
                     <div class="form-group">

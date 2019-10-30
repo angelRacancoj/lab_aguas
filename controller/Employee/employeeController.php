@@ -6,25 +6,11 @@ require_once "../../model/Entity/StaffPosition.php";
 require_once "../../bootstrap.php";
 
     function newEmployee($employee){
-        try {
-            global $entityManager;
-            $entityManager->persist($employee);
-            $entityManager->flush();
-            return true;
-        } catch (Exception $exception){
-            return false;
-        }
+        return entityPersist($employee);
     }
 
     function updateEmployee($modifiedEmployee){
-        try{
-            global $entityManager;
-            $entityManager->persist($modifiedEmployee);
-            $entityManager->flush();
-            return true;
-        } catch (Exception $exception){
-            return false;
-        }
+        return entityPersist($modifiedEmployee);
     }
 
     function getByDpi($employeeDPI){
@@ -38,17 +24,18 @@ require_once "../../bootstrap.php";
     function getByDpiAndPosition($employee){
         //buscar en base de datos
         //devolver Empleado
+
     }
-    function getByName($employee){
-          //buscar en base de datos
-          //devolver Empleados
+    function getByName($employeeName){
+          global $entityManager;
+          return $entityManager->getRepository('Employee')->findBy(['nameEmployee' => $employeeName]);
     }
     function getByNameAndPassword($employee){
 
     }
     function getByPosition($employee){
-        //buscar en base de datos
-        //devolver Empleados
+      global $entityManager;
+      return $entityManager->getRepository('Employee')->findBy(['nameEmployee' => $employeeName]);
     }
 
     function getByState($employee){
@@ -72,5 +59,16 @@ require_once "../../bootstrap.php";
         //devolver cargos de empleado
         global $entityManager;
         return $entityManager->getRepository('StaffPosition')->findOneBy(['idStaffPosition' => $idStaffPosition]);
+    }
+
+    function entityPersist($newObject){
+        try{
+            global $entityManager;
+            $entityManager->persist($newObject);
+            $entityManager->flush();
+            return true;
+        } catch (Exception $exception){
+            return false;
+        }
     }
 ?>

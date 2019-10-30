@@ -2,13 +2,15 @@
   require_once("../../controller/Equipment/equipmentController.php");
   require_once("../../model/Entity/Equipment.php");
   $equipmentCon;
-  if(isset($_POST['send'])){
-      $nameEquipment=$_POST['employeeName'];
-      $modelEquipment=$_POST['employeeDpi'];
+  if(isset($_POST['back'])){
+      header('Location: /lab_aguas');
+  }else if(isset($_POST['send'])){
+      $nameEquipment=$_POST['nameEquipment'];
+      $modelEquipment=$_POST['modelEquipment'];
       if(!empty($nameEquipment)&&!empty($modelEquipment)){
 
       }else if(!empty($nameEquipment)){
-
+        
       }else if(!empty($modelEquipment)){
 
       }else{
@@ -63,13 +65,14 @@
                        <div class="col-lg-10">
                          <div class="row">
                            <div class="col-lg-2">
-                             <input class="form-control" type="text" name="employeeName" placeholder="Ingrese el nombre"></input>
+                             <input class="form-control" type="text" name="nameEquipment" placeholder="Ingrese el nombre"></input>
                            </div>
                            <div class="col-lg-3">
-                             <input class="form-control" type="text" name="employeeDpi" placeholder="Seleccione puesto"></input>
+                             <input class="form-control" type="text" name="modelEquipment" placeholder="Seleccione puesto"></input>
                            </div>
                            <div class="col-lg-3">
                              <button class="btn btn-primary" name="send">Buscar</button>
+                             <button class="btn btn-primary" name="back">Volver</button>
                            </div>
                          </div>
 

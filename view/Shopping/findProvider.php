@@ -45,9 +45,7 @@
         <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <header class="panel-heading">
-                Proveedor
-              </header>
+              <header class="panel-heading">Proveedor</header>
               <div class="panel-body">
                 <div class="form">
                   <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
@@ -56,12 +54,13 @@
                       <div class="col-lg-10">
                         <div class="row">
                           <div class="col-lg-2">
-                            <input type="text" class="form-control" placeholder="ID" name="find_id">
+                            <input type="number" class="form-control" placeholder="Codigo" name="find_code">
                           </div>
                           <div class="col-lg-3">
                             <input type="text" class="form-control" placeholder="Nombre" name ="find_name">
                           </div>
                         </div>
+
                       </div>
                     </div>
 
@@ -73,27 +72,47 @@
                           <table class="table table-striped table-advance table-hover">
                             <tbody>
                               <tr>
-                                  <th><i class="icon_id"></i>Id</th>
-                                  <th><i class="icon_profile"></i>Nombre Completo</th>
-                                  <th><i class="icon_mobile"></i>Telefono</th>
-                                  <th><i class="icon_pin_alt"></i>Dirección</th>
-                                  <th><i class="icon_cogs"></i>Actualizar</th>
+                                <th><i class="icon_id"></i>ID</th>
+                                <th><i class="icon_profile"></i>Nombre</th>
+                                <th><i class="icon_phone"></i>Numero Telefónico</th>
+                                <th><i class="icon_cogs"></i>Direccion</th>
                               </tr>
+
+                              <tr>
+                                 <td>1</td>
+                                 <td>PROVEEDOR 1</td>
+                                 <td>12345678</td>
+                                 <td>DIRECCION 1</td>
+                              </tr>
+
+                              <tr>
+                                 <td>2</td>
+                                 <td>PROVEEDOR 2</td>
+                                 <td>12345678</td>
+                                 <td>DIRECCION 2</td>
+                              </tr>
+
+                              <tr>
+                                 <td>3</td>
+                                 <td>PROVEEDOR 3</td>
+                                 <td>12345678</td>
+                                 <td>DIRECCION 3</td>
+                              </tr>
+
                               <?php
-                              foreach (getAllProviders() as $provider) {
+                              foreach (getAllProviders() as $providerId) {
                                 echo "<tr>";
-                                echo '<td>'.$provider->getIdProvider().'</td>';
-                                echo '<td>'.$provider->getNameProvider().'</td>';
-                                echo '<td>'.$provider->getPhoneProvider().'</td>';
-                                echo '<td>'.$provider->getDirectionProvider().'</td>';
-                                echo '<td>
-                                  <div class="btn-group">
-                                    <a class="btn btn-primary" href="#" title="Modificar" ><i class="icon_plus_alt2"></i></a>
-                                  </div>
-                                </td>';
+                                echo '<td>'.$providerId->getIdProvider().'</td>';
+                                echo '<td>'.$providerId->getNameProvider().'</td>';
+                                echo '<td>'.$providerId->getPhoneProvider().'</td>';
+                                echo '<td>'.$providerId->getDirectionProvider().'</td>';
+                                echo '<td>File</td>';
                                 echo "</tr>";
                               }
                               ?>
+
+
+
                             </tbody>
                           </table>
                         </section>
@@ -103,9 +122,9 @@
 
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <button herf="" class="btn btn-primary" type="submit">Buscar</button>
-                        <button class="btn btn-default" type="button" href="/lab_aguas/index.php">
-                            <a href="/lab_aguas/index.php" title="Regresar al Menu Principal" >Regresar</a>
+                        <button herf="" class="btn btn-primary" type="submit">Crear</button>
+                        <button class="btn btn-default" type="button">
+                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>
@@ -121,7 +140,17 @@
       </section>
     </section>
     <!--main content end-->
-
+    <div class="text-right">
+      <div class="credits">
+          <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
+          -->
+          Designed by <a href="https://daniel">Daniel Gonzalez</a>
+        </div>
+    </div>
   </section>
   <!-- container section end -->
 
@@ -138,6 +167,7 @@
   <script src="js/form-validation-script.js"></script>
   <!--custome script for all page-->
   <script src="js/scripts.js"></script>
+
 
 </body>
 
