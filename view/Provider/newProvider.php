@@ -72,7 +72,7 @@
                       <div class="form-group ">
                           <label for="cname" class="control-label col-lg-2">Número de Telefono<span class="required">*</span></label>
                           <div class="col-lg-10">
-                              <input class="form-control" placeholder="Ej: 77315820" name="phone" minlength="4" type="number" required />
+                              <input class="form-control" placeholder="Ej: 77315820" name="phone" minlength="8" type="number" required />
                           </div>
                       </div>
                     <div class="form-group ">
