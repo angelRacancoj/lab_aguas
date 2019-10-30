@@ -2,6 +2,15 @@
   require "../../model/Entity/Supply.php";
   require "../../model/Entity/Measure.php";
   require "../../controller/Supply/supplyController.php";
+  require "../../controller/User/UserSession.php";
+
+  $session = new UserSession();
+  $session_role = 0;
+  if (isset($session)) {
+    if ($session->getUserRol() !== null) {
+      $session_role = $session->getUserRol();
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +88,11 @@
                                 <th><i class="icon_cogs"></i>Cantidad Disponible</th>
                                 <th><i class="icon_cogs"></i>Medicion</th>
                                 <th><i class="icon_cogs"></i>Hoja de Seguridad</th>
-                                <th><i class="icon_cogs"></i>Actualizar</th>
+                                <?php 
+                                  if ($session_role == 1) {
+                                    echo '<th><i class="icon_cogs"></i>Actualizar</th>';
+                                  }
+                                 ?>
                               </tr>
                               <?php
                               foreach (getAllSupplies() as $supplyi) {
@@ -90,13 +103,15 @@
                                 echo '<td>'.$supplyi->getQuantityAvailable().'</td>';
                                 echo '<td>'.$supplyi->getMeasure()->getNameMeasure().'</td>';
                                 echo '<td>File</td>';
-                                echo '<td>
-                                        <div class="btn-group">
-                                          <a class="btn btn-primary" href="modifySupply.php?code='.$supplyi->getIdSupply().'" title="Actualizar Datos" >
-                                            <i class="icon_plus_alt2"></i>
-                                          </a>
-                                        </div>
-                                      </td>';
+                                if ($session_role == 1) {
+                                  echo '<td>
+                                          <div class="btn-group">
+                                            <a class="btn btn-primary" href="modifySupply.php?code='.$supplyi->getIdSupply().'" title="Actualizar Datos" >
+                                              <i class="icon_plus_alt2"></i>
+                                            </a>
+                                          </div>
+                                        </td>';
+                                }
                                 echo "</tr>";
                               }
                               ?>

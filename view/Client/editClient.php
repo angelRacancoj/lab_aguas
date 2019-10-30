@@ -1,67 +1,78 @@
 <?php
-  require "../../model/Entity/Client.php";
-  require "../../controller/Client/clientController.php";
-  require "../../controller/CostumClient/costumClientController.php";
+  require "/var/www/html/lab_aguas/model/Entity/Client.php";
+  require "/var/www/html/lab_aguas/controller/Client/clientController.php";
+  require "/var/www/html/lab_aguas/controller/CostumClient/costumClientController.php";
+  require "../../controller/User/UserSession.php";
+
+  $session = new UserSession();
+  $session_role = 0;
+  if (isset($session)) {
+    if ($session->getUserRol() !== null) {
+      $session_role = $session->getUserRol();
+    }
+  }
 
   $dpi_c=$name_c=$direction_c=$department_c=$company_c=$phone_c="";
   $extra_phone_c=$extra_phone2_c=$email_c=$web_c=$custom_category="";
 
-  echo "DPI: ". $_GET['dpi'];
+  //echo "DPI: ". $_GET['dpi'];
   $dpi_c = $_GET['dpi'];
 
-  if (isset($dpi_c)) {
-      $clienti = getClientById($dpi_c);
+  if ($session_role == 1) {
+      if (isset($dpi_c)) {
+        $clienti = getClientById($dpi_c);
 
-      $name_c = $clienti->getNameClient();
-      $direction_c = $clienti->getDirectionClient();
-      $department_c = $clienti->getCityClient();
-      $company_c = $clienti->getCompanyClient();
-      $phone_c = $clienti->getPhoneClient();
-      $extra_phone_c = $clienti->getPhoneClientExtra();
-      $extra_phone2_c = $clienti->getPhoneExtra();
-      $email_c = $clienti->getEmailClient();
-      $web_c = $clienti->getWebSiteClient();
-      $custom_category = $clienti->getCostumClient()->getIdCostumCategory();
-    }
+        $name_c = $clienti->getNameClient();
+        $direction_c = $clienti->getDirectionClient();
+        $department_c = $clienti->getCityClient();
+        $company_c = $clienti->getCompanyClient();
+        $phone_c = $clienti->getPhoneClient();
+        $extra_phone_c = $clienti->getPhoneClientExtra();
+        $extra_phone2_c = $clienti->getPhoneExtra();
+        $email_c = $clienti->getEmailClient();
+        $web_c = $clienti->getWebSiteClient();
+        $custom_category = $clienti->getCostumClient()->getIdCostumCategory();
+      }
 
-  if ($_POST['update'] && isset($dpi_c)) {
-    $newClient = getClientById($dpi_c);
-    
-    if (strcmp($newClient->getNameClient(),$_POST['client_name']) != 0) {
-      $newClient->setNameClient($_POST['client_name']);
-    }
-    if (strcmp($newClient->getDirectionClient(),$_POST['direction']) != 0) {
-      $newClient->setDirectionClient()($_POST['direction']);
-    }
-    if (strcmp($newClient->getCityClient(),$_POST['department']) != 0) {
-      $newClient->setCityClient($_POST['department']);
-    }
-    if (strcmp($newClient->getCompanyClient(),$_POST['company']) != 0) {
-      $newClient->setCompanyClient($_POST['company']);
-    }
-    if ($newClient->getPhoneClient() != $_POST['phone']) {
-      $newClient->setPhoneClient($_POST['phone']);
-    }
-    if ($newClient->getPhoneClientExtra() != $_POST['extra_phone']) {
-      $newClient->setPhoneClientExtra($_POST['extra_phone']);
-    }
-    if ($newClient->getPhoneExtra() != $_POST['extra_phone2']) {
-      $newClient->setPhoneExtra($_POST['extra_phone2']);
-    }
-    if (strcmp($newClient->getWebSiteClient(),$_POST['web']) != 0) {
-      $newClient->setWebSiteClient($_POST['web']);
-    }
-    if (strcmp($newClient->getEmailClient(),$_POST['email']) != 0) {
-      $newClient->setEmailClient($_POST['email']);
-    }
-    if ($newClient->getCostumClient()->getIdCostumCategory() != $_POST['costum']) {
-      $newClient->setCostumClient(getCostumClientById($_POST['costum']));
-    }
+    if ($_POST['update'] && isset($dpi_c)) {
+      $newClient = getClientById($dpi_c);
+      
+      if (strcmp($newClient->getNameClient(),$_POST['client_name']) != 0) {
+        $newClient->setNameClient($_POST['client_name']);
+      }
+      if (strcmp($newClient->getDirectionClient(),$_POST['direction']) != 0) {
+        $newClient->setDirectionClient()($_POST['direction']);
+      }
+      if (strcmp($newClient->getCityClient(),$_POST['department']) != 0) {
+        $newClient->setCityClient($_POST['department']);
+      }
+      if (strcmp($newClient->getCompanyClient(),$_POST['company']) != 0) {
+        $newClient->setCompanyClient($_POST['company']);
+      }
+      if ($newClient->getPhoneClient() != $_POST['phone']) {
+        $newClient->setPhoneClient($_POST['phone']);
+      }
+      if ($newClient->getPhoneClientExtra() != $_POST['extra_phone']) {
+        $newClient->setPhoneClientExtra($_POST['extra_phone']);
+      }
+      if ($newClient->getPhoneExtra() != $_POST['extra_phone2']) {
+        $newClient->setPhoneExtra($_POST['extra_phone2']);
+      }
+      if (strcmp($newClient->getWebSiteClient(),$_POST['web']) != 0) {
+        $newClient->setWebSiteClient($_POST['web']);
+      }
+      if (strcmp($newClient->getEmailClient(),$_POST['email']) != 0) {
+        $newClient->setEmailClient($_POST['email']);
+      }
+      if ($newClient->getCostumClient()->getIdCostumCategory() != $_POST['costum']) {
+        $newClient->setCostumClient(getCostumClientById($_POST['costum']));
+      }
 
-    if (updateClient($newClient)) {
-      echo "Modificacion exitosa";
-    } else {
-      echo "Modificacion fallida";
+      if (updateClient($newClient)) {
+        echo "Modificacion exitosa";
+      } else {
+        echo "Modificacion fallida";
+      }
     }
   }
 ?>

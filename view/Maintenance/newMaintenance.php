@@ -3,19 +3,30 @@
   require "../../controller/Maintenance/maintenanceController.php";
   require "../../controller/Equipment/equipmentController.php";
   require "../../controller/Provider/providerController.php";
+  require "../../controller/User/UserSession.php";
 
-  if (isset($_POST['add'])) {
-    $newMaintenance = new Maintenance();
-    $newMaintenance->setMaintenanceDate($_POST['supply_name']);
-    $newMaintenance->setMaintenanceCost($_POST['expired_date']);
-    //revisar metodo
-    $newMaintenance->setEquipment(getEquipmetById($_POST['costumEquipment']));
-    $newMaintenance->setProvider(getProviderById($_POST['costumProvider']));
+  $session = new UserSession();
+  $session_role = 0;
+  if (isset($session)) {
+    if ($session->getUserRol() !== null) {
+      $session_role = $session->getUserRol();
+    }
+  }
 
-    if (newSupply($newMaintenance)) {
-      echo "Agregado exitosamente";
-    } else {
-      echo "Error al crear el insumo";
+  if ($session_role == 1) {
+    if (isset($_POST['add'])) {
+      $newMaintenance = new Maintenance();
+      $newMaintenance->setMaintenanceDate($_POST['supply_name']);
+      $newMaintenance->setMaintenanceCost($_POST['expired_date']);
+      //revisar metodo
+      $newMaintenance->setEquipment(getEquipmetById($_POST['costumEquipment']));
+      $newMaintenance->setProvider(getProviderById($_POST['costumProvider']));
+
+      if (newSupply($newMaintenance)) {
+        echo "Agregado exitosamente";
+      } else {
+        echo "Error al crear el insumo";
+      }
     }
   }
 ?>

@@ -2,26 +2,38 @@
   require "../../model/Entity/Client.php";
   require "../../controller/Client/clientController.php";
   require "../../controller/CostumClient/costumClientController.php";
+  require "../../controller/User/UserSession.php";
 
-  if (isset($_POST['add'])) {
-    $newClient = new Client();
-    $newClient->setDpiClient(trim($_POST['client_dpi'],' '));
-    $newClient->setNameClient($_POST['client_name']);
-    $newClient->setDirectionClient($_POST['direction']);
-    $newClient->setCityClient($_POST['department']);
-    $newClient->setCompanyClient($_POST['company']);
-    $newClient->setPhoneClient($_POST['phone']);
-    $newClient->setPhoneClientExtra($_POST['extra_phone']);
-    $newClient->setPhoneExtra($_POST['extra_phone2']);
-    $newClient->setEmailClient(trim($_POST['email'],' '));
-    $newClient->setWebsiteClient(trim($_POST['web'],' '));
-    //revisar metodo
-    $newClient->setCostumClient(getCostumClientById($_POST['costum']));
+   $session = new UserSession();
+   $session_role = 0;
+   
+   if (isset($session)) {
+    if ($session->getUserRol() !== null) {
+      $session_role = $session->getUserRol();
+    }
+   }
 
-    if (newClient($newClient)) {
-      echo "Agregado exitosamente";
-    } else {
-      echo "Error al crear el cliente";
+  if ($session_role == 1) {
+    if (isset($_POST['add'])) {
+      $newClient = new Client();
+      $newClient->setDpiClient(trim($_POST['client_dpi'],' '));
+      $newClient->setNameClient($_POST['client_name']);
+      $newClient->setDirectionClient($_POST['direction']);
+      $newClient->setCityClient($_POST['department']);
+      $newClient->setCompanyClient($_POST['company']);
+      $newClient->setPhoneClient($_POST['phone']);
+      $newClient->setPhoneClientExtra($_POST['extra_phone']);
+      $newClient->setPhoneExtra($_POST['extra_phone2']);
+      $newClient->setEmailClient(trim($_POST['email'],' '));
+      $newClient->setWebsiteClient(trim($_POST['web'],' '));
+      //revisar metodo
+      $newClient->setCostumClient(getCostumClientById($_POST['costum']));
+
+      if (newClient($newClient)) {
+        echo "Agregado exitosamente";
+      } else {
+        echo "Error al crear el cliente";
+      }
     }
   }
 ?>

@@ -2,33 +2,32 @@
   require "../../model/Entity/Supply.php";
   require "../../controller/Measure/measureController.php";
   require "../../controller/Supply/supplyController.php";
+  require "../../controller/User/UserSession.php";
 
-  if (isset($_POST['add'])) {
-    $newSupply = new Supply();
-    $newSupply->setNameSupply($_POST['supply_name']);
-    $newSupply->setDateExpiry(new DateTime($_POST['expired_date']));
-    $newSupply->setQuantityAvailable($_POST['quantity']);
-    $newSupply->setMeasure(getMeasureById($_POST['costum']));
+   $session = new UserSession();
+   $session_role = 0;
+   
+   if (isset($session)) {
+    if ($session->getUserRol() !== null) {
+      $session_role = $session->getUserRol();
+    }
+   }  
 
-    if (newSupply($newSupply)) {
-      echo "Agregado exitosamente";
-    } else {
-      echo "Error al crear el insumo";
+  if ($session_role == 1) {
+    if (isset($_POST['add'])) {
+      $newSupply = new Supply();
+      $newSupply->setNameSupply($_POST['supply_name']);
+      $newSupply->setDateExpiry(new DateTime($_POST['expired_date']));
+      $newSupply->setQuantityAvailable($_POST['quantity']);
+      $newSupply->setMeasure(getMeasureById($_POST['costum']));
+
+      if (newSupply($newSupply)) {
+        echo "Agregado exitosamente";
+      } else {
+        echo "Error al crear el insumo";
+      }
     }
   }
-/*
-$newSupply = new Supply();
-$newSupply->setNameSupply('Alcohol');
-$dateStr=new DateTime('2020-08-13');
-//$dateG= getDate($dateStr);
-$newSupply->setDateExpiry($dateStr);
-$newSupply->setQuantityAvailable(1000);
-//revisar metodo
-$measureF = getMeasureById(4);
-echo "Measure ID: ".$measureF->getIdMeasure();
-$newSupply->setMeasure($measureF);
-newSupply($newSupply);
-*/
 ?>
 
 <!DOCTYPE html>
