@@ -15,7 +15,7 @@ class UserSession{
     public function setUserRol($rol){//1->admin
         $_SESSION['userRol'] = $rol;
     }
-    public function getUserRol($rol){
+    public function getUserRol(){
         return $_SESSION['userRol'];
     }
 
