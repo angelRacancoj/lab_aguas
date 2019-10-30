@@ -5,25 +5,11 @@ require_once "../../model/Entity/Client.php";
 require_once "../../bootstrap.php";
 
 	function newClient($newClient){
-    	try {
-        	global $entityManager;
-        	$entityManager->persist($newClient);
-        	$entityManager->flush();
-        	return true;
-    	} catch (Exception $exception){
-        	return false;
-    	}
+    	return entityPersist($newClient);
 	}
 
 	function updateClient($modifiedClient){
-		try{
-			global $entityManager;
-			$entityManager->persist($modifiedClient);
-			$entityManager->flush();
-			return true;
-		} catch (Exception $exception){
-			return false;
-		}
+		return entityPersist($modifiedClient);
 	}
 
 	function getClientByNameAndId($name,$id){
@@ -44,5 +30,16 @@ require_once "../../bootstrap.php";
 	function getAllClient(){
         global $entityManager;
         return $entityManager->getRepository('Client')->findAll();
+	}
+
+	function entityPersist($newObject){
+		try{
+			global $entityManager;
+			$entityManager->persist($newObject);
+			$entityManager->flush();
+			return true;
+		} catch (Exception $exception){
+			return false;
+		}
 	}
 ?>

@@ -4,27 +4,13 @@ require "../../vendor/autoload.php";
 require_once "../../model/Entity/Supply.php";
 require_once "../../bootstrap.php";
 
-function newSupply($newSupply){
-    try {
-        global $entityManager;
-        $entityManager->persist($newSupply);
-        $entityManager->flush();
-        return true;
-    } catch (Exception $exception){
-        return false;
+    function newSupply($newSupply){
+        return entityPersist($newSupply);
     }
-}
 
-function updateSupply($modifiedSupply){
-    try{
-        global $entityManager;
-        $entityManager->persist($modifiedSupply);
-        $entityManager->flush();
-        return true;
-    } catch (Exception $exception){
-        return false;
+    function updateSupply($modifiedSupply){
+        return entityPersist($modifiedSupply);
     }
-}
 
 	function getSupplyByName($name){
 		//buscar en base de datos
@@ -81,4 +67,15 @@ function updateSupply($modifiedSupply){
         global $entityManager;
         return $entityManager->getRepository('Supply')->findAll();
 	}
+
+    function entityPersist($newObject){
+        try{
+            global $entityManager;
+            $entityManager->persist($newObject);
+            $entityManager->flush();
+            return true;
+        } catch (Exception $exception){
+            return false;
+        }
+    }
 ?>
