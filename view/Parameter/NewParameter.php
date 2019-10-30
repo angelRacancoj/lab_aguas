@@ -1,3 +1,32 @@
+<?php
+  //require "model/Entity/Parameter.php";
+  //require "controller/Client/parameterController.php";
+  //require "controller/CostumClient/costumClientController.php";
+
+//  if (isset($_POST['add'])) {
+  //  $newParameter = new Parameter();
+    //$newParameter->setDpiClient(trim($_POST['client_dpi'],' '));
+//    $newParameter->setNameClient($_POST['client_name']);
+  //  $newParameter->setDirectionClient($_POST['direction']);
+    //$newParameter->setCityClient($_POST['department']);
+  //  $newParameter->setCompanyClient($_POST['company']);
+    //$newParameter->setPhoneClient($_POST['phone']);
+    //$newParameter->setPhoneClientExtra($_POST['extra_phone']);
+    //$newParameter->setPhoneExtra($_POST['extra_phone2']);
+    //$newParameter->setEmailClient(trim($_POST['email'],' '));
+    //$newParameter->setWebsiteClient(trim($_POST['web'],' '));
+    //revisar metodo
+    //$newClient->setCostumClient(getCostumClientById($_POST['costum']));
+
+    //if (newParameter($newParameter)) {
+      //echo "Agregado exitosamente";
+    //} else {
+      //echo "Error al crear el cliente";
+    //}
+  //}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,24 +80,25 @@
               <div class="panel-body">
                 <div class="form">
                   <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
+
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">ID Parametro <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" id="cname" name="fullname"  type="text" required />
+                        <input class="form-control" id="cname" name="idParametro"  type="text" required />
                       </div>
                     </div>
 
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Nombre del Parametro <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" id="cname" name="fullname"  type="text" required />
+                        <input class="form-control" id="cname" name="nombreParametro"  type="text" required />
                       </div>
                     </div>
 
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">codigo MR <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" id="cname" name="fullname"  type="text" required />
+                        <input class="form-control" id="cname" name="codigoMr"  type="text" required />
                       </div>
                     </div>
 
@@ -137,7 +167,7 @@
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit">Crear</button>
-                        <button class="btn btn-default" type="button">Regresar</button>
+                        <button class="btn btn-default" type="button"><a href="/lab_aguas">Regresar</a></button>
                       </div>
                     </div>
                   </form>

@@ -241,7 +241,7 @@
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit">Editar</button>
-                        <button class="btn btn-default" type="button">Regresar</button>
+                        <button class="btn btn-default" type="button"><a href="/lab_aguas">Regresar</a></button>
                       </div>
                     </div>
                   </form>

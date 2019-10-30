@@ -190,8 +190,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="../Parameter/NewParameter.html">Crear</a></li>
-              <li><a class="" href="../Parameter/EditParameter.html">Modificar</a></li>
+              <li><a class="" href="view/Parameter/NewParameter.php">Crear</a></li>
+              <li><a class="" href="view/Parameter/EditParameter.php">Modificar</a></li>
             </ul>
           </li>
 
@@ -202,8 +202,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="../Package/NewPackage.html">Crear</a></li>
-              <li><a class="" href="../Package/EditPackage.html">Modificar</a></li>
+              <li><a class="" href="view/Package/NewPackage.php">Crear</a></li>
+              <li><a class="" href="view/Package/EditPackage.php">Modificar</a></li>
             </ul>
           </li>
 
