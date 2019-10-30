@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -241,8 +241,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="form_component.html">Crear</a></li>
-              <li><a class="" href="form_validation.html">Consultar</a></li>
+              <li><a class="" href="/lab_aguas/view/Equipment/newEquipmentForm.php">Crear</a></li>
+              <li><a class="" href="/lab_aguas/view/Equipment/consultEquipment.php">Consultar</a></li>
             </ul>
           </li>
 
@@ -293,8 +293,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="form_component.html">Crear</a></li>
-              <li><a class="" href="form_validation.html">Consultar</a></li>
+              <li><a class="" href="/lab_aguas/view/Employee/newEmployeForm.php">Crear</a></li>
+              <li><a class="" href="/lab_aguas/view/Employee/consultEmployee.php">Consultar</a></li>
             </ul>
           </li>
 
@@ -551,12 +551,6 @@
         <!-- project team & activity end -->
 
       </section>
-      <div class="text-right">
-        <div class="credits">
-
-          Diseñado por: <a href="https://bootstrapmade">Daniel Gonzalez</a>
-        </div>
-      </div>
     </section>
     <!--main content end-->
   </section>
