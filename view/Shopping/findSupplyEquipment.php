@@ -1,17 +1,6 @@
 <?php
-  require "../../model/Entity/Supply.php";
-  require "../../model/Entity/Measure.php";
-  require "../../controller/Supply/supplyController.php";
-
-  $session = new UserSession();
-  $session_role = 0;
-  /*
-  if (isset($session)) {
-    if ($session->getUserRol() !== null) {
-      $session_role = $session->getUserRol();
-    }
-  }
-  */
+  require "../../model/Entity/Equipment.php";
+  require "../../controller/Equipment/equipmentController.php";
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +14,7 @@
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Buscar Insumo | Laboratorio de aguas</title>
+  <title>Buscar Equipo | Laboratorio de aguas</title>
 
   <!-- Bootstrap CSS -->
   <link href="../Principal/css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +37,7 @@
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-files-o"></i>Buscar Insumo</h3>
+            <h3 class="page-header"><i class="fa fa-files-o"></i>Buscar Equipo</h3>
 
           </div>
         </div>
@@ -56,7 +45,7 @@
         <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <header class="panel-heading">Buscar Insumo</header>
+              <header class="panel-heading">Equipo</header>
               <div class="panel-body">
                 <div class="form">
                   <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
@@ -78,38 +67,55 @@
                     <div class="row">
                       <div class="col-lg-12">
                         <section class="panel">
-                          <header class="panel-heading">Lista de Insumo</header>
+                          <header class="panel-heading">Lista de Equipos</header>
 
                           <table class="table table-striped table-advance table-hover">
                             <tbody>
                               <tr>
-                                <th><i class="icon_id"></i>Codigo</th>
+                                <th><i class="icon_id"></i>ID</th>
                                 <th><i class="icon_profile"></i>Nombre</th>
-                                <th><i class="icon_calendar"></i>Fecha de Caducidad</th>
-                                <th><i class="icon_cogs"></i>Cantidad Disponible</th>
-                                <th><i class="icon_cogs"></i>Medicion</th>
-                                <th><i class="icon_cogs"></i>Hoja de Seguridad</th>
-                                <th><i class="icon_cogs"></i>Actualizar</th>
+                                <th><i class="icon_cogs"></i>Modelo</th>
+                                <th><i class="icon_cogs"></i>Horas de Trabajo</th>
+                                <th><i class="icon_cogs"></i>Tiempo de Mantenimiento</th>
                               </tr>
+
+                              <tr>
+                                 <td>1</td>
+                                 <td>EQUIPO 1</td>
+                                 <td>MODELO 1</td>
+                                 <td>220</td>
+                                 <td>1000</td>
+                              </tr>
+
+                              <tr>
+                                 <td>2</td>
+                                 <td>EQUIPO 2</td>
+                                 <td>MODELO 2</td>
+                                 <td>420</td>
+                                 <td>2000</td>
+                              </tr>
+
+                              <tr>
+                                 <td>3</td>
+                                 <td>EQUIPO 3</td>
+                                 <td>MODELO 3</td>
+                                 <td>320</td>
+                                 <td>3000</td>
+                              </tr>
+
                               <?php
-                              foreach (getAllSupplies() as $supplyi) {
+                              foreach (getAllEquipment() as $equipmentId) {
                                 echo "<tr>";
-                                echo '<td>'.$supplyi->getIdSupply().'</td>';
-                                echo '<td>'.$supplyi->getNameSupply().'</td>';
-                                echo '<td>'.$supplyi->getDateExpiry()->format('d/m/yy').'</td>';
-                                echo '<td>'.$supplyi->getQuantityAvailable().'</td>';
-                                echo '<td>'.$supplyi->getMeasure()->getNameMeasure().'</td>';
+                                echo '<td>'.$equipmentId->getIdEquipment().'</td>';
+                                echo '<td>'.$equipmentId->getNameEquipment().'</td>';
+                                echo '<td>'.$equipmentId->getModelEquipment().'</td>';
+                                echo '<td>'.$equipmentId->getWorkingHours().'</td>';
+                                echo '<td>'.$equipmentId->getMaintenanceTime().'</td>';
                                 echo '<td>File</td>';
-                                echo '<td>
-                                        <div class="btn-group">
-                                          <a class="btn btn-primary" href="modifySupply.php?code='.$supplyi->getIdSupply().'" title="Actualizar Datos" >
-                                            <i class="icon_plus_alt2"></i>
-                                          </a>
-                                        </div>
-                                      </td>';
                                 echo "</tr>";
                               }
                               ?>
+
                             </tbody>
                           </table>
                         </section>
@@ -121,7 +127,7 @@
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit">Crear</button>
                         <button class="btn btn-default" type="button">
-                          <a href="/lab_aguas/" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>

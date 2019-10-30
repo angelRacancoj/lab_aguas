@@ -1,34 +1,29 @@
 <?php
-  require "../../model/Entity/Supply.php";
-  require "../../controller/Measure/measureController.php";
-  require "../../controller/Supply/supplyController.php";
+  require "../../model/Entity/Analysis.php";
+  require "../../controller/Analysis/analysisController.php";
+  require "../../model/Entity/Sample.php";
+  require "../../model/Entity/Package.php";
+  require "../../model/Entity/Employee.php";
+  require "../../controller/Sample/sampleController.php";
+  require "../../controller/Package/packageController.php";
+  require "../../controller/Employee/employeeController.php";
 
-  if (isset($_POST['add'])) {
-    $newSupply = new Supply();
-    $newSupply->setNameSupply($_POST['supply_name']);
-    $newSupply->setDateExpiry(new DateTime($_POST['expired_date']));
-    $newSupply->setQuantityAvailable($_POST['quantity']);
-    $newSupply->setMeasure(getMeasureById($_POST['costum']));
+  /*if (isset($_POST['add'])) {
+    $newPurchase = new Purchase();
+    $newPurchase->setDateShopping(new DateTime(_POST['fecha']));
+    $newPurchase->setProvider($_POST['provider']);
+    $newPurchase->setSupply($_POST['supply']);
+    $newPurchase->setAmountPurchased($_POST['quantity']);
+    $newPurchase->setNoteShopping($_POST['note']));
 
-    if (newSupply($newSupply)) {
+    if (newPurchase($newPurchase)) {
       echo "Agregado exitosamente";
     } else {
-      echo "Error al crear el insumo";
+      echo "Error al crear la compra";
     }
   }
-/*
-$newSupply = new Supply();
-$newSupply->setNameSupply('Alcohol');
-$dateStr=new DateTime('2020-08-13');
-//$dateG= getDate($dateStr);
-$newSupply->setDateExpiry($dateStr);
-$newSupply->setQuantityAvailable(1000);
-//revisar metodo
-$measureF = getMeasureById(4);
-echo "Measure ID: ".$measureF->getIdMeasure();
-$newSupply->setMeasure($measureF);
-newSupply($newSupply);
-*/
+  */
+
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +36,7 @@ newSupply($newSupply);
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Crear Insumo | Laboratorio de aguas</title>
+    <title>Realizar Analisis | Laboratorio de aguas</title>
 
     <!-- Bootstrap CSS -->
     <link href="../Principal/css/bootstrap.min.css" rel="stylesheet">
@@ -54,13 +49,17 @@ newSupply($newSupply);
     <!-- Custom styles -->
     <link href="../Principal/css/style.css" rel="stylesheet">
     <link href="../Principal/css/style-responsive.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
   </head>
   <body>
     <section id="main-content">
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-files-o"></i>Crear Insumo</h3>
+            <h3 class="page-header"><i class="fa fa-files-o"></i>Realizar Analisis</h3>
 
           </div>
         </div>
@@ -68,45 +67,68 @@ newSupply($newSupply);
         <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <header class="panel-heading">Crear Insumo</header>
+              <header class="panel-heading">Analisis</header>
               <div class="panel-body">
                 <div class="form">
                   <form class="form-validate form-horizontal" id="feedback_form" action="#" method="post">
+                    
                     <div class="form-group ">
-                      <label for="cname" class="control-label col-lg-2">Nombre Insumo<span class="required">*</span></label>
+                      <label for="cname" class="control-label col-lg-2">Fecha de Analisis<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej:Alcohol" name="supply_name" minlength="5" type="text" required />
+                        <input class="form-control" name="fecha" type="date" required />
                       </div>
                     </div>
-                    <div class="form-group ">
-                      <label for="cname" class="control-label col-lg-2">Fecha de caducidad<span class="required">*</span></label>
-                      <div class="col-lg-10">
-                        <input class="form-control" name="expired_date" type="date" required />
+
+                      <div class="form-group ">
+                        <label for="cname" class="control-label col-lg-2">Precio<span class="required">*</span></label>
+                        <div class="col-lg-10">
+                          <input class="form-control" placeholder="Ej: 12.5" name="quantity" type="number" required />
+                        </div>
                       </div>
-                    </div>
-                    <div class="form-group ">
-                      <label for="cname" class="control-label col-lg-2">Cantidad Disponible<span class="required">*</span></label>
+
+                      <div class="form-group">
+                      <label class="control-label col-lg-2" for="inputSuccess">Muestra<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: 12.5" name="quantity" type="number" required />
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label col-lg-2" for="inputSuccess">Sistema de Medicion<span class="required">*</span></label>
-                      <div class="col-lg-10">
-                        <select class="form-control m-bot15" name="costum">
+                        <select class="form-control m-bot15" name="position" type="text" required >
                           <?php
-                          foreach (getAllMeasure() as $measureIn) {
-                            echo '<option value="'.$measureIn->getIdMeasure().'">'.$measureIn->getNameMeasure().'</option>';
-                          }
-                          ?>
-                      </select>
+                            /*foreach (getAllSamples() as $position) {
+                                  echo '<option value="'.$position->getIdSample().'">'.$position->getNameSample.'</option>';
+                            }*/ 
+                           ?>
+                        </select>
                       </div>
                     </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-lg-2" for="inputSuccess">Paquete<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <select class="form-control m-bot15" name="position" type="text" required >
+                          <?php
+                            /*foreach (getAllPackage() as $position) {
+                                  echo '<option value="'.$position->getIdPackage().'">'.$position->getNamePackage().'</option>';
+                            }*/
+                           ?>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-lg-2" for="inputSuccess">Empleado<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <select class="form-control m-bot15" name="position" type="text" required >
+                          <?php
+                            $session=new UserSession();
+                            $name=$session->getDpiEmployee();
+                          ?>
+                        </select>
+                      </div>
+                    </div>
+
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <button herf="" class="btn btn-primary" type="submit" name="add">Agregar</button>
+                        <button herf="" class="btn btn-primary" type="submit" name="add">Realizar</button>
                         <button class="btn btn-default" type="button" name="back">
-                          <a href="/lab_aguas/" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>

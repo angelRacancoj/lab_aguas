@@ -5,31 +5,14 @@ require_once "../../model/Entity/Employee.php";
 require_once "../../model/Entity/StaffPosition.php";
 require_once "../../bootstrap.php";
 
-function newEmployee($employee){
-    try {
-        global $entityManager;
-        $entityManager->persist($employee);
-        $entityManager->flush();
-        return true;
-    } catch (Exception $exception){
-        return false;
+    function newEmployee($employee){
+        return entityPersist($employee);
     }
-}
-    function modifyName($employee){
-        //agregar a base de datos
+
+    function updateEmployee($modifiedEmployee){
+        return entityPersist($modifiedEmployee);
     }
-    function modifyPhone($employee){
-          //agregar a base de datos
-    }
-    function modifyPosition($employee){
-          //agregar a base de datos
-    }
-    function modifyPassword($employee){
-          //agregar a base de datos
-    }
-    function modifyState($employee){
-          //agregar a base de datos
-    }
+
     function getByDpi($employeeDPI){
         global $entityManager;
         return $entityManager->getRepository('Employee')->find($employeeDPI);
@@ -75,5 +58,16 @@ function newEmployee($employee){
         //devolver cargos de empleado
         global $entityManager;
         return $entityManager->getRepository('StaffPosition')->findOneBy(['idStaffPosition' => $idStaffPosition]);
+    }
+
+    function entityPersist($newObject){
+        try{
+            global $entityManager;
+            $entityManager->persist($newObject);
+            $entityManager->flush();
+            return true;
+        } catch (Exception $exception){
+            return false;
+        }
     }
 ?>

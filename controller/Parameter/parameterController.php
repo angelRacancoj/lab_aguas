@@ -5,14 +5,11 @@ require_once "../../model/Entity/Parameter.php";
 require_once "../../bootstrap.php";
 
 function newParameter($newParameter){
-    try {
-        global $entityManager;
-        $entityManager->persist($newParameter);
-        $entityManager->flush();
-        return true;
-    } catch (Exception $exception){
-        return false;
-    }
+   return entityPersist($newParameter);
+}
+
+function updateParameter($modifiedParameter){
+    return entityPersist($modifiedParameter);
 }
 
 function getParameterById($parameterId){
@@ -23,4 +20,15 @@ function getParameterById($parameterId){
 function getAllParameters(){
     global $entityManager;
     return $entityManager->getRepository('Parameter')->findAll();
+}
+
+function entityPersist($newObject){
+    try{
+        global $entityManager;
+        $entityManager->persist($newObject);
+        $entityManager->flush();
+        return true;
+    } catch (Exception $exception){
+        return false;
+    }
 }

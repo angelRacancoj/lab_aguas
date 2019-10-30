@@ -1,8 +1,8 @@
 <?php
-  require_once("../../model/Entity/Employee.php");
-  require_once("../../controller/User/userController.php");
-  require_once("../../controller/User/UserSession.php");
-    require_once("../../controller/User/encription.php");
+  require_once("model/Entity/Employee.php");
+  require_once("controller/User/userController.php");
+  require_once("controller/User/UserSession.php");
+  require_once("controller/User/encription.php");
   $message;
   if(isset($_POST['send'])){
       $employee=new Employee();
@@ -16,9 +16,10 @@
             //se inicio sesion correctamente
             $message='Sesion iniciada';
             $session=new UserSession();
-            $session->setUserName($employeeCon->getDpiEmployee());
+            $session->setUserDpi($employeeCon->getDpiEmployee());
+            $session->setUserName($employeeCon->getNameEmployee());
             $session->setUserRol($employeeCon->getStaffPosition()->getIdStaffPosition());
-            header('Location: ../../index.php');
+            header('Location: /lab_aguas');
       }else{
           //no se pudo iniciar session
           $message='No se pudo encontrar datos ingresados';
@@ -30,7 +31,7 @@
 <html lang="es" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../CSS/Forms/forms.css">
+    <link rel="stylesheet" type="text/css" href="/lab_aguas/view/CSS/Forms/forms.css">
   </head>
   <body>
         <form class="form" action="#" method="post">
