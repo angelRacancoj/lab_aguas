@@ -33,7 +33,7 @@ function entityPersistProvider($newObject){
     }
 }
 
-function getByIdAndName($idProvider, $nameProvider){
+function findWithFilters($idProvider, $nameProvider){
     global $entityManager;
     $predicates = [];
     if (!empty($idProvider)){

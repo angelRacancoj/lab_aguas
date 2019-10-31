@@ -11,6 +11,12 @@
             $session_role = $session->getUserRol();
         }
     }
+
+    if (isset($_POST['find'])) {
+        foreach (findWithFilters($_POST['find_id'], $_POST['find_name']) as $provider) {
+
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -112,6 +118,7 @@
                                   }
                               }
                               ?>
+
                             </tbody>
                           </table>
                         </section>
@@ -121,7 +128,7 @@
 
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <button herf="" class="btn btn-primary" type="submit">Buscar</button>
+                        <button herf="" class="btn btn-primary" type="submit" name = "find">Buscar</button>
                         <button class="btn btn-default" type="button" href="/lab_aguas/index.php">
                             <a href="/lab_aguas/index.php" title="Regresar al Menu Principal" >Regresar</a>
                         </button>

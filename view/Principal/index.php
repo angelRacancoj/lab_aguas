@@ -295,7 +295,11 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="/lab_aguas/view/Provider/newProvider.php">Crear</a></li>
+                <?php
+                if($rolUser==1 || $rolUser==2){//rol uno administrador
+                    echo '<li><a class="" href="/lab_aguas/view/Provider/newProvider.php">Crear</a></li>';
+                }
+                ?>
               <li><a class="" href="/lab_aguas/view/Provider/findProvider.php">Consultar</a></li>
             </ul>
           </li>
