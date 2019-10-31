@@ -5,11 +5,11 @@ require_once "../../model/Entity/Equipment.php";
 require_once "../../bootstrap.php";
 
     function newEquipment($newEquipment){
-        return entityPersist($newEquipment);
+        return entityPersistEquipment($newEquipment);
     }
 
     function updateEquipment($modifiedEquipment){
-        return entityPersist($modifiedEquipment);
+        return entityPersistEquipment($modifiedEquipment);
     }
 
     function getByNameAndModel($equipment){
@@ -37,7 +37,7 @@ require_once "../../bootstrap.php";
         return $entityManager->getRepository('Equipment')->findAll();
     }
 
-    function entityPersist($newObject){
+    function entityPersistEquipment($newObject){
         try{
             global $entityManager;
             $entityManager->persist($newObject);

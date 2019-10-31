@@ -76,146 +76,14 @@
                         <input class="form-control" name="fecha" type="date" required />
                       </div>
                     </div>
-
-                      <!--  
-                      <div class="container">
-
-                        <br><br><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Buscar</button>
-
-                        <div class="modal fade" id="myModal" role="dialog">
-                          <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Titulo</h4>
-                              </div>
-                              <div class="modal-body">
-                                
-
-                                <table class="table table-striped table-advance table-hover">
-                            <tbody>
-                              <tr>
-                                <th><i class="icon_id"></i>ID</th>
-                                <th><i class="icon_profile"></i>Nombre</th>
-                                <th><i class="icon_phone  "></i>Numero Telefónico</th>
-                                <th><i class="icon_cogs"></i>Direccion</th>
-                              </tr>
-
-                              echo "<tr>";
-                                echo '<td>a</td>';
-                                echo '<td>b</td>';
-                                echo '<td>c</td>';
-                                echo '<td>d</td>';
-
-                              <?php
-                              /*foreach (getAllProviders() as $providerId) {
-                                echo "<tr>";
-                                echo '<td>'.$providerId->getIdProvider().'</td>';
-                                echo '<td>'.$providerId->getNameProvider().'</td>';
-                                echo '<td>'.$providerId->getPhoneProvider().'</td>';
-                                echo '<td>'.$providerId->getDirectionProvider().'</td>';
-                                echo '<td>File</td>';
-                                echo "</tr>";
-                              }*/
-                              ?>
-
-                            </tbody>
-                          </table>  
-
-
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-
-                    -->
-
-
-
-                    <!-- 
-                    <div class="container">
-
-                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Buscar</button>
-
-                        <div class="modal fade" id="myModal" role="dialog">
-                          <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Titulo</h4>
-                              </div>
-                              <div class="modal-body">
-                                
-
-                                <table class="table table-striped table-advance table-hover">
-                            <tbody>
-                              <tr>
-                                <th><i class="icon_id"></i>ID</th>
-                                <th><i class="icon_profile"></i>Nombre</th>
-                                <th><i class="icon_phone  "></i>Numero Telefónico</th>
-                                <th><i class="icon_cogs"></i>Direccion</th>
-                              </tr>
-
-                              <tr>
-                                 <td>1</td>
-                                 <td>PROVEEDOR 1</td>
-                                 <td>12345678</td>
-                                 <td>DIRECCION 1</td>
-                              </tr>
-
-                              <tr>
-                                 <td>2</td>
-                                 <td>PROVEEDOR 2</td>
-                                 <td>12345678</td>
-                                 <td>DIRECCION 2</td>
-                              </tr>
-
-                              <tr>
-                                 <td>3</td>
-                                 <td>PROVEEDOR 3</td>
-                                 <td>12345678</td>
-                                 <td>DIRECCION 3</td>
-                              </tr>
-
-                              <?php
-                              /*foreach (getAllProviders() as $providerId) {
-                                echo "<tr>";
-                                echo '<td>'.$providerId->getIdProvider().'</td>';
-                                echo '<td>'.$providerId->getNameProvider().'</td>';
-                                echo '<td>'.$providerId->getPhoneProvider().'</td>';
-                                echo '<td>'.$providerId->getDirectionProvider().'</td>';
-                                echo '<td>File</td>';
-                                echo "</tr>";
-                              }*/
-                              ?>
-
-                            </tbody>
-                          </table>  
-
-
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      -->
-
                       <div class="form-group">
                       <label class="control-label col-lg-2" for="inputSuccess">Proveedor<span class="required">*</span></label>
                       <div class="col-lg-10">
                         <select class="form-control m-bot15" name="position" type="text" required >
                           <?php
-                            /*foreach (getAllProviders() as $position) {
+                            foreach (getAllProviders() as $position) {
                                   echo '<option value="'.$position->getIdProvider().'">'.$position->getNameProvider().'</option>';
-                            }*/ 
+                            } 
                            ?>
                         </select>
                       </div>
@@ -226,9 +94,9 @@
                       <div class="col-lg-10">
                         <select class="form-control m-bot15" name="position" type="text" required >
                           <?php
-                            /*foreach (getAllSupplies() as $position) {
+                            foreach (getAllSupplies() as $position) {
                                   echo '<option value="'.$position->getIdSupply().'">'.$position->getNameSupply().'</option>';
-                            }*/
+                            }
                            ?>
                         </select>
                       </div>

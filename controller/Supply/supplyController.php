@@ -5,11 +5,11 @@ require_once "../../model/Entity/Supply.php";
 require_once "../../bootstrap.php";
 
     function newSupply($newSupply){
-        return entityPersist($newSupply);
+        return entityPersistSupply($newSupply);
     }
 
     function updateSupply($modifiedSupply){
-        return entityPersist($modifiedSupply);
+        return entityPersistSupply($modifiedSupply);
     }
 
 	function getSupplyByName($name){
@@ -68,7 +68,7 @@ require_once "../../bootstrap.php";
         return $entityManager->getRepository('Supply')->findAll();
 	}
 
-    function entityPersist($newObject){
+    function entityPersistSupply($newObject){
         try{
             global $entityManager;
             $entityManager->persist($newObject);

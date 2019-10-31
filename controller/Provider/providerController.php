@@ -5,11 +5,11 @@ require_once "../../model/Entity/Provider.php";
 require_once "../../bootstrap.php";
 
 function newProvider($newProvider){
-   return entityPersist($newProvider);
+   return entityPersistProvider($newProvider);
 }
 
 function updateProvider($modifiedProvider){
-    return entityPersist($modifiedProvider);
+    return entityPersistProvider($modifiedProvider);
 }
 
 function getProviderById($providerId){
@@ -22,7 +22,7 @@ function getAllProviders(){
     return $entityManager->getRepository('Provider')->findAll();
 }
 
-function entityPersist($newObject){
+function entityPersistProvider($newObject){
     try{
         global $entityManager;
         $entityManager->persist($newObject);
