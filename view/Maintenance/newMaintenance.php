@@ -102,7 +102,7 @@
                         <select class="form-control m-bot15" name="costumProvider">
                           <?php
                           foreach (getAllProviders() as $providerIn) {
-                            echo '<option value="'.$providerIn->getIdProvider().'">'.$providerIn>getIdProvider().' - '.$providerIn->getNameProvider().'</option>';
+                            echo '<option value="'.$providerIn->getIdProvider().'">'.$providerIn->getIdProvider().' - '.$providerIn->getNameProvider().'</option>';
                           }
                           ?>
                       </select>

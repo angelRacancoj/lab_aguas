@@ -24,3 +24,5 @@ function getAllPurchases(){
     global $entityManager;
     return $entityManager->getRepository('Shopping')->findAll();
 }
+
+?>

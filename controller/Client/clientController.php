@@ -5,11 +5,11 @@ require_once "../../model/Entity/Client.php";
 require_once "../../bootstrap.php";
 
 	function newClient($newClient){
-    	return entityPersist($newClient);
+    	return entityPersistClient($newClient);
 	}
 
 	function updateClient($modifiedClient){
-		return entityPersist($modifiedClient);
+		return entityPersistClient($modifiedClient);
 	}
 
 	function getClientByNameAndId($name,$id){
@@ -32,7 +32,7 @@ require_once "../../bootstrap.php";
         return $entityManager->getRepository('Client')->findAll();
 	}
 
-	function entityPersist($newObject){
+	function entityPersistClient($newObject){
 		try{
 			global $entityManager;
 			$entityManager->persist($newObject);

@@ -1,6 +1,21 @@
 <?php
   require "../../model/Entity/Shopping.php";
+  require "../../model/Entity/Supply.php";
+  require "../../model/Entity/Equipment.php";
+  require "../../model/Entity/Provider.php";
+  require "../../model/Entity/Measure.php";
   require "../../controller/Shopping/shoppingController.php";
+  require "../../controller/User/UserSession.php";
+
+   $session = new UserSession();
+   $session_role = 0;
+   
+   if (isset($session)) {
+    if ($session->getUserRol() !== null) {
+      $session_role = $session->getUserRol();
+    }
+   }
+   
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +29,7 @@
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Buscar Compras | Laboratorio de aguas</title>
+  <title>Buscar Compra | Laboratorio de aguas</title>
 
   <!-- Bootstrap CSS -->
   <link href="../Principal/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +52,7 @@
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-files-o"></i>Buscar Compras</h3>
+            <h3 class="page-header"><i class="fa fa-files-o"></i>Buscar Compra</h3>
 
           </div>
         </div>
@@ -45,7 +60,9 @@
         <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <header class="panel-heading">Compras</header>
+              <header class="panel-heading">
+                Compra
+              </header>
               <div class="panel-body">
                 <div class="form">
                   <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
@@ -54,7 +71,7 @@
                       <div class="col-lg-10">
                         <div class="row">
                           <div class="col-lg-2">
-                            <input type="number" class="form-control" placeholder="Codigo" name="find_code">
+                            <input type="number" class="form-control" placeholder="DPI" name="find_dpi">
                           </div>
                           <div class="col-lg-3">
                             <input type="text" class="form-control" placeholder="Nombre" name ="find_name">
@@ -73,59 +90,41 @@
                             <tbody>
                               <tr>
                                 <th><i class="icon_id"></i>ID</th>
-                                <th><i class="icon_profile"></i>Cantidad</th>
-                                <th><i class="icon_cogs"></i>Fecha</th>
-                                <th><i class="icon_cogs"></i>Nota</th>
-                                <th><i class="icon_cogs"></i>Insumo</th>
-                                <th><i class="icon_cogs"></i>Equipo</th>
-                                <th><i class="icon_cogs"></i>Proveedor</th>
+                                <th><i class="icon_calendar"></i>Fecha de Compra</th>
+                                <th><i class="icon_profile"></i>Proveedor</th>
+                                <th><i class="icon_plus_alt2"></i>Insumo</th>
+                                <th><i class="icon_plus_alt2"></i>Equipo</th>
+                                <th><i class="icon_cogs"></i>Cantidad</th>
+                                <th><i class="icon_mail_alt"></i>Nota</th>
+                                  <?php
+                                  if ($session_role == 1) {
+                                    echo '<th><i class="icon_cogs"></i>Actualizar</th>';
+                                  }
+                                  ?>
                               </tr>
-
-                              <tr>
-                                 <td>1</td>
-                                 <td>45</td>
-                                 <td>2019-10-28</td>
-                                 <td>Compra segun factura No. 8</td>
-                                 <td>1</td>
-                                 <td>--</td>
-                                 <td>1</td>
-                              </tr>
-
-                              <tr>
-                                 <td>2</td>
-                                 <td>30</td>
-                                 <td>2019-10-28</td>
-                                 <td>Compra segun factura No. 15</td>
-                                 <td>--</td>
-                                 <td>2</td>
-                                 <td>2</td>
-                              </tr>
-
-                              <tr>
-                                 <td>2</td>
-                                 <td>115</td>
-                                 <td>2019-10-28</td>
-                                 <td>Compra segun factura No. 19</td>
-                                 <td>2</td>
-                                 <td>--</td>
-                                 <td>3</td>
-                              </tr>
-
                               <?php
-                              foreach (getAllPurchases() as $shoppingId) {
+                              foreach (getAllPurchases() as $shoppingObject) {
                                 echo "<tr>";
-                                echo '<td>'.$shoppingId->getIdShopping().'</td>';
-                                echo '<td>'.$shoppingId->getAmountPurchased().'</td>';
-                                echo '<td>'.$shoppingId->getDateShopping().'</td>';
-                                echo '<td>'.$shoppingId->getNoteShopping().'</td>';
-                                echo '<td>'.$shoppingId->getEquipment().'</td>';
-                                echo '<td>'.$shoppingId->getProvider().'</td>';
-                                echo '<td>'.$shoppingId->getSupply().'</td>';
-                                echo '<td>File</td>';
-                                echo "</tr>";
+                                echo '<td>'.$shoppingObject->getIdShopping().'</td>';
+                                echo '<td>'.$shoppingObject->getDateShopping().'</td>';
+                                echo '<td>'.$shoppingObject->getProvider()->getNameProvider().'</td>';
+                                echo '<td>'.$shoppingObject->getSupply()->getNameSupply().'</td>';
+                                echo '<td>'.$shoppingObject->getEquipment()->getNameEquipment().'</td>';
+                                echo '<td>'.$shoppingObject->getAmountPurchased().'</td>';
+                                echo '<td>'.$shoppingObject->getNoteShopping().'</td>';
+                                                                
+                                if ($session_role == 1) {
+                                  echo '<td>
+                                    <div class="btn-group">
+                                      <a class="btn btn-primary" href="editShopping.php?idShop='.$shoppingObject->getIdShopping().'" title="Actualizar Datos" >
+                                        <i class="icon_plus_alt2"></i>
+                                      </a>
+                                    </div>
+                                  </td>';
+                                  echo "</tr>";
+                                }
                               }
                               ?>
-
                             </tbody>
                           </table>
                         </section>
@@ -135,9 +134,8 @@
 
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <button herf="" class="btn btn-primary" type="submit">Crear</button>
                         <button class="btn btn-default" type="button">
-                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="/lab_aguas/" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>
