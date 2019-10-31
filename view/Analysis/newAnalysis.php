@@ -16,6 +16,7 @@
     if ($session->getUserRol() !== null) {
       $session_role = $session->getUserRol();
       $session_employee = $session->getUserDpi();
+      $session_employee_name = $session->getUserName();
     }
   }
 
@@ -128,9 +129,7 @@
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Empleado</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: Empleado" name="empleado" type="text" value= 
-                          <?php echo '"'.$session_employee.'"'; ?>
-                        />
+                      <label for="cname" class="control-label col-lg-2"><b> <?php echo $session_employee."-".$session_employee_name; ?> </b></label>
                       </div>
                     </div>
 
