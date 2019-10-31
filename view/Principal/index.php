@@ -214,9 +214,10 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="../Shopping/newShoppingEquipment.php">Insumos</a></li>
-              <li><a class="" href="../Shopping/newShoppingSupply.php">Equipo</a></li>
-              <li><a class="" href="../Shopping/findShopping.php">Consulta</a></li>
+              <li><a class="" href="/lab_aguas/view/Shopping/newShoppingSupply.php">Insumos</a></li>
+              <li><a class="" href="/lab_aguas/view/Shopping/newShoppingEquipment.php">Equipo</a></li>
+              <li><a class="" href="/lab_aguas/view/Shopping/findShopping.php">Consultar</a></li>
+              <li><a class="" href="/lab_aguas/view/Shopping/editShopping.php">Modificacion</a></li>
             </ul>
           </li>
 
@@ -228,8 +229,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="../Sample/newSample.php">Crear</a></li>
-              <li><a class="" href="../Sample/findSample.php">Consulta</a></li>
+              <li><a class="" href="/lab_aguas/view/Sample/newSample.php">Crear</a></li>
+              <li><a class="" href="/lab_aguas/view/Sample/findSample.php">Consultar</a></li>
             </ul>
           </li>
 
@@ -241,8 +242,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="../Analysis/newAnalysis.php">Crear</a></li>
-              <li><a class="" href="../Analysis/findAnalysis.php">Consulta</a></li>
+              <li><a class="" href="/lab_aguas/view/Analysis/newAnalysis.php">Crear</a></li>
+              <li><a class="" href="/lab_aguas/view/Analysis/findAnalysis.php">Consultar</a></li>
             </ul>
           </li>
 

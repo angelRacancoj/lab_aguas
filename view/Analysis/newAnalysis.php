@@ -1,29 +1,41 @@
 <?php
   require "../../model/Entity/Analysis.php";
+  require "../../model/Entity/Municipality.php";
+  require "../../model/Entity/Client.php";
+  require "../../model/Entity/CostumClient.php";
   require "../../controller/Analysis/analysisController.php";
-  require "../../model/Entity/Sample.php";
-  require "../../model/Entity/Package.php";
-  require "../../model/Entity/Employee.php";
   require "../../controller/Sample/sampleController.php";
   require "../../controller/Package/packageController.php";
   require "../../controller/Employee/employeeController.php";
+  require "../../controller/User/UserSession.php";
 
-  /*if (isset($_POST['add'])) {
-    $newPurchase = new Purchase();
-    $newPurchase->setDateShopping(new DateTime(_POST['fecha']));
-    $newPurchase->setProvider($_POST['provider']);
-    $newPurchase->setSupply($_POST['supply']);
-    $newPurchase->setAmountPurchased($_POST['quantity']);
-    $newPurchase->setNoteShopping($_POST['note']));
-
-    if (newPurchase($newPurchase)) {
-      echo "Agregado exitosamente";
-    } else {
-      echo "Error al crear la compra";
+  $session = new UserSession();
+  $session_role = 0;
+  $session_employee = "";
+  if (isset($session)) {
+    if ($session->getUserRol() !== null) {
+      $session_role = $session->getUserRol();
+      $session_employee = $session->getUserDpi();
     }
   }
-  */
 
+  if ( ($session_role) == 1 ||  ($session_role == 3) ) {
+    if (isset($_POST['add'])) {
+      $newAnalysis = new Analysis();
+
+      $newAnalysis->setDateAnalysis($_POST['fecha']);
+      $newAnalysis->setCostAnalysis($_POST['costo']);
+      $newAnalysis->setEmployeeDpi(getSupplyByCode($_POST['empleado']));
+      $newAnalysis->setPackage(getSupplyByCode($_POST['paquete']));
+      $newAnalysis->setSample(getProviderById($_POST['muestra']));
+
+      if (newAnalysis($newAnalysis)) {
+        echo "Analisis realizado";
+      } else {
+        echo "Error al realizar el analisis";
+      }
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +48,7 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Realizar Analisis | Laboratorio de aguas</title>
+    <title>Realizar Compra | Laboratorio de aguas</title>
 
     <!-- Bootstrap CSS -->
     <link href="../Principal/css/bootstrap.min.css" rel="stylesheet">
@@ -59,7 +71,7 @@
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-files-o"></i>Realizar Analisis</h3>
+            <h3 class="page-header"><i class="fa fa-files-o"></i>Compra de Insumos</h3>
 
           </div>
         </div>
@@ -67,67 +79,70 @@
         <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <header class="panel-heading">Analisis</header>
+              <header class="panel-heading">Agregar Compra</header>
               <div class="panel-body">
                 <div class="form">
                   <form class="form-validate form-horizontal" id="feedback_form" action="#" method="post">
                     
                     <div class="form-group ">
-                      <label for="cname" class="control-label col-lg-2">Fecha de Analisis<span class="required">*</span></label>
+                      <label for="cname" class="control-label col-lg-2">Fecha del Analisis<span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class="form-control" name="fecha" type="date" required />
                       </div>
                     </div>
 
-                      <div class="form-group ">
-                        <label for="cname" class="control-label col-lg-2">Precio<span class="required">*</span></label>
-                        <div class="col-lg-10">
-                          <input class="form-control" placeholder="Ej: 12.5" name="quantity" type="number" required />
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                      <label class="control-label col-lg-2" for="inputSuccess">Muestra<span class="required">*</span></label>
+                    <div class="form-group ">
+                      <label for="cname" class="control-label col-lg-2">Costo<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" name="position" type="text" required >
-                          <?php
-                            /*foreach (getAllSamples() as $position) {
-                                  echo '<option value="'.$position->getIdSample().'">'.$position->getNameSample.'</option>';
-                            }*/ 
-                           ?>
-                        </select>
+                        <input class="form-control" placeholder="Ej: 20" name="costo" type="number" required />
                       </div>
                     </div>
 
+                    
+                    <div class="form-group">
+                      <label class="control-label col-lg-2" for="inputSuccess">Muestra<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <select class="form-control m-bot15" name="muestra">
+                          <?php
+                          foreach (getAllSamples() as $sampleIn) {
+                            echo '<option value="'.$sampleIn->getIdSample().'">'.$sampleIn->getIdSample().'</option>';
+                          }
+                          ?>
+                      </select>
+                      </div>
+                    </div>
+                    
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="inputSuccess">Paquete<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" name="position" type="text" required >
+                        <select class="form-control m-bot15" name="paquete">
                           <?php
-                            /*foreach (getAllPackage() as $position) {
-                                  echo '<option value="'.$position->getIdPackage().'">'.$position->getNamePackage().'</option>';
-                            }*/
-                           ?>
-                        </select>
+                          foreach (getAllPackages() as $packagesIn) {
+                            echo '<option value="'.$packagesIn->getIdPackage().'">'.$packagesIn->getIdPackage().' - '.$packagesIn->getNamePackage().'</option>';
+                          }
+                          ?>
+                      </select>
                       </div>
                     </div>
 
-                    <div class="form-group">
-                      <label class="control-label col-lg-2" for="inputSuccess">Empleado<span class="required">*</span></label>
+                    <div class="form-group ">
+                      <label for="cname" class="control-label col-lg-2">Empleado</label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" name="position" type="text" required >
-                          <?php
-                            $session=new UserSession();
-                            $name=$session->getDpiEmployee();
-                          ?>
-                        </select>
+                        <input class="form-control" placeholder="Ej: Empleado" name="empleado" type="text" value= 
+                          <?php echo '"'.$session_employee.'"'; ?>
+                        />
                       </div>
                     </div>
+
+                    
+
+                    
+
 
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit" name="add">Realizar</button>
-                        <button class="btn btn-default" type="button" name="back">
+                        <button class="btn btn-default" type="button">
                           <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>

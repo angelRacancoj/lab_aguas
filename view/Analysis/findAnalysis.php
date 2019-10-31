@@ -1,6 +1,23 @@
 <?php
   require "../../model/Entity/Analysis.php";
+  require "../../model/Entity/Municipality.php";
+  require "../../model/Entity/Client.php";
+  require "../../model/Entity/CostumClient.php";
+  require "../../model/Entity/Sample.php";
+  require "../../model/Entity/Package.php";
+  require "../../model/Entity/Employee.php";
   require "../../controller/Analysis/analysisController.php";
+  require "../../controller/User/UserSession.php";
+
+   $session = new UserSession();
+   $session_role = 0;
+   
+   if (isset($session)) {
+    if ($session->getUserRol() !== null) {
+      $session_role = $session->getUserRol();
+    }
+   }
+   
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +62,9 @@
         <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <header class="panel-heading">Analisis</header>
+              <header class="panel-heading">
+                Analisis
+              </header>
               <div class="panel-body">
                 <div class="form">
                   <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
@@ -54,7 +73,7 @@
                       <div class="col-lg-10">
                         <div class="row">
                           <div class="col-lg-2">
-                            <input type="number" class="form-control" placeholder="Codigo" name="find_code">
+                            <input type="number" class="form-control" placeholder="DPI" name="find_dpi">
                           </div>
                           <div class="col-lg-3">
                             <input type="text" class="form-control" placeholder="Nombre" name ="find_name">
@@ -73,51 +92,29 @@
                             <tbody>
                               <tr>
                                 <th><i class="icon_id"></i>ID</th>
-                                <th><i class="icon_profile"></i>Precio</th>
-                                <th><i class="icon_cogs"></i>Muestra</th>
-                                <th><i class="icon_cogs"></i>Paquete</th>
+                                <th><i class="icon_calendar"></i>Fecha de Analisis</th>
+                                <th><i class="icon_profile"></i>Costo</th>
+                                <th><i class="icon_plus_alt2"></i>Muestra</th>
+                                <th><i class="icon_plus_alt2"></i>Paquete</th>
                                 <th><i class="icon_cogs"></i>Empleado</th>
+                                  <?php
+                                  if ($session_role == 1) {
+                                    echo '<th><i class="icon_cogs"></i>Actualizar</th>';
+                                  }
+                                  ?>
                               </tr>
-
-                              <tr>
-                                 <td>1</td>
-                                 <td>150</td>
-                                 <td>1</td>
-                                 <td>1</td>
-                                 <td>1</td>
-                              </tr>
-
-                              <tr>
-                                 <td>2</td>
-                                 <td>250</td>
-                                 <td>2</td>
-                                 <td>2</td>
-                                 <td>2</td>
-                              </tr>
-
-                              <tr>
-                                 <td>3</td>
-                                 <td>350</td>
-                                 <td>3</td>
-                                 <td>3</td>
-                                 <td>3</td>
-                              </tr>
-
-                              
-
                               <?php
-                              foreach (getAllAnalysis() as $analysisId) {
+                              foreach (getAllAnalysis() as $analysisObject) {
                                 echo "<tr>";
-                                echo '<td>'.$analysisId->getIdAnalysis().'</td>';
-                                echo '<td>'.$analysisId->getCostAnalysis().'</td>';
-                                echo '<td>'.$analysisId->getEmployeeDpi().'</td>';
-                                echo '<td>'.$analysisId->getPackage().'</td>';
-                                echo '<td>'.$analysisId->getSample().'</td>';
-                                echo '<td>File</td>';
-                                echo "</tr>";
+                                echo '<td>'.$analysisObject->getIdAnalysis().'</td>';
+                                echo '<td>'.$analysisObject->getDateAnalysis().'</td>';
+                                echo '<td>'.$analysisObject->getCostAnalysis().'</td>';
+                                echo '<td>'.$analysisObject->getEmployeeDpi()->getNameEmployee().'</td>';
+                                echo '<td>'.$analysisObject->getPackage()->getNamePackage().'</td>';
+                                echo '<td>'.$analysisObject->getSample()->getIdSample().'</td>';                                                                
+                                
                               }
                               ?>
-
                             </tbody>
                           </table>
                         </section>
@@ -127,9 +124,8 @@
 
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <button herf="" class="btn btn-primary" type="submit">Crear</button>
                         <button class="btn btn-default" type="button">
-                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="/lab_aguas/" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>

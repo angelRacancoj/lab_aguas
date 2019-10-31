@@ -6,11 +6,11 @@ require_once "../../model/Entity/Department.php";
 require_once "../../bootstrap.php";
 
 function newSample($newSample){
-    return entityPersist($newSample);
+    return entityPersistSample($newSample);
 }
 
 function updateSample($modifiedSample){
-    return entityPersist($modifiedSample);
+    return entityPersistSample($modifiedSample);
 }
 
 function getByIdSample($idSample){
@@ -33,7 +33,7 @@ function getAllSamples(){
     return $entityManager->getRepository('Sample')->findAll();
 }
 
-function entityPersist($newObject){
+function entityPersistSample($newObject){
     try{
         global $entityManager;
         $entityManager->persist($newObject);

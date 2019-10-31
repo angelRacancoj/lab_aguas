@@ -5,11 +5,11 @@ require_once "../../model/Entity/Package.php";
 require_once "../../bootstrap.php";
 
 function newPackage($newPackage){
-    return entityPersist($newPackage);
+    return entityPersistPackage($newPackage);
 }
 
 function updatePackage($modifiedPackage){
-    return entityPersist($modifiedPackage);
+    return entityPersistPackage($modifiedPackage);
 }
 
 function getPackageById($packageId){
@@ -22,7 +22,7 @@ function getAllPackages(){
     return $entityManager->getRepository('Package')->findAll();
 }
 
-function entityPersist($newObject){
+function entityPersistPackage($newObject){
     try{
         global $entityManager;
         $entityManager->persist($newObject);
