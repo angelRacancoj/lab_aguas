@@ -80,7 +80,7 @@
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button class="btn btn-primary" name="send">Actualizar Equipo</button>
-                        <button class="btn btn-default" name="back">volver</button>
+                        <button class="btn btn-default" onclick="goBack()" name="back">volver</button>
                       </div>
                     </div>
                   </form>
@@ -112,3 +112,8 @@
   <script src="js/scripts.js"></script>
   </body>
 </html>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>

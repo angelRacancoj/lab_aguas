@@ -8,10 +8,14 @@
   }else if(isset($_POST['send'])){
       $staffPosition= getEmployeePositionbyId($_POST['position']);
       $employeeCon->setNameEmployee($_POST['employeeName']);
-      $employeeCon->setIsActive($_POST['state']);
+      $isActive=1;
+      if($_POST['state']=='Desactivo'){
+          $isActive=0;
+      }
+      $employeeCon->setIsActive($isActive);
       $employeeCon->setPhoneEmployee($_POST['employeePhone']);
       $employeeCon->setStaffPosition($staffPosition);
-      //updateEmployee($employeeCon);
+      updateEmployee($employeeCon);
   }
 ?>
 <!DOCTYPE html>
@@ -91,7 +95,7 @@
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button class="btn btn-primary" name="send">Actualizar Empleado</button>
-                        <button class="btn btn-default" name="back">volver</button>
+                        <button class="btn btn-default" onclick="goBack()" name="back">volver</button>
                       </div>
                     </div>
                   </form>
@@ -123,3 +127,8 @@
   <script src="js/scripts.js"></script>
   </body>
 </html>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
