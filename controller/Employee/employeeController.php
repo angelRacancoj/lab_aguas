@@ -6,11 +6,11 @@ require_once "../../model/Entity/StaffPosition.php";
 require_once "../../bootstrap.php";
 
     function newEmployee($employee){
-        return entityPersist($employee);
+        return entityPersistEmployee($employee);
     }
 
     function updateEmployee($modifiedEmployee){
-        return entityPersist($modifiedEmployee);
+        return entityPersistEmployee($modifiedEmployee);
     }
 
     function getByDpi($employeeDPI){
@@ -61,7 +61,7 @@ require_once "../../bootstrap.php";
         return $entityManager->getRepository('StaffPosition')->findOneBy(['idStaffPosition' => $idStaffPosition]);
     }
 
-    function entityPersist($newObject){
+    function entityPersistEmployee($newObject){
         try{
             global $entityManager;
             $entityManager->persist($newObject);

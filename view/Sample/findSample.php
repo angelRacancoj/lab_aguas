@@ -1,6 +1,20 @@
 <?php
   require "../../model/Entity/Sample.php";
+  require "../../model/Entity/Municipality.php";
+  require "../../model/Entity/Client.php";
+  require "../../model/Entity/CostumClient.php";
   require "../../controller/Sample/sampleController.php";
+  require "../../controller/User/UserSession.php";
+
+   $session = new UserSession();
+   $session_role = 0;
+   
+   if (isset($session)) {
+    if ($session->getUserRol() !== null) {
+      $session_role = $session->getUserRol();
+    }
+   }
+   
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +28,7 @@
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Buscar Muestras | Laboratorio de aguas</title>
+  <title>Buscar Muestra | Laboratorio de aguas</title>
 
   <!-- Bootstrap CSS -->
   <link href="../Principal/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +59,9 @@
         <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <header class="panel-heading">Muestra</header>
+              <header class="panel-heading">
+                Muestra
+              </header>
               <div class="panel-body">
                 <div class="form">
                   <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
@@ -54,7 +70,7 @@
                       <div class="col-lg-10">
                         <div class="row">
                           <div class="col-lg-2">
-                            <input type="number" class="form-control" placeholder="Codigo" name="find_code">
+                            <input type="number" class="form-control" placeholder="DPI" name="find_dpi">
                           </div>
                           <div class="col-lg-3">
                             <input type="text" class="form-control" placeholder="Nombre" name ="find_name">
@@ -74,115 +90,63 @@
                               <tr>
                                 <th><i class="icon_id"></i>ID</th>
                                 <th><i class="icon_profile"></i>Fecha de Admision</th>
-                                <th><i class="icon_cogs"></i>Fecha de toma</th>
-                                <th><i class="icon_cogs"></i>Lote</th>
-                                <th><i class="icon_cogs"></i>Hora de toma</th>
-                                <th><i class="icon_cogs"></i>Contenedor</th>
-                                <th><i class="icon_cogs"></i>Esta Refrigerado</th>
-                                <th><i class="icon_cogs"></i>Temperatura</th>
-                                <th><i class="icon_cogs"></i>Cantidad de la muestra</th>
-                                <th><i class="icon_cogs"></i>Es Nacimiento de Agua</th>
-                                <th><i class="icon_cogs"></i>Aldea</th>
-                                <th><i class="icon_cogs"></i>Observaciones</th>
-                                <th><i class="icon_cogs"></i>Pueblo</th>
-                                <th><i class="icon_cogs"></i>Nota</th>
-                                <th><i class="icon_cogs"></i>Es aceptada</th>
-                                <th><i class="icon_cogs"></i>Boleta de Pago</th>
-                                <th><i class="icon_cogs"></i>Municipalidad</th>
-                                <th><i class="icon_cogs"></i>Cliente</th>
+                                <th><i class="icon_pin_alt"></i>Fecha de Toma</th>
+                                <th><i class="icon_pin_alt"></i>Lote</th>
+                                <th><i class="icon_pin_alt"></i>Hora</th>
+                                <th><i class="icon_mobile"></i>Contenedor</th>
+                                <th><i class="icon_mobile"></i>Refrigerado</th>
+                                <th><i class="icon_mobile"></i>Temperatura</th>
+                                <th><i class="icon_mail_alt"></i>Cantidad</th>
+                                <th><i class="icon_mail_alt"></i>Nacimiento</th>
+                                <th><i class="icon_mail_alt"></i>Aldea</th>
+                                <th><i class="icon_mail_alt"></i>Observaciones</th>
+                                <th><i class="icon_mail_alt"></i>Pueblo</th>
+                                <th><i class="icon_mail_alt"></i>Nota</th>
+                                <th><i class="icon_mail_alt"></i>Aceptado</th>
+                                <th><i class="icon_mail_alt"></i>Boleta</th>
+                                <th><i class="icon_mail_alt"></i>Municipalidad</th>
+                                <th><i class="icon_mail_alt"></i>Cliente</th>
+                                  <?php
+                                  if ($session_role == 1) {
+                                    echo '<th><i class="icon_cogs"></i>Actualizar</th>';
+                                  }
+                                  ?>
                               </tr>
-
-                              <tr>
-                                 <td>1</td>
-                                 <td>2019-10-28</td>
-                                 <td>2019-10-27</td>
-                                 <td>Lote 1</td>
-                                 <td>22:10</td>
-                                 <td>Contenedor 1</td>
-                                 <td>Si</td>
-                                 <td>45.5</td>
-                                 <td>50</td>
-                                 <td>No</td>
-                                 <td>Aldea 1</td>
-                                 <td>Ninguna</td>
-                                 <td>Pueblo 1</td>
-                                 <td>Nota 1</td>
-                                 <td>Si</td>
-                                 <td>12346789</td>
-                                 <td>1</td>
-                                 <td>1</td>
-                              </tr>
-
-                              <tr>
-                                 <td>2</td>
-                                 <td>2019-10-28</td>
-                                 <td>2019-10-27</td>
-                                 <td>Lote 1</td>
-                                 <td>22:10</td>
-                                 <td>Contenedor 2</td>
-                                 <td>Si</td>
-                                 <td>45.5</td>
-                                 <td>50</td>
-                                 <td>No</td>
-                                 <td>Aldea 2</td>
-                                 <td>Ninguna</td>
-                                 <td>Pueblo 2</td>
-                                 <td>Nota 2</td>
-                                 <td>Si</td>
-                                 <td>12346789</td>
-                                 <td>2</td>
-                                 <td>2</td>
-                              </tr>
-
-                              <tr>
-                                 <td>3</td>
-                                 <td>2019-10-28</td>
-                                 <td>2019-10-27</td>
-                                 <td>Lote 1</td>
-                                 <td>22:10</td>
-                                 <td>Contenedor 3</td>
-                                 <td>Si</td>
-                                 <td>45.5</td>
-                                 <td>50</td>
-                                 <td>No</td>
-                                 <td>Aldea 3</td>
-                                 <td>Ninguna</td>
-                                 <td>Pueblo 3</td>
-                                 <td>Nota 3</td>
-                                 <td>Si</td>
-                                 <td>12346789</td>
-                                 <td>3</td>
-                                 <td>3</td>
-                              </tr>
-
-                              
-
                               <?php
-                              foreach (getAllSamples() as $sampleId) {
+                              foreach (getAllSamples() as $sampleObject) {
                                 echo "<tr>";
-                                echo '<td>'.$sampleId->getIdSample().'</td>';
-                                echo '<td>'.$sampleId->getAdmissionDate().'</td>';
-                                echo '<td>'.$sampleId->getSamplingDate().'</td>';
-                                echo '<td>'.$sampleId->getBatch().'</td>';
-                                echo '<td>'.$sampleId->getSamplingTime().'</td>';
-                                echo '<td>'.$sampleId->getContainer().'</td>';
-                                echo '<td>'.$sampleId->getIsRefrigerated().'</td>';
-                                echo '<td>'.$sampleId->getTemperature().'</td>';
-                                echo '<td>'.$sampleId->getSampleQuantity().'</td>';
-                                echo '<td>'.$sampleId->getIsWaterBirth().'</td>';
-                                echo '<td>'.$sampleId->getHamlet().'</td>';
-                                echo '<td>'.$sampleId->getObservations().'</td>';
-                                echo '<td>'.$sampleId->getVillage().'</td>';
-                                echo '<td>'.$sampleId->getNoteSample().'</td>';
-                                echo '<td>'.$sampleId->getAcceptance().'</td>';
-                                echo '<td>'.$sampleId->getBoletaDePago().'</td>';
-                                echo '<td>'.$sampleId->getClientDpi().'</td>';
-                                echo '<td>'.$sampleId->getMunicipality().'</td>';
-                                echo '<td>File</td>';
-                                echo "</tr>";
+                                echo '<td>'.$sampleObject->getIdSample().'</td>';
+                                echo '<td>'.$sampleObject->getAdmissionDate().'</td>';
+                                echo '<td>'.$sampleObject->getSamplingDate().'</td>';
+                                echo '<td>'.$sampleObject->getBatch().'</td>';
+                                echo '<td>'.$sampleObject->getSamplingTime().'</td>';
+                                echo '<td>'.$sampleObject->getContainer().'</td>';
+                                echo '<td>'.$sampleObject->getIsRefrigerated().'</td>';
+                                echo '<td>'.$sampleObject->getTemperature().'</td>';
+                                echo '<td>'.$sampleObject->getSampleQuantity().'</td>';
+                                echo '<td>'.$sampleObject->getIsWaterBirth().'</td>';
+                                echo '<td>'.$sampleObject->getHamlet().'</td>';
+                                echo '<td>'.$sampleObject->getObservations().'</td>';
+                                echo '<td>'.$sampleObject->getVillage().'</td>';
+                                echo '<td>'.$sampleObject->getNoteSample().'</td>';
+                                echo '<td>'.$sampleObject->getAcceptance().'</td>';
+                                echo '<td>'.$sampleObject->getBoletaDePago().'</td>';
+
+                                echo '<td>'.$sampleObject->getMunicipality()->getNameMunicipality().'</td>';
+                                echo '<td>'.$sampleObject->getClientDpi()->getNameClient().'</td>';
+
+                                if ($session_role == 1) {
+                                  echo '<td>
+                                    <div class="btn-group">
+                                      <a class="btn btn-primary" href="editSample.php?id='.$sampleObject->getIdSample().'" title="Actualizar Datos" >
+                                        <i class="icon_plus_alt2"></i>
+                                      </a>
+                                    </div>
+                                  </td>';
+                                  echo "</tr>";
+                                }
                               }
                               ?>
-
                             </tbody>
                           </table>
                         </section>
@@ -192,9 +156,8 @@
 
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <button herf="" class="btn btn-primary" type="submit">Crear</button>
                         <button class="btn btn-default" type="button">
-                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="/lab_aguas/" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>
