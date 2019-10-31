@@ -1,6 +1,22 @@
 <?php
-  require "../../model/Entity/Provider.php";
-  require "../../controller/Provider/providerController.php";
+    require "../../model/Entity/Provider.php";
+    require "../../controller/Provider/providerController.php";
+    require "../../controller/User/UserSession.php";
+
+    $session = new UserSession();
+    $session_role = 0;
+
+    if (isset($session)) {
+        if ($session->getUserRol() !== null) {
+            $session_role = $session->getUserRol();
+        }
+    }
+
+    if (isset($_POST['find'])) {
+        foreach (findWithFilters($_POST['find_id'], $_POST['find_name']) as $provider) {
+
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -77,23 +93,32 @@
                                   <th><i class="icon_profile"></i>Nombre Completo</th>
                                   <th><i class="icon_mobile"></i>Telefono</th>
                                   <th><i class="icon_pin_alt"></i>Dirección</th>
-                                  <th><i class="icon_cogs"></i>Actualizar</th>
+                                  <?php
+                                  if ($session_role == 1 || $session_role == 2) {
+                                      echo '<th><i class="icon_cogs"></i>Actualizar</th>';
+                                  }
+                                  ?>
                               </tr>
                               <?php
                               foreach (getAllProviders() as $provider) {
-                                echo "<tr>";
-                                echo '<td>'.$provider->getIdProvider().'</td>';
-                                echo '<td>'.$provider->getNameProvider().'</td>';
-                                echo '<td>'.$provider->getPhoneProvider().'</td>';
-                                echo '<td>'.$provider->getDirectionProvider().'</td>';
-                                echo '<td>
-                                  <div class="btn-group">
-                                    <a class="btn btn-primary" href="#" title="Modificar" ><i class="icon_plus_alt2"></i></a>
-                                  </div>
-                                </td>';
-                                echo "</tr>";
+                                  echo "<tr>";
+                                  echo '<td>' . $provider->getIdProvider() . '</td>';
+                                  echo '<td>' . $provider->getNameProvider() . '</td>';
+                                  echo '<td>' . $provider->getPhoneProvider() . '</td>';
+                                  echo '<td>' . $provider->getDirectionProvider() . '</td>';
+                                  if ($session_role == 1) {
+                                      echo '<td>
+                                        <div class="btn-group">
+                                            <a class="btn btn-primary" href="#" title="Modificar" >
+                                                <i class="icon_plus_alt2"></i>
+                                            </a>
+                                        </div>
+                                    </td>';
+                                      echo "</tr>";
+                                  }
                               }
                               ?>
+
                             </tbody>
                           </table>
                         </section>
@@ -103,7 +128,7 @@
 
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <button herf="" class="btn btn-primary" type="submit">Buscar</button>
+                        <button herf="" class="btn btn-primary" type="submit" name = "find">Buscar</button>
                         <button class="btn btn-default" type="button" href="/lab_aguas/index.php">
                             <a href="/lab_aguas/index.php" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
