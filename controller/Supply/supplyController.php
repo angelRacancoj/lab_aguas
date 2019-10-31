@@ -2,6 +2,7 @@
 
 require "../../vendor/autoload.php";
 require_once "../../model/Entity/Supply.php";
+require_once "../../model/Entity/Measure.php";
 require_once "../../bootstrap.php";
 
     function newSupply($newSupply){
@@ -65,7 +66,7 @@ require_once "../../bootstrap.php";
 
 	function getAllSupplies(){
         global $entityManager;
-        return $entityManager->getRepository('Supply')->findAll();
+  	  	return $entityManager->getRepository('Supply')->findAll();
 	}
 
     function entityPersistSupply($newObject){
