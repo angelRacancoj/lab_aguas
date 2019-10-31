@@ -1,27 +1,49 @@
 <?php
   require "../../model/Entity/Sample.php";
-  require "../../controller/Sample/sampleController.php";
-  require "../../model/Entity/Municipality.php";
   require "../../model/Entity/Client.php";
+  require "../../model/Entity/CostumClient.php";
+  require "../../model/Entity/Municipality.php";
+  require "../../controller/Sample/sampleController.php";
   require "../../controller/Client/clientController.php";
+  require "../../controller/User/UserSession.php";
 
-
-  /*if (isset($_POST['add'])) {
-    $newPurchase = new Purchase();
-    $newPurchase->setDateShopping(new DateTime(_POST['fecha']));
-    $newPurchase->setProvider($_POST['provider']);
-    $newPurchase->setSupply($_POST['supply']);
-    $newPurchase->setAmountPurchased($_POST['quantity']);
-    $newPurchase->setNoteShopping($_POST['note']));
-
-    if (newPurchase($newPurchase)) {
-      echo "Agregado exitosamente";
-    } else {
-      echo "Error al crear la compra";
+  $session = new UserSession();
+  $session_role = 0;
+  if (isset($session)) {
+    if ($session->getUserRol() !== null) {
+      $session_role = $session->getUserRol();
     }
   }
-  */
 
+  if ( ($session_role) == 1 ||  ($session_role == 2) ) {
+    if (isset($_POST['add'])) {
+      $newSample = new Shopping();
+
+      $newSample->setAdmissionDate($_POST['fecha_admision']);
+      $newSample->setSamplingDate($_POST['fecha_toma']);
+      $newSample->setBatch($_POST['lote']);
+      $newSample->setSamplingTime($_POST['hora_toma']);
+      $newSample->setContainer($_POST['contenedor']);
+      $newSample->setIsRefrigerated($_POST['refrigerado']);
+      $newSample->setTemperature($_POST['temperatura']);
+      $newSample->setSampleQuantity($_POST['cantidad']);
+      $newSample->setIsWaterBirth($_POST['nacimiento']);
+      $newSample->setHamlet($_POST['aldea']);
+      $newSample->setObservations($_POST['observaciones']);
+      $newSample->setVillage($_POST['pueblo']);
+      $newSample->setNoteSample($_POST['nota']);
+      $newSample->setAcceptance($_POST['aceptado']);
+      $newSample->setBoletaDePago($_POST['boleta']);
+      $newSample->setClientDpi(getClientById($_POST['cliente']));
+      $newSample->setMunicipality($_POST['municipalidad']);
+
+      if (newSample($newSample)) {
+        echo "Muestra Ingresada";
+      } else {
+        echo "Error al ingresar la muestra";
+      }
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -96,7 +118,7 @@
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Hora de Toma<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input type="time" id="appt" name="hora_toma" min="09:00" max="18:00" required> 
+                        <input type="time" id="appt" name="hora_toma" min="00:00" max="23:59" required> 
                       </div>
                     </div>
 
@@ -112,16 +134,11 @@
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Esta Refrigerado<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <div>
-                        <input type="radio" id="huey" name="drone" value="huey"
-                               checked >
-                        <label for="huey">Si</label>
-                      </div>
-
-                      <div>
-                        <input type="radio" id="dewey" name="drone" value="dewey">
-                        <label for="dewey">No</label>
-                      </div>
+                        
+                        <select name="select">
+                          <option value="1">Si</option> 
+                          <option value="0" selected>No</option>
+                        </select>
 
                       </div>
                     </div>
@@ -146,16 +163,11 @@
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Es Nacimiento de Agua<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <div>
-                        <input type="radio" id="huey" name="drone2" value="huey"
-                               checked >
-                        <label for="huey">Si</label>
-                      </div>
-
-                      <div>
-                        <input type="radio" id="dewey" name="drone2" value="dewey">
-                        <label for="dewey">No</label>
-                      </div>
+                        
+                        <select name="select">
+                          <option value="1">Si</option> 
+                          <option value="0" selected>No</option>
+                        </select>
 
                       </div>
                     </div>
@@ -194,16 +206,11 @@
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Es Aceptada<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <div>
-                        <input type="radio" id="huey" name="drone3" value="huey"
-                               checked >
-                        <label for="huey">Si</label>
-                      </div>
-
-                      <div>
-                        <input type="radio" id="dewey" name="drone3" value="dewey">
-                        <label for="dewey">No</label>
-                      </div>
+                        
+                        <select name="select">
+                          <option value="1">Si</option> 
+                          <option value="0" selected>No</option>
+                        </select>
 
                       </div>
                     </div>
@@ -218,29 +225,29 @@
 
 
                     <div class="form-group">
-                      <label class="control-label col-lg-2" for="inputSuccess">Municipalidad<span class="required">*</span></label>
+                      <label class="control-label col-lg-2" for="inputSuccess">Municipalidad</label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" name="municipalidad" type="text" required >
+                        <select class="form-control m-bot15" name="municipalidad">
                           <?php
-                            /*foreach (getAllMunicipalities() as $position) {
-                                  echo '<option value="'.$position->getIdMunicipality().'">'.$position->getNameMunicipality().'</option>';
-                            }*/ 
-                           ?>
-                        </select>
+                          foreach (getAllMunicipalities() as $municipalityObject) {
+                            echo '<option value="'.$municipalityObject->getIdMunicipality().'">'.$municipalityObject->getNameMunicipality().'</option>';
+                          }
+                          ?>
+                      </select>
                       </div>
                     </div>
 
 
                     <div class="form-group">
-                      <label class="control-label col-lg-2" for="inputSuccess">Cliente<span class="required">*</span></label>
+                      <label class="control-label col-lg-2" for="inputSuccess">Cliente</label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" name="cliente" type="text" required >
+                        <select class="form-control m-bot15" name="cliente">
                           <?php
-                            /*foreach (getAllClients() as $position) {
-                                  echo '<option value="'.$position->getIdClient().'">'.$position->getNameClient().'</option>';
-                            }*/ 
-                           ?>
-                        </select>
+                          foreach (getAllClient() as $clienteObject) {
+                            echo '<option value="'.$clienteObject->getDpiClient().'">'.$clienteObject->getNameClient().'</option>';
+                          }
+                          ?>
+                      </select>
                       </div>
                     </div>
 
