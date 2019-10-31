@@ -87,7 +87,7 @@
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button class="btn btn-primary" name="send">Registrar Equipo</button>
-                        <button class="btn btn-default" name="back">volver</button>
+                        <button class="btn btn-default" onclick="goBack()" name="back">volver</button>
                       </div>
                     </div>
                   </form>
@@ -117,3 +117,8 @@
   <script src="js/form-validation-script.js"></script>
   <!--custome script for all page-->
   <script src="js/scripts.js"></script>
+  <script>
+  function goBack() {
+    window.history.back();
+  }
+  </script>

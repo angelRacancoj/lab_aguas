@@ -14,17 +14,20 @@
       $employeeCon=getEmployeeByDpiAndPass($employee);
       if(isset($employeeCon)){
             //se inicio sesion correctamente
+            if($employeeCon->getIsActive()==1){
             $message='Sesion iniciada';
             $session=new UserSession();
             $session->setUserDpi($employeeCon->getDpiEmployee());
             $session->setUserName($employeeCon->getNameEmployee());
             $session->setUserRol($employeeCon->getStaffPosition()->getIdStaffPosition());
             header('Location: /lab_aguas');
+          }else {
+              $message='El usuario no esta activado';
+          }
       }else{
           //no se pudo iniciar session
           $message='No se pudo encontrar datos ingresados';
       }
-
   }
 ?>
 <!DOCTYPE html>

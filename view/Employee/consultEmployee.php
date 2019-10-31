@@ -1,6 +1,9 @@
 <?php
   require_once("../../controller/Employee/employeeController.php");
   require_once("../../model/Entity/Employee.php");
+  require_once("../../controller/User/UserSession.php");
+  $session=new UserSession();
+  $rolUser= $session->getUserRol();
   $employeeCon;
   if(isset($_POST['back'])){
       header('Location: /lab_aguas');
@@ -78,7 +81,7 @@
                           </div>
                           <div class="col-lg-3">
                             <button class="btn btn-primary" name="send">Buscar</button>
-                            <button class="btn btn-primary" name="back">Volver</button>
+                            <button class="btn btn-primary" onclick="goBack()" name="back">Volver</button>
                           </div>
                         </div>
 
@@ -109,12 +112,11 @@
                                 echo '<td>'.$employee1->getStaffPosition()->getNameStaffPosition().'</td>';
                                 echo '<td>'.$employee1->getIsActive().'</td>';
                                 //echo '<td>File</td>';
-                                echo '<td>
-                                  <div class="btn-group">
-                                    <a class="btn btn-primary" name="update" href="modifyEmployee.php?dpi='.$employee1->getDpiEmployee().'" title="Modificar"><i class="icon_plus_alt2"></i></a>
-                                  </div>
-                                </td>';
-                                echo "</tr>";
+                                echo '<td><div class="btn-group">';
+                                    if($rolUser==1){
+                                        echo '<a class="btn btn-primary" name="update" href="modifyEmployee.php?dpi='.$employee1->getDpiEmployee().'" title="Modificar"><i class="icon_plus_alt2"></i></a>';
+                                    }
+                                echo "</div></td></tr>";
                               }
                               ?>
                             </tbody>
@@ -151,3 +153,8 @@
     <script src="js/scripts.js"></script>
   </body>
 </html>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>

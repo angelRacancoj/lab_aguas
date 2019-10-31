@@ -10,7 +10,7 @@
       if(!empty($nameEquipment)&&!empty($modelEquipment)){
 
       }else if(!empty($nameEquipment)){
-        
+
       }else if(!empty($modelEquipment)){
 
       }else{
@@ -72,7 +72,7 @@
                            </div>
                            <div class="col-lg-3">
                              <button class="btn btn-primary" name="send">Buscar</button>
-                             <button class="btn btn-primary" name="back">Volver</button>
+                             <button class="btn btn-primary" onclick="goBack()" name="back">Volver</button>
                            </div>
                          </div>
 
@@ -145,3 +145,8 @@
 
   </body>
 </html>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
