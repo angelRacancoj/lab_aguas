@@ -32,3 +32,30 @@ function entityPersist($newObject){
         return false;
     }
 }
+
+function getByIdAndName($idProvider, $nameProvider){
+    global $entityManager;
+    $predicates = [];
+    if (!empty($idProvider)){
+        $predicates[] = ('a.idProvider LIKE ' . '\'%'.addcslashes($idProvider,'%').'%\'');
+    }
+    if (!empty($nameProvider)){
+        $predicates[] = ('a.nameProvider LIKE ' . '\'%'.addcslashes($nameProvider,'%').'%\'');
+    }
+    if (empty($predicates)){
+        $query = $entityManager->createQueryBuilder('a')
+            ->select('a')
+            ->from('Provider','a');
+    } else {
+        $query = $entityManager->createQueryBuilder();
+        $and = $query->expr()->andX();
+        foreach ($predicates as $predicateWhere){
+            $and->add($predicateWhere);
+        }
+        $query
+            ->select('a')
+            ->from('Provider','a')
+            ->where($and);
+    }
+    return $query->getQuery()->getResult();
+}
