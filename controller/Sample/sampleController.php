@@ -23,6 +23,16 @@ function getAllDepartament(){
     return $entityManager->getRepository('Department')->findAll();
 }
 
+function getAllMunicipalities(){
+    global  $entityManager;
+    return $entityManager->getRepository('Municipality')->findAll();
+}
+
+function getAllSamples(){
+    global $entityManager;
+    return $entityManager->getRepository('Sample')->findAll();
+}
+
 function entityPersist($newObject){
     try{
         global $entityManager;
