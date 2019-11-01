@@ -1,10 +1,22 @@
 <?php
   require "../../model/Entity/Shopping.php";
+  require "../../model/Entity/Supply.php";
+  require "../../model/Entity/Equipment.php";
   require "../../controller/Shopping/shoppingController.php";
   require "../../controller/Supply/supplyController.php";
   require "../../controller/Provider/providerController.php";
   require "../../controller/User/UserSession.php";
+/*
+  $newShopping = new Shopping();
 
+      $newShopping->setDateShopping(new DateTime('2019-10-10'));
+      $newShopping->setAmountPurchased('30');
+      $newShopping->setNoteShopping('Nota 1');
+      $newShopping->setSupply(getSupplyByCode('1'));
+      $newShopping->setProvider(getProviderById(8));
+      $newShopping->setEquipment(NULL);
+      newPurchase($newShopping);
+*/
   $session = new UserSession();
   $session_role = 0;
   if (isset($session)) {
@@ -17,12 +29,12 @@
     if (isset($_POST['add'])) {
       $newShopping = new Shopping();
 
-      $newShopping->setDateShopping($_POST['date']);
+      $newShopping->setDateShopping(new DateTime($_POST['date']));
       $newShopping->setAmountPurchased($_POST['quantity']);
-      $newShopping->setAmountPurchased($_POST['setNoteShopping']);
+      $newShopping->setNoteShopping($_POST['nota']);
       $newShopping->setSupply(getSupplyByCode($_POST['supply']));
       $newShopping->setProvider(getProviderById($_POST['costumProvider']));
-      //$newShopping->setEquipment("NULL");
+      //$newShopping->setEquipment(null);
 
       if (newPurchase($newShopping)) {
         echo "Compra realizada";
@@ -121,7 +133,7 @@
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Nota de la compra:</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: Compra segun factura No. 1" name="direction" type="text" />
+                        <input class="form-control" placeholder="Ej: Compra segun factura No. 1" name="nota" type="text" />
                       </div>
                     </div>
 
@@ -204,7 +216,7 @@
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit" name="add">Comprar</button>
                         <button class="btn btn-default" type="button">
-                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="/lab_aguas/" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>

@@ -107,7 +107,7 @@
                               foreach (getAllAnalysis() as $analysisObject) {
                                 echo "<tr>";
                                 echo '<td>'.$analysisObject->getIdAnalysis().'</td>';
-                                echo '<td>'.$analysisObject->getDateAnalysis().'</td>';
+                                echo '<td>'.$analysisObject->getDateAnalysis()->format('d/m/yy').'</td>';
                                 echo '<td>'.$analysisObject->getCostAnalysis().'</td>';
                                 echo '<td>'.$analysisObject->getEmployeeDpi()->getNameEmployee().'</td>';
                                 echo '<td>'.$analysisObject->getPackage()->getNamePackage().'</td>';

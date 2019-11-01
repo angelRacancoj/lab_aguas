@@ -34,14 +34,14 @@
         $custom_category = $clienti->getCostumClient()->getIdCostumCategory();
       }
 
-    if ($_POST['update'] && isset($dpi_c)) {
+    if (isset($_POST['update']) && isset($dpi_c)) {
       $newClient = getClientById($dpi_c);
       
       if (strcmp($newClient->getNameClient(),$_POST['client_name']) != 0) {
         $newClient->setNameClient($_POST['client_name']);
       }
       if (strcmp($newClient->getDirectionClient(),$_POST['direction']) != 0) {
-        $newClient->setDirectionClient()($_POST['direction']);
+        $newClient->setDirectionClient($_POST['direction']);
       }
       if (strcmp($newClient->getCityClient(),$_POST['department']) != 0) {
         $newClient->setCityClient($_POST['department']);

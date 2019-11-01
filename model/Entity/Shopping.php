@@ -233,3 +233,4 @@ class Shopping
         return $this->supply;
     }
 }
+?>

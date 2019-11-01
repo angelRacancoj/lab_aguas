@@ -6,6 +6,29 @@
   require "../../controller/Sample/sampleController.php";
   require "../../controller/Client/clientController.php";
   require "../../controller/User/UserSession.php";
+/*
+  $newSample = new Sample();
+
+  $newSample->setAdmissionDate(new DateTime('2019-01-01'));
+  $newSample->setSamplingDate(new DateTime('2019-01-01'));
+  $newSample->setBatch('1');
+  $newSample->setSamplingTime(new DateTime('10:10'));
+  $newSample->setContainer('Contenedor PET');
+  $newSample->setIsRefrigerated("1");
+  $newSample->setTemperature(10);
+  $newSample->setSampleQuantity(1);
+  $newSample->setIsWaterBirth("1");
+  $newSample->setHamlet('LA');
+  $newSample->setObservations('no');
+  $newSample->setVillage('LA');
+  $newSample->setNoteSample('la');
+  $newSample->setAcceptance("1");
+  $newSample->setBoletaDePago('12345');
+  $newSample->setClientDpi(getClientById('1112223330901'));
+  $newSample->setMunicipality(findByIdMunicipality(1));
+
+  newSample($newSample);
+*/
 
   $session = new UserSession();
   $session_role = 0;
@@ -17,12 +40,11 @@
 
   if ( ($session_role) == 1 ||  ($session_role == 2) ) {
     if (isset($_POST['add'])) {
-      $newSample = new Shopping();
-
-      $newSample->setAdmissionDate($_POST['fecha_admision']);
-      $newSample->setSamplingDate($_POST['fecha_toma']);
+      $newSample = new Sample();
+      $newSample->setAdmissionDate(new DateTime($_POST['fecha_admision']));
+      $newSample->setSamplingDate(new DateTime($_POST['fecha_toma']));
       $newSample->setBatch($_POST['lote']);
-      $newSample->setSamplingTime($_POST['hora_toma']);
+      $newSample->setSamplingTime(new DateTime($_POST['hora_toma']));
       $newSample->setContainer($_POST['contenedor']);
       $newSample->setIsRefrigerated($_POST['refrigerado']);
       $newSample->setTemperature($_POST['temperatura']);
@@ -35,7 +57,7 @@
       $newSample->setAcceptance($_POST['aceptado']);
       $newSample->setBoletaDePago($_POST['boleta']);
       $newSample->setClientDpi(getClientById($_POST['cliente']));
-      $newSample->setMunicipality($_POST['municipalidad']);
+      $newSample->setMunicipality(findByIdMunicipality($_POST['municipalidad']));
 
       if (newSample($newSample)) {
         echo "Muestra Ingresada";
@@ -135,7 +157,7 @@
                       <label for="cname" class="control-label col-lg-2">Esta Refrigerado<span class="required">*</span></label>
                       <div class="col-lg-10">
                         
-                        <select name="select">
+                        <select name="refrigerado">
                           <option value="1">Si</option> 
                           <option value="0" selected>No</option>
                         </select>
@@ -164,7 +186,7 @@
                       <label for="cname" class="control-label col-lg-2">Es Nacimiento de Agua<span class="required">*</span></label>
                       <div class="col-lg-10">
                         
-                        <select name="select">
+                        <select name="nacimiento">
                           <option value="1">Si</option> 
                           <option value="0" selected>No</option>
                         </select>
@@ -207,7 +229,7 @@
                       <label for="cname" class="control-label col-lg-2">Es Aceptada<span class="required">*</span></label>
                       <div class="col-lg-10">
                         
-                        <select name="select">
+                        <select name="aceptado">
                           <option value="1">Si</option> 
                           <option value="0" selected>No</option>
                         </select>
@@ -256,7 +278,7 @@
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit" name="add">Realizar</button>
                         <button class="btn btn-default" type="button" name="back">
-                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="/lab_aguas/" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>

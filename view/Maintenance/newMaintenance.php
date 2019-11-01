@@ -16,7 +16,7 @@
   if ($session_role == 1) {
     if (isset($_POST['add'])) {
       $newMaintenance = new Maintenance();
-      $newMaintenance->setMaintenanceDate($_POST['supply_name']);
+      $newMaintenance->setMaintenanceDate(new DateTime($_POST['supply_name']));
       $newMaintenance->setMaintenanceCost($_POST['expired_date']);
       //revisar metodo
       $newMaintenance->setEquipment(getEquipmetById($_POST['costumEquipment']));

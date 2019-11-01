@@ -13,6 +13,11 @@ function newPurchase($newPurchase){
     } catch (Exception $exception){
         return false;
     }
+    /*
+    global $entityManager;
+        $entityManager->persist($newPurchase);
+        $entityManager->flush();
+        */
 }
 
 function getPurchaseById($purchaseId){

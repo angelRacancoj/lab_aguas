@@ -89,7 +89,7 @@
                               foreach (getAllMaintenances() as $maintenancesi) {
                                 echo "<tr>";
                                 echo '<td>'.$maintenancesi->getIdMaintenance().'</td>';
-                                echo '<td>'.$maintenancesi->getMaintenanceDate().'</td>';
+                                echo '<td>'.$maintenancesi->getMaintenanceDate()->format('d/m/yy').'</td>';
                                 echo '<td>'.$maintenancesi->getMaintenanceCost().'</td>';
                                 echo '<td>'.$maintenancesi->getEquipment()->getIdEquipment().'</td>';
                                 echo '<td>'.$maintenancesi->getEquipment()->getNameEquipment().'</td>';
