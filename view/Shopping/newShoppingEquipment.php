@@ -1,8 +1,11 @@
 <?php
   require "../../model/Entity/Shopping.php";
+  require "../../model/Entity/Supply.php";
+  require "../../model/Entity/Equipment.php";
   require "../../controller/Shopping/shoppingController.php";
-  require "../../controller/Equipment/equipmentController.php";
+  require "../../controller/Supply/supplyController.php";
   require "../../controller/Provider/providerController.php";
+  require "../../controller/Equipment/equipmentController.php";
   require "../../controller/User/UserSession.php";
 
   $session = new UserSession();
@@ -15,16 +18,16 @@
 
   if ( ($session_role) == 1 ||  ($session_role == 2) ) {
     if (isset($_POST['add'])) {
-      $newEquipment = new Equipment();
+      $newEquipment = new Shopping();
 
-      $newEquipment->setDateShopping($_POST['date']);
+      $newEquipment->setDateShopping(new DateTime($_POST['fecha']));
       $newEquipment->setAmountPurchased($_POST['quantity']);
-      $newEquipment->setAmountPurchased($_POST['setNoteShopping']);
+      $newEquipment->setNoteShopping($_POST['nota']);
       $newEquipment->setEquipment(getById($_POST['equipment']));
       $newEquipment->setProvider(getProviderById($_POST['costumProvider']));
       //$newEquipment->setSupply("NULL");
 
-      if (newEquipment($newEquipment)) {
+      if (newPurchase($newEquipment)) {
         echo "Compra realizada";
       } else {
         echo "Error al realizar la compra";
@@ -81,7 +84,7 @@
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Fecha de la compra<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" name="date" type="date" required />
+                        <input class="form-control" name="fecha" type="date" required />
                       </div>
                     </div>
                     
@@ -120,7 +123,7 @@
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Nota de la compra:</label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: Compra segun factura No. 1" name="direction" type="text" />
+                        <input class="form-control" placeholder="Ej: Compra segun factura No. 1" name="nota" type="text" />
                       </div>
                     </div>
 
@@ -203,7 +206,7 @@
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit" name="add">Comprar</button>
                         <button class="btn btn-default" type="button">
-                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="/lab_aguas/" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>

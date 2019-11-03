@@ -96,33 +96,27 @@
                                 <th><i class="icon_plus_alt2"></i>Equipo</th>
                                 <th><i class="icon_cogs"></i>Cantidad</th>
                                 <th><i class="icon_mail_alt"></i>Nota</th>
-                                  <?php
-                                  if ($session_role == 1) {
-                                    echo '<th><i class="icon_cogs"></i>Actualizar</th>';
-                                  }
-                                  ?>
+                                  
                               </tr>
                               <?php
                               foreach (getAllPurchases() as $shoppingObject) {
                                 echo "<tr>";
                                 echo '<td>'.$shoppingObject->getIdShopping().'</td>';
-                                echo '<td>'.$shoppingObject->getDateShopping().'</td>';
+                                echo '<td>'.$shoppingObject->getDateShopping()->format('d/m/yy').'</td>';
                                 echo '<td>'.$shoppingObject->getProvider()->getNameProvider().'</td>';
-                                echo '<td>'.$shoppingObject->getSupply()->getNameSupply().'</td>';
-                                echo '<td>'.$shoppingObject->getEquipment()->getNameEquipment().'</td>';
+                                if (null !== $shoppingObject->getSupply()) {
+                                  echo '<td>'.$shoppingObject->getSupply()->getNameSupply().'</td>';
+                                }else{
+                                  echo '<td></td>';
+                                }
+                                if (null !== $shoppingObject->getEquipment()) {
+                                  echo '<td>'.$shoppingObject->getEquipment()->getNameEquipment().'</td>';
+                                }else{
+                                  echo '<td></td>';
+                                }
                                 echo '<td>'.$shoppingObject->getAmountPurchased().'</td>';
                                 echo '<td>'.$shoppingObject->getNoteShopping().'</td>';
-                                                                
-                                if ($session_role == 1) {
-                                  echo '<td>
-                                    <div class="btn-group">
-                                      <a class="btn btn-primary" href="editShopping.php?idShop='.$shoppingObject->getIdShopping().'" title="Actualizar Datos" >
-                                        <i class="icon_plus_alt2"></i>
-                                      </a>
-                                    </div>
-                                  </td>';
-                                  echo "</tr>";
-                                }
+                                
                               }
                               ?>
                             </tbody>

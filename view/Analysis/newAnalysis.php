@@ -3,6 +3,7 @@
   require "../../model/Entity/Municipality.php";
   require "../../model/Entity/Client.php";
   require "../../model/Entity/CostumClient.php";
+  require "../../model/Entity/Package.php";
   require "../../controller/Analysis/analysisController.php";
   require "../../controller/Sample/sampleController.php";
   require "../../controller/Package/packageController.php";
@@ -24,11 +25,11 @@
     if (isset($_POST['add'])) {
       $newAnalysis = new Analysis();
 
-      $newAnalysis->setDateAnalysis($_POST['fecha']);
+      $newAnalysis->setDateAnalysis(new DateTime($_POST['fecha']));
       $newAnalysis->setCostAnalysis($_POST['costo']);
-      $newAnalysis->setEmployeeDpi(getSupplyByCode($_POST['empleado']));
-      $newAnalysis->setPackage(getSupplyByCode($_POST['paquete']));
-      $newAnalysis->setSample(getProviderById($_POST['muestra']));
+      $newAnalysis->setEmployeeDpi(getByDpi($session_employee));
+      $newAnalysis->setPackage(getPackageById($_POST['paquete']));
+      $newAnalysis->setSample(getByIdSample($_POST['muestra']));
 
       if (newAnalysis($newAnalysis)) {
         echo "Analisis realizado";
@@ -142,7 +143,7 @@
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit" name="add">Realizar</button>
                         <button class="btn btn-default" type="button">
-                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="/lab_aguas/" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>

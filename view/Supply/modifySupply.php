@@ -32,8 +32,8 @@
       if (strcmp($supply_mod->getNameSupply(),$_POST['supply_name'])) {
         $supply_mod->setNameSupply($_POST['supply_name']);
       }
-      if ($supply_mod->getQuantityAvailable() != $_POST['quantity_s']) {
-        $supply_mod->setQuantityAvailable($_POST['quantity_s']);
+      if ($supply_mod->getQuantityAvailable() != $_POST['quantity_supply']) {
+        $supply_mod->setQuantityAvailable($_POST['quantity_supply']);
       }
       if ($supply_mod->getMeasure()->getIdMeasure() != $_POST['measure']) {
         $supply_mod->setMeasure(getMeasureById($_POST['measure']));

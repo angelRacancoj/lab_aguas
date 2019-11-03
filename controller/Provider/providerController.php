@@ -14,7 +14,7 @@ function updateProvider($modifiedProvider){
 
 function getProviderById($providerId){
     global $entityManager;
-    $entityManager->getRepository('Provider')->find($providerId);
+    return $entityManager->getRepository('Provider')->find($providerId);
 }
 
 function getAllProviders(){

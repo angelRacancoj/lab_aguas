@@ -3,6 +3,7 @@
 require "../../vendor/autoload.php";
 require_once "../../model/Entity/Sample.php";
 require_once "../../model/Entity/Department.php";
+require_once "../../model/Entity/Municipality.php";
 require_once "../../bootstrap.php";
 
 function newSample($newSample){
@@ -28,6 +29,11 @@ function getAllMunicipalities(){
     return $entityManager->getRepository('Municipality')->findAll();
 }
 
+function findByIdMunicipality($id){
+    global  $entityManager;
+    return $entityManager->getRepository('Municipality')->find($id);
+}
+
 function getAllSamples(){
     global $entityManager;
     return $entityManager->getRepository('Sample')->findAll();
@@ -43,3 +49,4 @@ function entityPersistSample($newObject){
         return false;
     }
 }
+?>

@@ -107,19 +107,21 @@
                                 <th><i class="icon_mail_alt"></i>Municipalidad</th>
                                 <th><i class="icon_mail_alt"></i>Cliente</th>
                                   <?php
+                                  /*
                                   if ($session_role == 1) {
                                     echo '<th><i class="icon_cogs"></i>Actualizar</th>';
                                   }
+                                  */
                                   ?>
                               </tr>
                               <?php
                               foreach (getAllSamples() as $sampleObject) {
                                 echo "<tr>";
                                 echo '<td>'.$sampleObject->getIdSample().'</td>';
-                                echo '<td>'.$sampleObject->getAdmissionDate().'</td>';
-                                echo '<td>'.$sampleObject->getSamplingDate().'</td>';
+                                echo '<td>'.$sampleObject->getAdmissionDate()->format('d/m/yy').'</td>';
+                                echo '<td>'.$sampleObject->getSamplingDate()->format('d/m/yy').'</td>';
                                 echo '<td>'.$sampleObject->getBatch().'</td>';
-                                echo '<td>'.$sampleObject->getSamplingTime().'</td>';
+                                echo '<td>'.$sampleObject->getSamplingTime()->format('H:m').'</td>';
                                 echo '<td>'.$sampleObject->getContainer().'</td>';
                                 echo '<td>'.$sampleObject->getIsRefrigerated().'</td>';
                                 echo '<td>'.$sampleObject->getTemperature().'</td>';
@@ -134,7 +136,7 @@
 
                                 echo '<td>'.$sampleObject->getMunicipality()->getNameMunicipality().'</td>';
                                 echo '<td>'.$sampleObject->getClientDpi()->getNameClient().'</td>';
-
+                                /*
                                 if ($session_role == 1) {
                                   echo '<td>
                                     <div class="btn-group">
@@ -145,6 +147,7 @@
                                   </td>';
                                   echo "</tr>";
                                 }
+                                */
                               }
                               ?>
                             </tbody>

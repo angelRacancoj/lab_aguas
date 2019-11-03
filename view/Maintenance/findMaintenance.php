@@ -89,7 +89,7 @@
                               foreach (getAllMaintenances() as $maintenancesi) {
                                 echo "<tr>";
                                 echo '<td>'.$maintenancesi->getIdMaintenance().'</td>';
-                                echo '<td>'.$maintenancesi->getMaintenanceDate().'</td>';
+                                echo '<td>'.$maintenancesi->getMaintenanceDate()->format('d/m/yy').'</td>';
                                 echo '<td>'.$maintenancesi->getMaintenanceCost().'</td>';
                                 echo '<td>'.$maintenancesi->getEquipment()->getIdEquipment().'</td>';
                                 echo '<td>'.$maintenancesi->getEquipment()->getNameEquipment().'</td>';
@@ -108,7 +108,7 @@
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit">Buscar</button>
                         <button class="btn btn-default" type="button">
-                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="/lab_aguas/" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>

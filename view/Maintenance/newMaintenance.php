@@ -16,13 +16,13 @@
   if ($session_role == 1) {
     if (isset($_POST['add'])) {
       $newMaintenance = new Maintenance();
-      $newMaintenance->setMaintenanceDate($_POST['supply_name']);
-      $newMaintenance->setMaintenanceCost($_POST['expired_date']);
+      $newMaintenance->setMaintenanceDate(new DateTime($_POST['manteinance_date']));
+      $newMaintenance->setMaintenanceCost($_POST['cost']);
       //revisar metodo
-      $newMaintenance->setEquipment(getEquipmetById($_POST['costumEquipment']));
+      $newMaintenance->setEquipment(getById($_POST['costumEquipment']));
       $newMaintenance->setProvider(getProviderById($_POST['costumProvider']));
 
-      if (newSupply($newMaintenance)) {
+      if (newMaintenance($newMaintenance)) {
         echo "Agregado exitosamente";
       } else {
         echo "Error al crear el insumo";
@@ -75,13 +75,13 @@
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Fecha de mantenimiento<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" name="expired_date" type="date" required />
+                        <input class="form-control" name="manteinance_date" type="date" required />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Costo de Mantenimiento (Q)<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" placeholder="Ej: 12.5" name="quantity" type="number" required />
+                        <input class="form-control" placeholder="Ej: 12.5" name="cost" type="number" required />
                       </div>
                     </div>
                     <div class="form-group">
@@ -112,7 +112,7 @@
                       <div class="col-lg-offset-2 col-lg-10">
                         <button herf="" class="btn btn-primary" type="submit" name="add">Agregar</button>
                         <button class="btn btn-default" type="button">
-                          <a href="../Principal/index.html" title="Regresar al Menu Principal" >Regresar</a>
+                          <a href="/lab_aguas/" title="Regresar al Menu Principal" >Regresar</a>
                         </button>
                       </div>
                     </div>
