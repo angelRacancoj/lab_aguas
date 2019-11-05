@@ -59,4 +59,5 @@ function findWithFilters($idProvider, $nameProvider){
     }
     return $query->getQuery()->getResult();
 }
+
 ?>
