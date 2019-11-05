@@ -30,17 +30,15 @@ require_once "../../bootstrap.php";
           global $entityManager;
           return $entityManager->getRepository('Employee')->findBy(['nameEmployee' => $employeeName]);
     }
-    function getByNameAndPassword($employee){
 
-    }
-    function getByPosition($employee){
+    function getByPosition($employeePosition){
       global $entityManager;
-      return $entityManager->getRepository('Employee')->findBy(['nameEmployee' => $employeeName]);
+      return $entityManager->getRepository('Employee')->findBy(['staffPosition.nameStaffPosition' => $employeePosition]);
     }
 
-    function getByState($employee){
-        //buscar en base de datos
-        //devolver Empleados
+    function getByState($employeeState){
+        global $entityManager;
+        return $entityManager->getRepository('Employee')->findBy(['isActive' => $employeeState]);
     }
     function getAllEmployee(){
       global $entityManager;
