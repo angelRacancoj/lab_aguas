@@ -14,7 +14,7 @@ function updatePackage($modifiedPackage){
 
 function getPackageById($packageId){
     global $entityManager;
-    $entityManager->getRepository('Package')->find($packageId);
+    return $entityManager->getRepository('Package')->find($packageId);
 }
 
 function getAllPackages(){

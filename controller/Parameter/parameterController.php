@@ -14,7 +14,7 @@ function updateParameter($modifiedParameter){
 
 function getParameterById($parameterId){
     global $entityManager;
-    $entityManager->getRepository('Parameter')->find($parameterId);
+    return $entityManager->getRepository('Parameter')->find($parameterId);
 }
 
 function getAllParameters(){

@@ -13,13 +13,38 @@ require_once "../../bootstrap.php";
 	}
 
 	function getClientByNameAndId($name,$id){
-		//buscar en base de datos 
-		//devuelve listado de clientes
+		global $entityManager;
+		$predicates = [];
+		if (!empty($id)){
+			$predicates[] = ('a.dpiClient LIKE ' . '\'%'.addcslashes($id,'%').'%\'');
+		}
+		if (!empty($name)){
+			$predicates[] = ('a.nameClient LIKE ' . '\'%'.addcslashes($name,'%').'%\'');
+		}
+		if (empty($predicates)){
+			$query = $entityManager->createQueryBuilder('a')
+				->select('a')
+				->from('Client','a');
+		} else {
+			$query = $entityManager->createQueryBuilder();
+			$and = $query->expr()->andX();
+			foreach ($predicates as $predicateWhere){
+				$and->add($predicateWhere);
+			}
+			$query
+				->select('a')
+				->from('Client','a')
+				->where($and);
+		}
+		return $query->getQuery()->getResult();
 	}
 
 	function getClientByName($name){
-		//buscar en base de datos 
-		//devuelve listado de clientes
+		global $entityManager;
+		$query = $entityManager->getRepository('Client')->createQueryBuilder('a')
+			->where('a.nameClient LIKE :name')
+			->setParameter('name', $name);
+		return $query->getQuery()->getResult();
 	}
 
 	function getClientById($id){

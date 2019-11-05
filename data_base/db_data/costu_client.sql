@@ -1,5 +1,0 @@
-INSERT INTO `water_laboratory`.`COSTUM_CLIENT` (`id_costum_category`, `name_costum_category`, `description`) VALUES ('1', 'empresa privada', 'todo tipo de empresa privada');
-INSERT INTO `water_laboratory`.`COSTUM_CLIENT` (`id_costum_category`, `name_costum_category`, `description`) VALUES ('2', 'empresa mixta', 'todo tipo de empresa privada');
-INSERT INTO `water_laboratory`.`COSTUM_CLIENT` (`id_costum_category`, `name_costum_category`, `description`) VALUES ('3', 'entidad gobierno', 'toda entidad gubernamental');
-INSERT INTO `water_laboratory`.`COSTUM_CLIENT` (`id_costum_category`, `name_costum_category`, `description`) VALUES ('4', 'estudiante', 'para cualquier estudiante');
-INSERT INTO `water_laboratory`.`COSTUM_CLIENT` (`id_costum_category`, `name_costum_category`, `description`) VALUES ('5', 'ONG', 'todo tipo de ONGs');

@@ -69,14 +69,14 @@
                       <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Numero Telefono<span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" type="text" pattern="\d*" name="providerPhone" value="<?php echo $employeeCon->getPhoneProvider(); ?>" placeholder="ej: 45897854" maxlength="10" required></input>
+                          <input class="form-control" type="text" name="providerPhone" value="<?php echo $employeeCon->getPhoneProvider(); ?>" placeholder="ej: 45897854" maxlength="10" required></input>
                       </div>
                     </div>
 
                       <div class="form-group ">
                           <label for="cname" class="control-label col-lg-2">Direccion</label>
                           <div class="col-lg-10">
-                              <input class="form-control" type="text" pattern="\d*" name="providerDirection" value="<?php echo $employeeCon->getDirectionProvider(); ?>" placeholder="ej: 45897854" maxlength="10" required></input>
+                              <input class="form-control" type="text" name="providerDirection" value="<?php echo $employeeCon->getDirectionProvider(); ?>" placeholder="Ej: 10ma avenida 60-10 Zona 11" maxlength="45" required></input>
                           </div>
                       </div>
 
